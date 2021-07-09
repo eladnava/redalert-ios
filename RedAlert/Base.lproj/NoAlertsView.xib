@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AlertIcon" translatesAutoresizingMaskIntoConstraints="NO" id="sPh-F2-Fmd">
+                    <rect key="frame" x="238" y="199" width="124" height="118"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="124" id="qTt-7K-TmY"/>
+                        <constraint firstAttribute="height" constant="118" id="taf-Y6-9jG"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="אין התרעות מהיום האחרון" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="106" translatesAutoresizingMaskIntoConstraints="NO" id="31a-zG-ovf">
+                    <rect key="frame" x="255" y="325" width="91" height="41"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="sPh-F2-Fmd" secondAttribute="centerX" id="8wQ-X9-SzA"/>
+                <constraint firstItem="31a-zG-ovf" firstAttribute="top" secondItem="sPh-F2-Fmd" secondAttribute="bottom" constant="8" id="92j-iN-Pk0"/>
+                <constraint firstAttribute="centerX" secondItem="31a-zG-ovf" secondAttribute="centerX" id="bR9-Yo-MSe"/>
+                <constraint firstAttribute="centerY" secondItem="sPh-F2-Fmd" secondAttribute="centerY" constant="42" id="hr8-X3-v1B"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="AlertIcon" width="144" height="144"/>
+    </resources>
+</document>

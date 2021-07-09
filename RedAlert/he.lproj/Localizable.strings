@@ -1,0 +1,59 @@
+/* 
+  Localizable.strings
+  RedAlert
+
+  Created by Elad on 10/27/14.
+  Copyright (c) 2021 Elad Nava. All rights reserved.
+ */
+"ERROR_DIALOG"="שגיאה";
+"OK_BUTTON"="אוקי";
+"EMAIL_TITLE"="צבע אדום";
+"EMAIL_BODY_ERROR_DESC"="תיאור התקלה:";
+"EMAIL_BODY_SENT_VIA"="נשלח באמצעות צבע אדום %@ לאייפון";
+"CONTACT_ERROR"="אין אפשרות לשלוח דואר אלקטרוני ממכשיר זה. עליך להגדיר את אפליקציית הדואר ולנסות שוב.";
+"IM_SAFE_MESSAGE"="אני במרחב מוגן - נשלח באמצעות צבע אדום לאייפון - https://redalert.me";
+"REGISTRATION_ERROR"="ארעה שגיאה בהרשמה להתרעות צבע אדום. נסה שוב מאוחר יותר.";
+"PUSH_ERROR"="ארעה שגיאה בהרשמה לשירות העדכונים של אפל. נסה שוב מאוחר יותר.";
+"UNREGISTERED_ERROR"="אינך רשום לשירות העדכונים של צבע אדום. עליך להיכנס להגדרות המכשיר ולאפשר לאפליקציה לקבל עדכוני דחיפה.\n\nכנס להגדרות -> מרכז עדכונים -> צבע אדום -> אפשר עדכונים.";
+"RECENT_ALERTS_ERROR"="ארעה שגיאה בהתחברות לשרת ההתרעות. נסה שוב מאוחר יותר.";
+"USER_UPDATE_ERROR"="ארעה שגיאה בעדכון נתוני דחיפה. נסה שוב מאוחר יותר.";
+"SOUND_ERROR"="ארעה שגיאה בניגון הצליל.";
+"SOUND_SAVE_ERROR"="ארעה שגיאה בשמירת הצליל. נסה שוב מאוחר יותר.";
+"NOTIFICATIONS_SAVE_ERROR"="ארעה שגיאה בשמירת ההגדרה. נסה שוב מאוחר יותר.";
+"SELF_TEST_ERROR"="ארעה שגיאה בביצוע הבדיקה העצמית. נסה שוב מאוחר יותר.";
+"APP_NAME"="צבע אדום";
+"SAVE_SUBSCRIPTIONS_FAILED"="ארעה שגיאה בשמירת ההגדרה. נסה שוב מאוחר יותר.";
+"UPDATE_DIALOG_TITLE"="עדכון גרסה";
+"UPDATE_DIALOG_MESSAGE"="יצאה גרסה חדשה יותר של האפליקציה (%@), מומלץ לעדכן.";
+"UPDATE_BUTTON"="עדכן";
+"NOT_NOW_BUTTON"="לא עכשיו";
+"WAIT_FOR_TEST_RESULT"="אנא המתן לקבלת עדכון הדחיפה...";
+"CITY_SELECTION"="בחר ערים";
+"ZONE_SELECTION"="בחר מרחבים";
+"SOUND_SELECTION"="בחר צליל";
+"SEARCH_PLACEHOLDER"="הקלד מילות חיפוש...";
+"LANGUAGE_DIALOG_TITLE"="שינוי שפה";
+"LANGUAGE_DIALOG_MESSAGE"="עליך לפתוח מחדש את האפליקציה לאחר שינוי שפה.";
+
+"REGISTRATION_SUCCESS_TITLE"="התרעות צבע אדום";
+"REGISTRATION_SUCCESS_MESSAGE"="הינך רשום לשירות העדכונים של צבע אדום.\n\nכעת עליך לבחור מרחבים ו/או ערים כדי לקבל התרעות בזמן אמת.";
+
+"SIREN_1"="סירנה 1";
+"SIREN_2"="סירנה 2";
+"SIREN_3"="סירנה 3";
+"SIREN_4"="סירנה 4";
+"SIREN_5"="סירנה 5";
+"FUNNY"= "מצחיק";
+"CALM_1"="רגוע 1";
+"CALM_2"="רגוע 2";
+"CALM_3"="רגוע 3";
+"CALM_4"="רגוע 4";
+"CALM_5"="רגוע 5";
+"SHORT_1"="קצר 1";
+"SHORT_2"="קצר 2";
+"SHORT_3"="קצר 3";
+"SHORT_4"="קצר 4";
+"SHORT_5"="קצר 5";
+
+"LIFESHIELD_SHELTERS"="מקלטי לייפשילד:";
+

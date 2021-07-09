@@ -1,0 +1,15 @@
+
+/* Class = "IBUIBarButtonItem"; title = "Settings"; ObjectID = "7jC-HH-oAq"; */
+"7jC-HH-oAq.title" = "Настройки";
+
+/* Class = "IBUITableViewController"; title = "Settings"; ObjectID = "JaO-zN-Z1I"; */
+"JaO-zN-Z1I.title" = "Настройки";
+
+/* Class = "IBUINavigationItem"; title = "Recent Alerts"; ObjectID = "Ss2-3G-LoG"; */
+"Ss2-3G-LoG.title" = "Последние Оповещения";
+
+/* Class = "IBUITableViewController"; title = "Additional"; ObjectID = "fmR-DC-UVs"; */
+"fmR-DC-UVs.title" = "Расширенные";
+
+/* Class = "IBUITableViewController"; title = "Additional"; ObjectID = "nHK-zS-dkJ"; */
+"nHK-zS-dkJ.title" = "Расширенные";

@@ -1,0 +1,66 @@
+[
+	{
+	    "name": "SIREN_1",
+		"value": "alarm1.aifc"
+	},
+	{
+	    "name": "SIREN_2",
+		"value": "alarm2.aifc"
+	},
+	{
+	    "name": "SIREN_3",
+		"value": "alarm3.aifc"
+	},
+	{
+	    "name": "SIREN_4",
+		"value": "alarm4.aifc"
+	},
+	{
+	    "name": "SIREN_5",
+		"value": "alarm5.aifc"
+	},
+	{
+	    "name": "FUNNY",
+		"value": "funny.aifc"
+	},
+	{
+	    "name": "CALM_1",
+		"value": "calm.aifc"
+	},
+	{
+	    "name": "CALM_2",
+		"value": "calm2.aifc"
+	},
+	{
+	    "name": "CALM_3",
+		"value": "calm3.aifc"
+	},
+	{
+	    "name": "CALM_4",
+		"value": "calm4.aifc"
+	},
+	{
+	    "name": "CALM_5",
+		"value": "calm5.aifc"
+	},
+	{
+	    "name": "SHORT_1",
+		"value": "tiny.aifc"
+	},
+	{
+	    "name": "SHORT_2",
+		"value": "tiny2.aifc"
+	},
+	{
+	    "name": "SHORT_3",
+		"value": "tiny3.aifc"
+	},
+	{
+	    "name": "SHORT_4",
+		"value": "tiny4.aifc"
+	},
+	{
+	    "name": "SHORT_5",
+		"value": "tiny5.aifc"
+	}
+]

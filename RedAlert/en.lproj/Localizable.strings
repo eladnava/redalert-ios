@@ -1,0 +1,59 @@
+/* 
+  Localizable.strings
+  RedAlert
+
+  Created by Elad on 10/27/14.
+  Copyright (c) 2021 Elad Nava. All rights reserved.
+*/
+"ERROR_DIALOG"="Error";
+"OK_BUTTON"="OK";
+"EMAIL_TITLE"="Red Alert";
+"EMAIL_BODY_ERROR_DESC"="Problem description:";
+"EMAIL_BODY_SENT_VIA"="Sent via Red Alert %@ for iPhone";
+"CONTACT_ERROR"="E-mail cannot be sent from this device, you must configure the Mail app first.";
+"IM_SAFE_MESSAGE"="I'm safe - sent via Red Alert for iOS - https://redalert.me";
+"REGISTRATION_ERROR"="An error occurred while signing up for rocket alerts. Please try again later.";
+"PUSH_ERROR"="An error occurred while signing up for push notifications. Please try again later.";
+"UNREGISTERED_ERROR"="You are not signed up for rocket alerts. Please enable notifications for Red Alert in your device settings.\n\nGo to Settings -> Notifications -> RedAlert -> Allow Notifications.";
+"RECENT_ALERTS_ERROR"="An error occurred while connecting to the application server. Please try again later.";
+"USER_UPDATE_ERROR"="An error occurred while updating your alert subscription. Please try again later.";
+"SOUND_ERROR"="An error occurred while playing the sound.";
+"SOUND_SAVE_ERROR"="An error occurred while saving the sound. Please try again later.";
+"NOTIFICATIONS_SAVE_ERROR"="An error occurred while saving the setting. Please try again later.";
+"SELF_TEST_ERROR"="An error occurred while performing the self-test. Please try again later.";
+"APP_NAME"="Red Alert";
+"SAVE_SUBSCRIPTIONS_FAILED"="An error occurred while saving the setting. Please try again later.";
+"UPDATE_DIALOG_TITLE"="New Version";
+"UPDATE_DIALOG_MESSAGE"="A new version of this application is available (%@), please update.";
+"UPDATE_BUTTON"="Update";
+"NOT_NOW_BUTTON"="Not Now";
+"WAIT_FOR_TEST_RESULT"="Please wait for the test alert...";
+"CITY_SELECTION"="Cities";
+"ZONE_SELECTION"="Zones";
+"SOUND_SELECTION"="Sounds";
+"SEARCH_PLACEHOLDER"="Enter search keywords...";
+"LANGUAGE_DIALOG_TITLE"="Language Change";
+"LANGUAGE_DIALOG_MESSAGE"="You must reopen the app after changing the language.";
+"REGISTRATION_SUCCESS_TITLE"="Rocket Alerts";
+"REGISTRATION_SUCCESS_MESSAGE"="You have successfully signed up for rocket alert notifications via RedAlert.\n\nYou must select zones and/or cities to start receiving alerts.";
+
+"SIREN_1"="Siren 1";
+"SIREN_2"="Siren 2";
+"SIREN_3"="Siren 3";
+"SIREN_4"="Siren 4";
+"SIREN_5"="Siren 5";
+"FUNNY"= "Funny";
+"CALM_1"="Relaxing 1";
+"CALM_2"="Relaxing 2";
+"CALM_3"="Relaxing 3";
+"CALM_4"="Relaxing 4";
+"CALM_5"="Relaxing 5";
+"SHORT_1"="Short 1";
+"SHORT_2"="Short 2";
+"SHORT_3"="Short 3";
+"SHORT_4"="Short 4";
+"SHORT_5"="Short 5";
+
+
+"LIFESHIELD_SHELTERS"="Lifeshield Shelters:";
+
