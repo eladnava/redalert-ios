@@ -1,177 +1,157 @@
 [
-	{
-	    "name": "בחר הכל",
-	    "name_en": "Select All",
-		"value": "all"
-	},
-	{
-	    "name": "דן",
-	    "name_en": "Dan",
-		"value": "דן"
-	},
-	{
-	    "name": "ירושלים",
-	    "name_en": "Jerusalem",
-		"value": "ירושלים"
-	},
-	{
-	    "name": "חיפה",
-	    "name_en": "Haifa",
-		"value": "חיפה"
-	},
-	{
-	    "name": "לכיש",
-	    "name_en": "Lahish",
-		"value": "לכיש"
-	},
-	{
-	    "name": "הקריות",
-	    "name_en": "HaKrayot",
-		"value": "הקריות"
-	},
-	{
-	    "name": "השפלה",
-	    "name_en": "HaShfela",
-		"value": "השפלה"
-	},
-	{
-	    "name": "דרום השפלה",
-	    "name_en": "South HaShfela",
-		"value": "דרום השפלה"
-	},
-	{
-	    "name": "חוף הכרמל",
-	    "name_en": "Hof HaCarmel",
-		"value": "חוף הכרמל"
-	},
-	{
-	    "name": "יערות הכרמל",
-	    "name_en": "Yea'rot HaCarmel",
-		"value": "יערות הכרמל"
-	},
-	{
-	    "name": "מרכז הנגב",
-	    "name_en": "Central Negev",
-		"value": "מרכז הנגב"
-	},
-	{
-	    "name": "דרום הנגב",
-	    "name_en": "South Negev",
-		"value": "דרום הנגב"
-	},
-	{
-	    "name": "אילת",
-	    "name_en": "Eilat",
-		"value": "אילת"
-	},
-	{
-	    "name": "גולן",
-	    "name_en": "Golan",
-		"value": "גולן"
-	},
-	{
-	    "name": "גליל עליון",
-	    "name_en": "Upper Galilee",
-		"value": "גליל עליון"
-	},
-	{
-	    "name": "גליל תחתון",
-	    "name_en": "Lower Galilee",
-		"value": "גליל תחתון"
-	},
-	{
-	    "name": "בית שמש",
-	    "name_en": "Beit Shemesh",
-		"value": "בית שמש"
-	},
-	{
-	    "name": "עוטף עזה",
-	    "name_en": "Gaza Perimeter",
-		"value": "עוטף עזה"
-	},
-	{
-	    "name": "קו העימות",
-	    "name_en": "Confrontation Line",
-		"value": "קו העימות"
-	},
-	{
-	    "name": "ים המלח",
-	    "name_en": "Dead Sea",
-		"value": "ים המלח"
-	},
-	{
-	    "name": "מעלה אדומים",
-	    "name_en": "Ma'ale Adumim",
-		"value": "מעלה אדומים"
-	},
-	{
-	    "name": "בקעה",
-	    "name_en": "Bikah",
-		"value": "בקעה"
-	},
-	{
-	    "name": "עמק יזרעאל",
-	    "name_en": "Jezreel Valley",
-		"value": "עמק יזרעאל"
-	},
-	{
-	    "name": "בקעת בית שאן",
-	    "name_en": "Beit She'an",
-		"value": "בקעת בית שאן"
-	},
-	{
-	    "name": "חפר",
-	    "name_en": "Hefer",
-		"value": "חפר"
-	},
-	{
-	    "name": "יהודה",
-	    "name_en": "Judea",
-		"value": "יהודה"
-	},
-	{
-	    "name": "שומרון",
-	    "name_en": "Samaria",
-		"value": "שומרון"
-	},
-	{
-	    "name": "ירקון",
-	    "name_en": "Yarkon",
-		"value": "ירקון"
-	},
-	{
-	    "name": "מנשה",
-	    "name_en": "Menashe",
-		"value": "מנשה"
-	},
-	{
-	    "name": "ערבה",
-	    "name_en": "Arabah",
-		"value": "ערבה"
-	},
-	{
-	    "name": "קצרין",
-	    "name_en": "Katzrin",
-		"value": "קצרין"
-	},
-	{
-	    "name": "שרון",
-	    "name_en": "Sharon",
-		"value": "שרון"
-	},
-	{
-	    "name": "תבור",
-	    "name_en": "Tabor",
-		"value": "תבור"
-	},
-	{
-	    "name": "ואדי ערה",
-	    "name_en": "Vadi Ara",
-		"value": "ואדי ערה"
-	},
-	{
-	    "name": "עמק הירדן",
-	    "name_en": "HaYarden Valley",
-		"value": "עמק הירדן"
-	}
+    {
+        "name": "בחר הכל",
+        "name_en": "Select All",
+        "value": "all"
+    },
+    {
+        "name": "אילת",
+        "name_en": "Eilat",
+        "value": "אילת"
+    },
+    {
+        "name": "בקעה",
+        "name_en": "Bika'a",
+        "value": "בקעה"
+    },
+    {
+        "name": "בקעת בית שאן",
+        "name_en": "Beit She'an Valley",
+        "value": "בקעת בית שאן"
+    },
+    {
+        "name": "גולן דרום",
+        "name_en": "South Golan",
+        "value": "גולן דרום"
+    },
+    {
+        "name": "גולן צפון",
+        "name_en": "North Golan",
+        "value": "גולן צפון"
+    },
+    {
+        "name": "גליל עליון",
+        "name_en": "Upper Galilee",
+        "value": "גליל עליון"
+    },
+    {
+        "name": "גליל תחתון",
+        "name_en": "Lower Galilee",
+        "value": "גליל תחתון"
+    },
+    {
+        "name": "דן",
+        "name_en": "Dan",
+        "value": "דן"
+    },
+    {
+        "name": "דרום הנגב",
+        "name_en": "South Negev",
+        "value": "דרום הנגב"
+    },
+    {
+        "name": "הכרמל",
+        "name_en": "HaCarmel",
+        "value": "הכרמל"
+    },
+    {
+        "name": "המפרץ",
+        "name_en": "HaMifratz",
+        "value": "המפרץ"
+    },
+    {
+        "name": "העמקים",
+        "name_en": "HaAmakim",
+        "value": "העמקים"
+    },
+    {
+        "name": "השפלה",
+        "name_en": "HaShfela",
+        "value": "השפלה"
+    },
+    {
+        "name": "ואדי ערה",
+        "name_en": "Wadi Ara",
+        "value": "ואדי ערה"
+    },
+    {
+        "name": "יהודה",
+        "name_en": "Yehuda",
+        "value": "יהודה"
+    },
+    {
+        "name": "ים המלח",
+        "name_en": "Dead Sea",
+        "value": "ים המלח"
+    },
+    {
+        "name": "ירושלים",
+        "name_en": "Jerusalem",
+        "value": "ירושלים"
+    },
+    {
+        "name": "ירקון",
+        "name_en": "Yarkon",
+        "value": "ירקון"
+    },
+    {
+        "name": "לכיש",
+        "name_en": "Lachish",
+        "value": "לכיש"
+    },
+    {
+        "name": "מנשה",
+        "name_en": "Menashe",
+        "value": "מנשה"
+    },
+    {
+        "name": "מערב הנגב",
+        "name_en": "West Negev",
+        "value": "מערב הנגב"
+    },
+    {
+        "name": "מערב לכיש",
+        "name_en": "West Lachish",
+        "value": "מערב לכיש"
+    },
+    {
+        "name": "מרכז הגליל",
+        "name_en": "Center Galilee",
+        "value": "מרכז הגליל"
+    },
+    {
+        "name": "מרכז הנגב",
+        "name_en": "Center Negev",
+        "value": "מרכז הנגב"
+    },
+    {
+        "name": "עוטף עזה",
+        "name_en": "Gaza Envelope",
+        "value": "עוטף עזה"
+    },
+    {
+        "name": "ערבה",
+        "name_en": "Arava",
+        "value": "ערבה"
+    },
+    {
+        "name": "קו העימות",
+        "name_en": "Confrontation Line",
+        "value": "קו העימות"
+    },
+    {
+        "name": "שומרון",
+        "name_en": "Shomron",
+        "value": "שומרון"
+    },
+    {
+        "name": "שפלת יהודה",
+        "name_en": "Shfelat Yehuda",
+        "value": "שפלת יהודה"
+    },
+    {
+        "name": "שרון",
+        "name_en": "Sharon",
+        "value": "שרון"
+    }
 ]
