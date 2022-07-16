@@ -20,7 +20,7 @@ struct UserSettingsKeys {
     static var secondarySoundSelection = "secondarySoundSelection"
     static var secondaryNotifications = "secondaryNotifications"
     
-    static var userID = "userID"
+    static var userID = "userID_v2"
     static var userHash = "userHash"
     static var deviceToken = "deviceToken"
     static var notifications = "notifications"
