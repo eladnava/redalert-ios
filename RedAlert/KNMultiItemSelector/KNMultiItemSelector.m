@@ -215,10 +215,8 @@
   // Layout UI elements
   CGRect f = self.view.frame;    
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(orientationChanged:)    name:UIDeviceOrientationDidChangeNotification  object:nil];
-
-    int offset = self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
     
-  textFieldWrapper.frame = CGRectMake(0, offset, f.size.width, 44);
+  textFieldWrapper.frame = CGRectMake(0, 0, f.size.width, 44);
   self.searchTextField.frame = CGRectMake(6,6, f.size.width-12, 32);
 
   // Show or hide search control
@@ -246,10 +244,7 @@
 
 
 - (void)orientationChanged:(NSNotification *)notification{
-    
-    int offset = self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
-    
-    textFieldWrapper.frame = CGRectMake(0, offset, self.view.frame.size.width, 44);
+    textFieldWrapper.frame = CGRectMake(0, 0, self.view.frame.size.width, 44);
 }
 
 -(void)showHideModeButtons {
