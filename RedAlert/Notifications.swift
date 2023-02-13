@@ -39,40 +39,50 @@ struct Notifications {
         // Get APS object        
         let aps = notification["aps"] as! NSDictionary
         
-        // Get sound file        
-        let file = aps["sound"] as? String
+        // Sound filename
+        var fileName:String;
         
-        // Unwrap variable        
-        if var file = file {
-            // Remove sound extension            
-            file = file.replacingOccurrences(of: ".aifc", with: "")
+        // Sound was sent as a string?
+        if let file = aps["sound"] as? String {
+            fileName = file
+        }
+        // Sound was sent as a dictionary (Critical alert)?
+        else if let sound = aps["sound"] as? NSDictionary {
+            fileName = sound["name"] as! String
+        }
+        else {
+            // No sound provided, do nothing
+            return
+        }
+        
+        // Remove sound extension
+        fileName = fileName.replacingOccurrences(of: ".aifc", with: "")
+        
+        // Try to determine path
+        let path = Bundle.main.path(forResource: fileName, ofType: "aifc")
+        
+        // Unwrap variable safely
+        if let path = path {
+            // Create path to sound
+            let alertSound = URL(fileURLWithPath: path)
             
-            // Try to determine path            
-            let path = Bundle.main.path(forResource: file, ofType: "aifc")
+            // Create a new instance of audio player
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: alertSound)
+            }
+            catch {
+                // Show error
+                Dialogs.error(message: NSLocalizedString("SOUND_ERROR", comment: "Sound error message"))
+            }
             
-            // Unwrap variable safely            
-            if let path = path {
-                // Create path to sound                
-                let alertSound = URL(fileURLWithPath: path)
+            // Unwrap variable
+            if let audioPlayer = audioPlayer {
+                // Play the sound
+                audioPlayer.prepareToPlay()
+                audioPlayer.play()
                 
-                // Create a new instance of audio player                
-                do {
-                    audioPlayer = try AVAudioPlayer(contentsOf: alertSound)
-                }
-                catch {
-                    // Show error                    
-                    Dialogs.error(message: NSLocalizedString("SOUND_ERROR", comment: "Sound error message"))
-                }
-                
-                // Unwrap variable                
-                if let audioPlayer = audioPlayer {
-                    // Play the sound                    
-                    audioPlayer.prepareToPlay()
-                    audioPlayer.play()
-                    
-                    // Vibrate shortly                    
-                    AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-                }
+                // Vibrate shortly
+                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             }
         }
     }

@@ -14,25 +14,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, UNUs
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        // iOS 8 notifications iOS 10 support
-        if #available(iOS 10, *) {
+        // iOS 12+ support (Critical Alerts)
+        if #available(iOS 12, *) {
+            // For in-app notifications
+            UNUserNotificationCenter.current().delegate = self
+            
+            UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound, .criticalAlert]){ (granted, error) in }
+            application.registerForRemoteNotifications()
+        }
+        // iOS 10+ support
+        else if #available(iOS 10, *) {
             // For in-app notifications
             UNUserNotificationCenter.current().delegate = self
             
             UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in }
             application.registerForRemoteNotifications()
         }
-            // iOS 9 support
-        else if #available(iOS 9, *) {
-            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
-            UIApplication.shared.registerForRemoteNotifications()
-        }
-            // iOS 8 support
+        // iOS 8+ support
         else if #available(iOS 8, *) {
             UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
             UIApplication.shared.registerForRemoteNotifications()
         }
-            // iOS 7 support
+        // Fallback (iOS 7 and under)
         else {
             application.registerForRemoteNotifications(matching: [.badge, .sound, .alert])
         }
