@@ -195,6 +195,9 @@ class SoundSelectionViewController: UITableViewController {
         do {
             // Create a new instance of audio player        
             audioPlayer = try AVAudioPlayer(contentsOf: alertSound)
+            
+            // Burst through silent mode
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
         } catch let error1 as NSError {
             error = error1
             audioPlayer = nil

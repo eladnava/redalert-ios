@@ -69,6 +69,9 @@ struct Notifications {
             // Create a new instance of audio player
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: alertSound)
+                
+                // Burst through silent mode
+                try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             }
             catch {
                 // Show error
