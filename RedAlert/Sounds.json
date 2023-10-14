@@ -59,8 +59,12 @@
 	    "name": "SHORT_4",
 		"value": "tiny4.aifc"
 	},
-	{
-	    "name": "SHORT_5",
-		"value": "tiny5.aifc"
-	}
+    {
+        "name": "SHORT_5",
+        "value": "tiny5.aifc"
+    },
+    {
+        "name": "SILENT",
+        "value": "silent.aifc"
+    }
 ]
