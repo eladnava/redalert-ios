@@ -12,7 +12,7 @@ import MapKit
 struct Config {
     // API server    
 //    static let apiBaseURL = "http://127.0.0.1:3000"
-    static let apiBaseURL = "https://api.tzevaadom.app"
+    static let apiBaseURL = "https://api.redalert.me"
     
     // URLs    
     static let webSiteURL = "https://redalert.me"
