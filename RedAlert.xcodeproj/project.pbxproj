@@ -97,6 +97,7 @@
 		E4C40BB719ED6BB40097D0FB /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C40BB619ED6BB40097D0FB /* AlertViewController.swift */; };
 		E4C40BBF19EEBD4C0097D0FB /* RedAlertAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C40BBE19EEBD4C0097D0FB /* RedAlertAPI.swift */; };
 		E4C40BC119EECCC90097D0FB /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C40BC019EECCC90097D0FB /* Config.swift */; };
+		E4DB71052AF132490072179B /* silent.aifc in Resources */ = {isa = PBXBuildFile; fileRef = E4DB71042AF132490072179B /* silent.aifc */; };
 		E4F41E5819ED5CF100037587 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F41E5719ED5CF100037587 /* AppDelegate.swift */; };
 		E4F41E5F19ED5CF100037587 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4F41E5E19ED5CF100037587 /* Images.xcassets */; };
 		E4F41E6E19ED5CF100037587 /* RedAlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F41E6D19ED5CF100037587 /* RedAlertTests.swift */; };
@@ -250,6 +251,7 @@
 		E4C40BB619ED6BB40097D0FB /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		E4C40BBE19EEBD4C0097D0FB /* RedAlertAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedAlertAPI.swift; sourceTree = "<group>"; };
 		E4C40BC019EECCC90097D0FB /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		E4DB71042AF132490072179B /* silent.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = silent.aifc; sourceTree = "<group>"; };
 		E4F41E5219ED5CF100037587 /* RedAlert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedAlert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F41E5619ED5CF100037587 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4F41E5719ED5CF100037587 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -713,6 +715,7 @@
 				E49D94481A0BC46B008DD93E /* tiny3.aifc */,
 				E49D94491A0BC46B008DD93E /* tiny4.aifc */,
 				E49D944A1A0BC46B008DD93E /* tiny5.aifc */,
+				E4DB71042AF132490072179B /* silent.aifc */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -821,6 +824,7 @@
 				E42C319819EFB5DD00105195 /* Cities.json in Resources */,
 				E4140D3C1A0AB601000EB05B /* KNMultiItemCell.xib in Resources */,
 				E412A61B19F19A6A0065B337 /* KNZoomIcon@2x.png in Resources */,
+				E4DB71052AF132490072179B /* silent.aifc in Resources */,
 				E412A61719F19A6A0065B337 /* KNDefaultImage@2x.png in Resources */,
 				E46CD5381A0E6FDB00A3D282 /* InAppSettings.bundle in Resources */,
 				E4FEC78219FED9FE009BD163 /* Localizable.strings in Resources */,
