@@ -116,10 +116,7 @@ struct RedAlertAPI {
                 
                 // Compare build numbers                
                 if (showDialog! && installedBuild! < latestBuildNumber!) {
-                    // Convert version to string                    
-                    let newVersion = String(format: "%.1f", latestVersion!)
-                    
-                    // Create new alert view                    
+                    // Create new alert view
                     let alert = UIAlertView()
                     
                     // Set delegate so we can capture tap event                    
@@ -129,7 +126,7 @@ struct RedAlertAPI {
                     alert.title = NSLocalizedString("UPDATE_DIALOG_TITLE", comment: "Update dialog title")
                     
                     // Set message and insert new version code                    
-                    alert.message = String.localizedStringWithFormat(NSLocalizedString("UPDATE_DIALOG_MESSAGE", comment: "Update dialog message"), newVersion)
+                    alert.message = String.localizedStringWithFormat(NSLocalizedString("UPDATE_DIALOG_MESSAGE", comment: "Update dialog message"), latestVersion!)
                     
                     // Add buttons                    
                     alert.addButton(withTitle: NSLocalizedString("NOT_NOW_BUTTON", comment: "Not now button text"))
