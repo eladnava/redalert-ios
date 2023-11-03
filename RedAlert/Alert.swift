@@ -19,7 +19,7 @@ class Alert {
         
         // Get localized names
         self.localizedCity = LocationMetadata.getLocalizedCityName(cityName: city)
-        self.localizedZone = LocationMetadata.getLocalizedZoneByCity(cityName: city)
+        self.localizedZone = LocationMetadata.getLocalizedZoneWithCountdown(cityName: city)
         
         // Initialize empty grouped cities array
         self.groupedCities = []

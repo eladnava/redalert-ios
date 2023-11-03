@@ -129,4 +129,21 @@ struct LocationMetadata {
         // No match, return empty string
         return ""
     }
+    
+    static func getLocalizedZoneWithCountdown(cityName: String) -> String {
+        // Get cities as array
+        let cities = getCities()
+        
+        // Loop over them
+        for city in cities {
+            // Find by name
+            if (city.name == cityName) {
+                // Return english zone
+                return (Localization.isEnglish()) ? city.zone_en  + " (" + city.time_en + ")" : city.zone + " (" + city.time + ")"
+            }
+        }
+        
+        // No match, return empty string
+        return ""
+    }
 }
