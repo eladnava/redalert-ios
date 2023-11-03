@@ -221,7 +221,6 @@
 		E49C1FA41A0A6D6600B7A71D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/NoAlertsView.strings; sourceTree = "<group>"; };
 		E49C1FA51A0A6D6600B7A71D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SafeButtonView.strings; sourceTree = "<group>"; };
 		E49C1FA61A0A6D6600B7A71D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
-		E49C1FA71A0A6D6600B7A71D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E49D1B4419FCEA74002ACC61 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E49D4A871A052EE200898F45 /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		E49D4A8A1A05531E00898F45 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -998,7 +997,6 @@
 			children = (
 				E4FEC78519FEDA00009BD163 /* en */,
 				E4FEC78619FEDA01009BD163 /* he */,
-				E49C1FA71A0A6D6600B7A71D /* ru */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
