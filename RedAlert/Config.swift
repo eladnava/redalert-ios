@@ -27,9 +27,9 @@ struct Config {
     static let recentAlertsRefreshIntervalSeconds = 25 as TimeInterval
     
     // MapKit    
-    static let annotationPadding = 300.0
+    static let annotationPadding = 2.0
     
-    static let defaultMapZoom = 2.9
+    static let defaultMapZoom = 5.0
     static let defaultMapLat = 31.4117256 as CLLocationDegrees
     static let defaultMapLng = 35.0818155 as CLLocationDegrees
 }

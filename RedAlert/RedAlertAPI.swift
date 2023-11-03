@@ -315,11 +315,8 @@ struct RedAlertAPI {
                         let city = item["area"] as! String
                         let date = item["date"] as! Double
                         
-                        // Convert unix to date                        
-                        let dateString = DateFormatterStruct.ConvertUnixTimestampToDateTime(unixTimestamp: date)
-                        
                         // Create new alert                        
-                        let alert = Alert(city: city, date: dateString)
+                        let alert = Alert(city: city, date: date)
                         
                         // Add it to alerts                        
                         alerts.append(alert)

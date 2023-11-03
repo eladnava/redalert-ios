@@ -259,8 +259,8 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
                 return Dialogs.error(message: message)
             }
             
-            // Store alerts in member            
-            self.alerts = alerts!
+            // Store grouped alerts in member
+            self.alerts = self.groupAlerts(alerts!)
             
             // Refresh table with data            
             self.refreshAlertsTable()
@@ -268,6 +268,41 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             // Hide loading indicator            
             self.toggleNetworkActivity(visible: false)
         })
+    }
+    
+    func groupAlerts(_ alerts: [Alert]) -> [Alert] {
+        // Prepare grouped alerts list
+        var groupedAlerts = [Alert]()
+
+        // Keep track of the last alert item added to the list
+        var lastAlert: Alert?
+
+        // Traverse elements
+        for i in 0..<alerts.count {
+            // Current element
+            let currentAlert = alerts[i]
+            
+            // Initialize city names list for map display
+            currentAlert.groupedCities.append(currentAlert.city)
+
+            // Check whether this new alert can be grouped with the previous one
+            // (Same region + 15 second cutoff threshold in either direction)
+            if let previousAlert = lastAlert,
+                previousAlert.localizedZone == currentAlert.localizedZone,
+                currentAlert.date >= previousAlert.date - 15,
+                currentAlert.date <= previousAlert.date + 15 {
+                // Group with the previous alert list item
+                lastAlert?.localizedCity += ", " + currentAlert.localizedCity
+                lastAlert?.groupedCities.append(currentAlert.city)
+            } else {
+                // New alert (not grouped with the previous item)
+                groupedAlerts.append(currentAlert)
+                lastAlert = currentAlert
+            }
+        }
+
+        // All done
+        return groupedAlerts
     }
     
     func refreshAlertsTable() {
@@ -348,9 +383,12 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         let alert = alerts[indexPath.row]
         
         // Set cell label values
-        cell.time.text = alert.date
         cell.city.text = alert.localizedCity
         cell.desc.text = alert.localizedZone
+        cell.time.text = DateFormatterStruct.ConvertUnixTimestampToDateTime(unixTimestamp: alert.date)
+        
+        // Fix for really annoying bug with UILabel multiline height
+        cell.city.preferredMaxLayoutWidth = 0
         
         // No cities? Protect against UI failure
         if (alert.localizedZone == "") {
@@ -360,7 +398,14 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         // RTL cities in case device language is Hebrew        
         if (Localization.isRTL()) {
             // Set text alignment to RTL            
+            cell.city.textAlignment = NSTextAlignment.right
             cell.desc.textAlignment = NSTextAlignment.right
+            cell.time.textAlignment = NSTextAlignment.right
+            
+            // Increase font size in case device language is Hebrew
+            cell.city.font = cell.city.font.withSize(20.5)
+            cell.desc.font = cell.city.font.withSize(16)
+
         }
         
         // Return configured cell        

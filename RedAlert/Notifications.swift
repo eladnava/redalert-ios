@@ -40,7 +40,7 @@ struct Notifications {
         let aps = notification["aps"] as! NSDictionary
         
         // Sound filename
-        var fileName:String;
+        var fileName:String
         
         // Sound was sent as a string?
         if let file = aps["sound"] as? String {

@@ -21,12 +21,15 @@ class AlertViewController: UIViewController, MKMapViewDelegate {
         // Get alert cities        
         let cities = LocationMetadata.getCities()
         
-        // Traverse cities        
-        for city in cities {
-            // Name match?
-            if (city.name == alert.city) {
-                // Add alert city                
-                alertCities.append(city)
+        // Traverse grouped alert cities
+        for cityName in alert.groupedCities {
+            // Traverse cities
+            for city in cities {
+                // Name match?
+                if (city.name == cityName) {
+                    // Add alert city
+                    alertCities.append(city)
+                }
             }
         }
     }
@@ -75,19 +78,29 @@ class AlertViewController: UIViewController, MKMapViewDelegate {
             }
         }
         
+        // Reposition map to show annotations
+        mapView.showAnnotations(annotations, animated: true)
+        
         // Got any cities?        
-        if annotations.count > 0 {
-            // Reposition map to show all of them            
-            mapView.showAnnotations(annotations, animated: true)
-            
-            // Pad the annotations            
+        if annotations.count > 1 {
+            // Center around all annotations but add padding from edges of screen
             mapView.camera.altitude *= Config.annotationPadding
         }
+        else if annotations.count == 1 {
+            // Set map center to single city/settlement coordinates
+            let center = CLLocationCoordinate2DMake(annotations[0].coordinate.latitude, annotations[0].coordinate.longitude)
+            
+            // Close-up zoom
+            let span = MKCoordinateSpanMake(0.1, 0.1)
+            
+            // Move map and set zoom
+            mapView.setRegion(MKCoordinateRegion(center: center, span: span), animated: true)
+        }
         else {
-            // Set default map center to Config-defined lat,lng            
+            // Set default map center to config-defined lat,lng (Israel)
             let center = CLLocationCoordinate2DMake(Config.defaultMapLat, Config.defaultMapLng)
             
-            // Set default zoom            
+            // Set default zoom
             let span = MKCoordinateSpanMake(Config.defaultMapZoom, Config.defaultMapZoom)
             
             // Move map and set zoom            
