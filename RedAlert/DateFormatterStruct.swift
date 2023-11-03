@@ -28,7 +28,7 @@ struct DateFormatterStruct {
             dateFormatter.dateFormat = "(HH:mm:ss)"
             
             // Convert unix timestamp to string using format above
-            let time = dateFormatter.string(from: date);
+            let time = dateFormatter.string(from: date)
 
             // Return relative date
             return relativeDate + " " + time
@@ -37,7 +37,7 @@ struct DateFormatterStruct {
             dateFormatter.dateFormat = "HH:mm:ss"
             
             // Convert unix timestamp to string using format above
-            let time = dateFormatter.string(from: date);
+            let time = dateFormatter.string(from: date)
             
             // Fallback to just displaying the hours and minutes on earlier iOS versions
             return time
