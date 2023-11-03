@@ -404,7 +404,8 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             
             // Increase font size in case device language is Hebrew
             cell.city.font = cell.city.font.withSize(20.5)
-            cell.desc.font = cell.city.font.withSize(16)
+            cell.desc.font = cell.desc.font.withSize(16)
+            cell.time.font = cell.time.font.withSize(14)
 
         }
         
