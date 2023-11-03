@@ -78,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, UNUs
     func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
         // OK clicked?        
         if (buttonIndex == 0) {
-            // Take user to zone selection
+            // Take user to city selection
             showZoneSelection()
         }
     }
@@ -89,8 +89,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, UNUs
             // Create VC using storyboard ID            
             let settings = controller.storyboard!.instantiateViewController(withIdentifier: "Settings") as! SettingsViewController
             
-            // Ask it to show zone selection
-            settings.selectZones = true
+            // Ask to show city selection
+            settings.selectCities = true
             
             // Push it into nav stack            
             controller.pushViewController(settings, animated: true)

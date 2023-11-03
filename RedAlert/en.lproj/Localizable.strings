@@ -12,9 +12,9 @@
 "EMAIL_BODY_SENT_VIA"="Sent via Red Alert %@ for iPhone";
 "CONTACT_ERROR"="E-mail cannot be sent from this device, you must configure the Mail app first.";
 "IM_SAFE_MESSAGE"="I'm safe - sent via Red Alert for iOS - https://redalert.me";
-"REGISTRATION_ERROR"="An error occurred while signing up for rocket alerts. Please try again later.";
+"REGISTRATION_ERROR"="An error occurred while signing up for alerts. Please try again later.";
 "PUSH_ERROR"="An error occurred while signing up for push notifications. Please try again later.";
-"UNREGISTERED_ERROR"="You are not signed up for rocket alerts. Please enable notifications for Red Alert in your device settings.\n\nGo to Settings -> Notifications -> RedAlert -> Allow Notifications.";
+"UNREGISTERED_ERROR"="You are not signed up for alerts. Please enable notifications for Red Alert in your device settings.\n\nGo to Settings -> Notifications -> RedAlert -> Allow Notifications.";
 "RECENT_ALERTS_ERROR"="An error occurred while connecting to the application server. Please try again later.";
 "USER_UPDATE_ERROR"="An error occurred while updating your alert subscription. Please try again later.";
 "SOUND_ERROR"="An error occurred while playing the sound.";
@@ -34,8 +34,8 @@
 "SEARCH_PLACEHOLDER"="Enter search keywords...";
 "LANGUAGE_DIALOG_TITLE"="Language Change";
 "LANGUAGE_DIALOG_MESSAGE"="You must reopen the app after changing the language.";
-"REGISTRATION_SUCCESS_TITLE"="Rocket Alerts";
-"REGISTRATION_SUCCESS_MESSAGE"="You have successfully signed up for rocket alert notifications via RedAlert.\n\nYou must select zones and/or cities to start receiving alerts.";
+"REGISTRATION_SUCCESS_TITLE"="Select Your City";
+"REGISTRATION_SUCCESS_MESSAGE"="You must select your city or town to start receiving alerts.";
 
 "SIREN_1"="Siren 1";
 "SIREN_2"="Siren 2";

@@ -10,7 +10,7 @@ import UIKit
 import MessageUI
 
 class SettingsViewController: IASKAppSettingsViewController, IASKSettingsDelegate {
-    var selectZones = false
+    var selectCities = false
     
     required init?(coder aDecoder: NSCoder) {
         // Call super        
@@ -79,12 +79,12 @@ class SettingsViewController: IASKAppSettingsViewController, IASKSettingsDelegat
         }
         
         // Sent here from dialog?        
-        if (selectZones) {
+        if (selectCities) {
             // Prevent accidental trigger            
-            selectZones = false
+            selectCities = false
             
-            // Show zone selection
-            showZoneSelection()
+            // Show city selection
+            showCitySelection()
         }
     }
     

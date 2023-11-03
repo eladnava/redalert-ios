@@ -35,9 +35,8 @@
 "LANGUAGE_DIALOG_TITLE"="שינוי שפה";
 "LANGUAGE_DIALOG_MESSAGE"="עליך לפתוח מחדש את האפליקציה לאחר שינוי שפה.";
 
-"REGISTRATION_SUCCESS_TITLE"="התרעות צבע אדום";
-"REGISTRATION_SUCCESS_MESSAGE"="הינך רשום לשירות העדכונים של צבע אדום.\n\nכעת עליך לבחור מרחבים ו/או ערים כדי לקבל התרעות בזמן אמת.";
-
+"REGISTRATION_SUCCESS_TITLE"="בחר אזור מגורים";
+"REGISTRATION_SUCCESS_MESSAGE"="עליך לבחור יישוב או עיר מגורים כדי לקבל התרעות בזמן אמת.";
 "SIREN_1"="סירנה 1";
 "SIREN_2"="סירנה 2";
 "SIREN_3"="סירנה 3";
