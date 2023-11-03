@@ -385,7 +385,7 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         // Set cell label values
         cell.city.text = alert.localizedCity
         cell.desc.text = alert.localizedZone
-        cell.time.text = DateFormatterStruct.ConvertUnixTimestampToDateTime(unixTimestamp: alert.date)
+        cell.time.text = alert.localizedThreat + " • " + DateFormatterStruct.ConvertUnixTimestampToDateTime(unixTimestamp: alert.date)
         
         // Fix for really annoying bug with UILabel multiline height
         cell.city.preferredMaxLayoutWidth = 0

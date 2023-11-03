@@ -130,6 +130,45 @@ struct LocationMetadata {
         return ""
     }
     
+    static func getLocalizedThreat(threat: String) -> String {
+        switch threat {
+            case "test":
+                return NSLocalizedString("TEST", comment: "test")
+            case "missiles":
+                return NSLocalizedString("MISSILES", comment: "missiles")
+            case "radiologicalEvent":
+                return NSLocalizedString("RADIOLOGICAL_EVENT", comment: "radiologicalEvent")
+            case "earthQuake":
+                return NSLocalizedString("EARTHQUAKE", comment: "earthQuake")
+            case "tsunami":
+                return NSLocalizedString("TSUNAMI", comment: "tsunami")
+            case "hostileAircraftIntrusion":
+                return NSLocalizedString("HOSTILE_AIRCRAFT_INTRUSION", comment: "hostileAircraftIntrusion")
+            case "hazardousMaterials":
+                return NSLocalizedString("HAZARDOUS_MATERIALS", comment: "hazardousMaterials")
+            case "terroristInfiltration":
+                return NSLocalizedString("TERRORIST_INFILTRATION", comment: "terroristInfiltration")
+            case "missilesDrill":
+                return NSLocalizedString("MISSILES_DRILL", comment: "missilesDrill")
+            case "earthQuakeDrill":
+                return NSLocalizedString("EARTHQUAKE_DRILL", comment: "earthQuakeDrill")
+            case "radiologicalEventDrill":
+                return NSLocalizedString("RADIOLOGICAL_EVENT_DRILL", comment: "radiologicalEventDrill")
+            case "tsunamiDrill":
+                return NSLocalizedString("TSUNAMI_DRILL", comment: "tsunamiDrill")
+            case "hostileAircraftIntrusionDrill":
+                return NSLocalizedString("HOSTILE_AIRCRAFT_INTRUSION_DRILL", comment: "hostileAircraftIntrusionDrill")
+            case "hazardousMaterialsDrill":
+                return NSLocalizedString("HAZARDOUS_MATERIALS_DRILL", comment: "hazardousMaterialsDrill")
+            case "terroristInfiltrationDrill":
+                return NSLocalizedString("TERRORIST_INFILTRATION_DRILL", comment: "terroristInfiltrationDrill")
+            case "system":
+                return NSLocalizedString("SYSTEM", comment: "system")
+            default:
+                return NSLocalizedString("UNKNOWN", comment: "unknown")
+        }
+    }
+    
     static func getLocalizedZoneWithCountdown(cityName: String) -> String {
         // Get cities as array
         let cities = getCities()

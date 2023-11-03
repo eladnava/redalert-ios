@@ -314,9 +314,10 @@ struct RedAlertAPI {
                         // Get city & date
                         let city = item["area"] as! String
                         let date = item["date"] as! Double
-                        
+                        let threat = item["threat"] as! String
+
                         // Create new alert                        
-                        let alert = Alert(city: city, date: date)
+                        let alert = Alert(city: city, date: date, threat: threat)
                         
                         // Add it to alerts                        
                         alerts.append(alert)

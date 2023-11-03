@@ -9,16 +9,17 @@
 import Foundation
 
 class Alert {
-    var city: String, date: Double, localizedZone: String, localizedCity: String, groupedCities: [String]
+    var city: String, date: Double, localizedThreat: String, localizedZone: String, localizedCity: String, groupedCities: [String]
     
-    // Main INIT function    
-    init(city: String, date: Double) {
+    // Main INIT function
+    init(city: String, date: Double, threat: String) {
         // Assign members        
         self.city = city
         self.date = date
         
         // Get localized names
         self.localizedCity = LocationMetadata.getLocalizedCityName(cityName: city)
+        self.localizedThreat = LocationMetadata.getLocalizedThreat(threat:threat)
         self.localizedZone = LocationMetadata.getLocalizedZoneWithCountdown(cityName: city)
         
         // Initialize empty grouped cities array

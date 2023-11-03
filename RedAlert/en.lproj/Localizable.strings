@@ -55,6 +55,23 @@
 "SHORT_5"="Short 5";
 "SILENT"="Silent";
 
+"TEST"="Test";
+"MISSILES"="Rocket fire";
+"RADIOLOGICAL_EVENT"="Radiological event";
+"EARTHQUAKE"="Earthquake";
+"TSUNAMI"="Tsunami warning";
+"HOSTILE_AIRCRAFT_INTRUSION"="Hostile aircraft intrusion";
+"HAZARDOUS_MATERIALS"="Hazardous materials event";
+"TERRORIST_INFILTRATION"="Terrorist infiltration";
+"MISSILES_DRILL"="Drill: Rocket fire";
+"EARTHQUAKE_DRILL"="Drill: Earthquake";
+"RADIOLOGICAL_EVENT_DRILL"="Drill: Radiological event";
+"TSUNAMI_DRILL"="Drill: Tsunami warning";
+"HOSTILE_AIRCRAFT_INTRUSION_DRILL"="Drill: Hostile aircraft intrusion";
+"HAZARDOUS_MATERIALS_DRILL"="Drill: Hazardous materials event";
+"TERRORIST_INFILTRATION_DRILL"="Drill: Terrorist infiltration";
+"UNKNOWN"="Alert";
+"SYSTEM"="System Alert";
 
 "LIFESHIELD_SHELTERS"="Lifeshield Shelters:";
 

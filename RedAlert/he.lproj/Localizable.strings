@@ -56,5 +56,23 @@
 "SHORT_5"="קצר 5";
 "SILENT"="שקט";
 
+"TEST"="בדיקה";
+"MISSILES"="ירי רקטות";
+"RADIOLOGICAL_EVENT"="אירוע רדיולוגי";
+"EARTHQUAKE"="רעידת אדמה";
+"TSUNAMI"="סכנת צונאמי";
+"HOSTILE_AIRCRAFT_INTRUSION"="חדירת כלי טיס עוינים";
+"HAZARDOUS_MATERIALS"="אירוע חומרים מסוכנים";
+"TERRORIST_INFILTRATION"="חדירת מחבלים";
+"MISSILES_DRILL"="תרגיל: ירי רקטות";
+"EARTHQUAKE_DRILL"="תרגיל: רעידת אדמה";
+"RADIOLOGICAL_EVENT_DRILL"="תרגיל: אירוע רדיולוגי";
+"TSUNAMI_DRILL"="תרגיל: סכנת צונאמי";
+"HOSTILE_AIRCRAFT_INTRUSION_DRILL"="תרגיל: חדירת כלי טיס עוינים";
+"HAZARDOUS_MATERIALS_DRILL"="תרגיל: אירוע חומרים מסוכנים";
+"TERRORIST_INFILTRATION_DRILL"="תרגיל: חדירת מחבלים";
+"UNKNOWN"="אזעקה";
+"SYSTEM"="הודעת מערכת";
+
 "LIFESHIELD_SHELTERS"="מקלטי לייפשילד:";
 
