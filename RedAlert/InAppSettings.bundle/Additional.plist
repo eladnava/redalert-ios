@@ -27,8 +27,6 @@
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
 			<string>LANGUAGE</string>
-			<key>FooterText</key>
-			<string>LANGUAGE_DESC</string>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -56,9 +54,9 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
-			<string>CONTACT</string>
+			<string>LINKS</string>
 			<key>FooterText</key>
-			<string>CONTACT_DESC</string>
+			<string>LINKS_DESC</string>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -90,16 +88,16 @@
 			<key>Key</key>
 			<string>rateButton</string>
 		</dict>
-        <dict>
-            <key>Type</key>
-            <string>IASKButtonSpecifier</string>
-            <key>IASKTextAlignment</key>
-            <string>IASKUITextAlignmentLeft</string>
-            <key>Title</key>
-            <string>LEARN_ABOUT_LIFESHIELD</string>
-            <key>Key</key>
-            <string>learnAboutLifeshield</string>
-        </dict>
+		<dict>
+			<key>Type</key>
+			<string>IASKButtonSpecifier</string>
+			<key>IASKTextAlignment</key>
+			<string>IASKUITextAlignmentLeft</string>
+			<key>Title</key>
+			<string>LEARN_ABOUT_LIFESHIELD</string>
+			<key>Key</key>
+			<string>learnAboutLifeshield</string>
+		</dict>
 	</array>
 	<key>StringsTable</key>
 	<string>Root</string>

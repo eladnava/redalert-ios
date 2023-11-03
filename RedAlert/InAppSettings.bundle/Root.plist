@@ -6,11 +6,11 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>CONTROL</string>
+			<string>APP</string>
 			<key>Type</key>
             <string>PSGroupSpecifier</string>
             <key>FooterText</key>
-            <string>CONTROL_DESC</string>
+            <string>APP_DESC</string>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -41,16 +41,6 @@
             <string>ALERTS_DESC</string>
 		</dict>
 		<dict>
-			<key>Type</key>
-			<string>IASKButtonSpecifier</string>
-            <key>IASKTextAlignment</key>
-            <string>IASKUITextAlignmentLeft</string>
-			<key>Title</key>
-			<string>ZONE_SELECTION</string>
-			<key>Key</key>
-			<string>zoneSelectionButton</string>
-        </dict>
-		<dict>
             <key>Type</key>
             <string>IASKButtonSpecifier</string>
             <key>IASKTextAlignment</key>
@@ -60,6 +50,22 @@
             <key>Key</key>
             <string>citySelectionButton</string>
 		</dict>
+        <dict>
+            <key>Type</key>
+            <string>IASKButtonSpecifier</string>
+            <key>IASKTextAlignment</key>
+            <string>IASKUITextAlignmentLeft</string>
+            <key>Title</key>
+            <string>ZONE_SELECTION</string>
+            <key>Key</key>
+            <string>zoneSelectionButton</string>
+        </dict>
+        <dict>
+            <key>Type</key>
+            <string>PSGroupSpecifier</string>
+            <key>Title</key>
+            <string>SOUNDS</string>
+        </dict>
         <dict>
             <key>Type</key>
             <string>IASKButtonSpecifier</string>

@@ -8,9 +8,9 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
-            <string>CONTROL</string>
-            <key>FooterText</key>
-            <string>SECONDARY_CONTROL_DESC</string>
+			<string>ALERTS</string>
+			<key>FooterText</key>
+			<string>SECONDARY_CONTROL_DESC</string>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -22,34 +22,34 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-        <dict>
-            <key>Type</key>
-            <string>PSGroupSpecifier</string>
-            <key>Title</key>
-            <string>ALERTS</string>
-            <key>FooterText</key>
-            <string>SECONDARY_ALERTS_DESC</string>
-        </dict>
-        <dict>
-            <key>Type</key>
-            <string>IASKButtonSpecifier</string>
-            <key>IASKTextAlignment</key>
-            <string>IASKUITextAlignmentLeft</string>
-            <key>Title</key>
-            <string>SECONDARY_CITY_SELECTION</string>
-            <key>Key</key>
-            <string>citySelectionButton</string>
-        </dict>
-        <dict>
-            <key>Type</key>
-            <string>IASKButtonSpecifier</string>
-            <key>IASKTextAlignment</key>
-            <string>IASKUITextAlignmentLeft</string>
-            <key>Title</key>
-            <string>SECONDARY_ALERT_SOUND</string>
-            <key>Key</key>
-            <string>soundSelectionButton</string>
-        </dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>ALERTS</string>
+			<key>FooterText</key>
+			<string>SECONDARY_ALERTS_DESC</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>IASKButtonSpecifier</string>
+			<key>IASKTextAlignment</key>
+			<string>IASKUITextAlignmentLeft</string>
+			<key>Title</key>
+			<string>SECONDARY_CITY_SELECTION</string>
+			<key>Key</key>
+			<string>citySelectionButton</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>IASKButtonSpecifier</string>
+			<key>IASKTextAlignment</key>
+			<string>IASKUITextAlignmentLeft</string>
+			<key>Title</key>
+			<string>SECONDARY_ALERT_SOUND</string>
+			<key>Key</key>
+			<string>soundSelectionButton</string>
+		</dict>
 	</array>
 	<key>StringsTable</key>
 	<string>Root</string>
