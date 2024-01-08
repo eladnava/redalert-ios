@@ -2,15 +2,13 @@
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/eladnava/redalert-ios?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-RedAlert was developed by volunteers to provide real-time rocket alerts for Israeli citizens.
+RedAlert was developed by volunteers to provide real-time emergency alerts for Israeli citizens.
 
 * [Official Site](https://redalert.me)
 * [App Store Listing](https://apps.apple.com/il/app/zb-dwm-htr-wt-bzmn-mt/id937914925)
 * [Google Play Listing](https://play.google.com/store/apps/details?id=com.red.alert)
 
-The app utilizes real-time alert data provided by the Home Front Command (Pikud Haoref), which makes it extremely fast, reliable, and stable.
-
-> Note: Rocket alerts are detected using the open-source [pikud-haoref-api](https://github.com/eladnava/pikud-haoref-api) Node.js package.
+The app relays real-time safety alerts published by the Home Front Command (Pikud Haoref) using the [pikud-haoref-api](https://github.com/eladnava/pikud-haoref-api) Node.js package.
 
 ## Screenshots
 
@@ -25,16 +23,18 @@ The app utilizes real-time alert data provided by the Home Front Command (Pikud 
 
 ## Features
 
-#### The fastest, most reliable rocket alert application.
+#### The fastest, most reliable emergency alert app in Israel.
 
-* Search - select preferred alert cities / regions by searching for them
-* Speed - rocket alerts are received before / during the official siren
-* Connectivity - check, at any time, whether your device is able to receive rocket alerts via the "self-test" option
-* Broadcast - let your friends and family know you are safe by sending an "I'm safe" message via the app
-* Sounds - choose from 15 unique sounds for rocket alerts
+* Speed & reliability - alerts are received before / during the official siren thanks to dedicated notification servers
+* Threat types - receive alerts about rocket fire, hostile aircraft intrusion, terrorist infiltration, and more
+* Alert history - see the list of recent alerts, their location, and time of day (in your local time)
+* Connectivity test - check, at any time, whether your device is able to receive alerts via the "self-test" option
+* Sound selection - choose from 15 unique sounds for alerts
+* Silent mode override - the application will override silent / vibrate mode to sound critical alerts
 * Vibration - your phone will vibrate in addition to playing the selected alert sound
-* History - display the list of daily rocket alerts, their location, and time of day (in your local time)
-* Scalability - the app is deployed to a cloud service which scales automatically to provide alerts to all users
+* Area selection - select your alert cities / regions by searching for them
+* I'm safe - let your friends and family know you are safe by sending an "I'm safe" message via the app
+* Localization - the app has been translated to multiple languages (Hebrew, English, Russian)
 
 ## Requirements for Development
 * Xcode 10.1+
