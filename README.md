@@ -57,10 +57,6 @@ It costs money to run the servers, your donation is greatly appreciated.
 ## Special Thanks
 
 * Thanks to Ilana Badner for the Russian translation
-* Thanks to Rodolphe Moulin for the French translation
-* Thanks to Matteo Villosio for the Italian translation
-* Thanks to Nathan Allenberg for the Spanish translation
-* Thanks to David Halbani for the German translation
 * Thanks to Eden Glant for the "Siren 1" and "Siren 2" sounds
 
 ## License
