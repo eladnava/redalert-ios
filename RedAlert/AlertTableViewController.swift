@@ -296,7 +296,7 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
                 // Add current alert zone if new
                 if !previousAlert.localizedZoneWithCountdown.contains(currentAlert.localizedZone) {
                     // Support for unknown city (no prefixing with comma)
-                    if previousAlert.localizedZoneWithCountdown.isEmpty {
+                    if previousAlert.localizedZoneWithCountdown.isEmpty && !currentAlert.localizedZoneWithCountdown.isEmpty {
                         // Occupy previous alert's zone with current alert zone
                         previousAlert.localizedZoneWithCountdown = currentAlert.localizedZoneWithCountdown
                     }
