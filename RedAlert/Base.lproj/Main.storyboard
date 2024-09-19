@@ -71,6 +71,7 @@
                                 <connections>
                                     <outlet property="city" destination="Fuq-zH-5hN" id="XVy-1N-nNv"/>
                                     <outlet property="desc" destination="quQ-XG-RIT" id="Nl4-ch-fFX"/>
+                                    <outlet property="threatImage" destination="ohz-QQ-kLI" id="fKo-wI-ygG"/>
                                     <outlet property="time" destination="sm6-0m-u6c" id="3i1-XE-xLc"/>
                                     <segue destination="nx8-0S-zAB" kind="show" identifier="AlertViewSegue" id="Zo5-Xr-OIf"/>
                                 </connections>

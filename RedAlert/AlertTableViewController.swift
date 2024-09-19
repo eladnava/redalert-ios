@@ -429,8 +429,45 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             cell.time.attributedText = NSAttributedString(string: cell.time.text!, attributes: [.kern: -0.3])
         }
         
+        // Update image based on threat type
+        cell.threatImage.image = getThreatImage(alert.threat)
+        
         // Return configured cell        
         return cell
+    }
+    
+    func getThreatImage(_ threat: String) -> UIImage? {
+        // Null fallback
+        if threat.isEmpty {
+            return UIImage(named: "AlertIcon")
+        }
+
+        // Return drawable resource by threat type
+        if threat.contains("radiologicalEvent") {
+            return UIImage(named: "RadiologicalEventIcon")
+        }
+        else if threat.contains("hostileAircraftIntrusion") {
+            return UIImage(named: "HostileAircraftIntrusionIcon")
+        }
+        else if threat.contains("hazardousMaterials") {
+            return UIImage(named: "HazardousMaterialsIcon")
+        }
+        else if threat.contains("tsunami") {
+            return UIImage(named: "TsunamiIcon")
+        }
+        else if threat.contains("missiles") {
+            return UIImage(named: "AlertIcon")
+        }
+        else if threat.contains("terroristInfilitration") {
+            return UIImage(named: "TerroristInfilitrationIcon")
+        }
+        else if threat.contains("earthQuake") {
+            return UIImage(named: "EarthquakeIcon")
+        }
+        else {
+            // Unknown type
+            return UIImage(named: "AlertIcon")
+        }
     }
 }
 

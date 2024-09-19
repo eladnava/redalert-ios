@@ -12,7 +12,8 @@ class AlertTableViewCell: UITableViewCell {
     @IBOutlet weak var city: UILabel!
     @IBOutlet weak var desc: UILabel!
     @IBOutlet weak var time: UILabel!
-    
+    @IBOutlet weak var threatImage: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
