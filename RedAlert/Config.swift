@@ -24,7 +24,7 @@ struct Config {
     
     // Recent Alerts screen    
     static let imSafeButtonHeight = 50 as CGFloat
-    static let recentAlertsRefreshIntervalSeconds = 25 as TimeInterval
+    static let recentAlertsRefreshIntervalSeconds = 10 as TimeInterval
     
     // MapKit    
     static let annotationPadding = 2.0
