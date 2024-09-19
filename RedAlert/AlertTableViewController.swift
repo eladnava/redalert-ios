@@ -288,11 +288,27 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             // Check whether this new alert can be grouped with the previous one
             // (Same region + 15 second cutoff threshold in either direction)
             if let previousAlert = lastAlert,
-                previousAlert.localizedZone == currentAlert.localizedZone,
                 currentAlert.date >= previousAlert.date - 15,
                 currentAlert.date <= previousAlert.date + 15 {
                 // Group with the previous alert list item
                 lastAlert?.localizedCity += ", " + currentAlert.localizedCity
+                
+                // Add current alert zone if new
+                if !previousAlert.localizedZoneWithCountdown.contains(currentAlert.localizedZone) {
+                    // Support for unknown city (no prefixing with comma)
+                    if previousAlert.localizedZoneWithCountdown.isEmpty {
+                        // Occupy previous alert's zone with current alert zone
+                        previousAlert.localizedZoneWithCountdown = currentAlert.localizedZoneWithCountdown
+                    }
+                    else if currentAlert.localizedZoneWithCountdown.isEmpty {
+                        // Do nothing
+                    }
+                    else {
+                        // Comma-separated zones and countdowns
+                        previousAlert.localizedZoneWithCountdown += ", " + currentAlert.localizedZoneWithCountdown
+                    }
+                }
+                
                 lastAlert?.groupedCities.append(currentAlert.city)
             } else {
                 // New alert (not grouped with the previous item)
@@ -384,14 +400,14 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         
         // Set cell label values
         cell.city.text = alert.localizedCity
-        cell.desc.text = alert.localizedZone
+        cell.desc.text = alert.localizedZoneWithCountdown
         cell.time.text = alert.localizedThreat + " • " + DateFormatterStruct.ConvertUnixTimestampToDateTime(unixTimestamp: alert.date)
         
         // Fix for really annoying bug with UILabel multiline height
         cell.city.preferredMaxLayoutWidth = 0
         
         // No cities? Protect against UI failure
-        if (alert.localizedZone == "") {
+        if (alert.localizedZoneWithCountdown == "") {
             cell.desc.text = " "
         }
         

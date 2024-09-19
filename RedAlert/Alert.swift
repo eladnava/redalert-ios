@@ -9,7 +9,7 @@
 import Foundation
 
 class Alert {
-    var city: String, date: Double, localizedThreat: String, localizedZone: String, localizedCity: String, groupedCities: [String]
+    var city: String, date: Double, localizedThreat: String, localizedZone: String, localizedZoneWithCountdown: String, localizedCity: String, groupedCities: [String]
     
     // Main INIT function
     init(city: String, date: Double, threat: String) {
@@ -20,8 +20,9 @@ class Alert {
         // Get localized names
         self.localizedCity = LocationMetadata.getLocalizedCityName(cityName: city)
         self.localizedThreat = LocationMetadata.getLocalizedThreat(threat:threat)
-        self.localizedZone = LocationMetadata.getLocalizedZoneWithCountdown(cityName: city)
-        
+        self.localizedZone = LocationMetadata.getLocalizedZoneByCity(cityName: city)
+        self.localizedZoneWithCountdown = LocationMetadata.getLocalizedZoneWithCountdown(cityName: city)
+
         // Initialize empty grouped cities array
         self.groupedCities = []
     }
