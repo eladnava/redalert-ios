@@ -45,7 +45,7 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         self.checkForUpdates()
         
         // Auto cell height
-        self.tableView.estimatedRowHeight = 65.0
+        self.tableView.estimatedRowHeight = 85.5
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     
@@ -365,8 +365,14 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
     }
     
     func toggleNetworkActivity(visible: Bool) {
-        // Toggle pull to refresh        
-        (visible) ? pullToRefresh.beginRefreshing() : pullToRefresh.endRefreshing()
+        // Toggle iOS status bar network activity indicator
+        UIApplication.shared.isNetworkActivityIndicatorVisible = visible
+        
+        // Pulled to refresh?
+        if pullToRefresh.isRefreshing && !visible {
+            // Hide loading indicator
+            pullToRefresh.endRefreshing()
+        }
     }
     
     // Out-of-memory    
