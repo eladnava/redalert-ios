@@ -26,25 +26,25 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" restorationIdentifier="Title" text="Dan 161" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="79" translatesAutoresizingMaskIntoConstraints="NO" id="Fuq-zH-5hN">
-                                            <rect key="frame" x="11" y="12" width="298" height="24"/>
+                                            <rect key="frame" x="11" y="12" width="303" height="24"/>
                                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
                                             <color key="textColor" red="0.26262813354983472" green="0.26262813354983472" blue="0.26262813354983472" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Nir Oz, Alumim" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="518" translatesAutoresizingMaskIntoConstraints="NO" id="quQ-XG-RIT">
-                                            <rect key="frame" x="11" y="40" width="298" height="19.5"/>
+                                            <rect key="frame" x="11" y="40" width="303" height="19.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.34318747770304636" green="0.34318747770304636" blue="0.34318747770304636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="13:03:31" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="52" translatesAutoresizingMaskIntoConstraints="NO" id="sm6-0m-u6c">
-                                            <rect key="frame" x="11" y="62.5" width="298" height="15"/>
+                                            <rect key="frame" x="11" y="62.5" width="303" height="15"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.34129908048745361" green="0.34129908048745361" blue="0.34129908048745361" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AlertIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ohz-QQ-kLI">
-                                            <rect key="frame" x="314" y="18" width="48" height="48"/>
+                                            <rect key="frame" x="319" y="18" width="48" height="48"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="48" id="Kgd-nq-5c2"/>
                                                 <constraint firstAttribute="height" constant="48" id="a8y-42-kiC"/>
@@ -56,7 +56,7 @@
                                         <constraint firstItem="ohz-QQ-kLI" firstAttribute="leading" secondItem="sm6-0m-u6c" secondAttribute="trailing" constant="5" id="IWJ-gd-cGE"/>
                                         <constraint firstItem="Fuq-zH-5hN" firstAttribute="top" secondItem="W4b-Uu-Z1K" secondAttribute="topMargin" id="MN1-AB-UWv"/>
                                         <constraint firstItem="quQ-XG-RIT" firstAttribute="leading" secondItem="W4b-Uu-Z1K" secondAttribute="leadingMargin" constant="-5" id="PML-so-tmJ"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="ohz-QQ-kLI" secondAttribute="trailingMargin" constant="5" id="QMC-dI-p7a"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ohz-QQ-kLI" secondAttribute="trailingMargin" id="QMC-dI-p7a"/>
                                         <constraint firstItem="ohz-QQ-kLI" firstAttribute="leading" secondItem="Fuq-zH-5hN" secondAttribute="trailing" constant="5" id="Ual-oQ-29Y"/>
                                         <constraint firstAttribute="bottom" secondItem="sm6-0m-u6c" secondAttribute="bottom" constant="6.5" id="bEe-qK-9AS"/>
                                         <constraint firstItem="quQ-XG-RIT" firstAttribute="leading" secondItem="sm6-0m-u6c" secondAttribute="leading" id="cAL-78-KSQ"/>
