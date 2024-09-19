@@ -10,8 +10,18 @@ import UIKit
 
 struct RedAlertAPI {
     static func isRegistered() -> Bool {
-        // Do we have a stored ID?        
+        // Do we have a stored ID?
         return !UserSettings.getString(key: UserSettingsKeys.userID, defaultValue: "").isEmpty
+    }
+    
+    static func shouldRequestCityReselection() -> Bool {
+        // Check if key exists and is true
+        return !UserSettings.getBool(key: UserSettingsKeys.cityReselectionRequested, defaultValue: false)
+    }
+    
+    static func setCityReselectionRequested() {
+        // Set key as true to avoid asking user again for this version
+        UserSettings.setBool(key: UserSettingsKeys.cityReselectionRequested, value: true)
     }
     
     static func canReceiveNotifications() -> Bool {

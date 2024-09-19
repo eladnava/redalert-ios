@@ -36,6 +36,7 @@
 "LANGUAGE_DIALOG_MESSAGE"="You must reopen the app after changing the language.";
 "REGISTRATION_SUCCESS_TITLE"="Select Your City";
 "REGISTRATION_SUCCESS_MESSAGE"="You must select your city or town to start receiving alerts.";
+"REGISTRATION_SUCCESS_RESELECT_MESSAGE"="Due to recent Home Front Command changes, you must reselect your city or town to continue receiving alerts.";
 
 "SIREN_1"="Siren 1";
 "SIREN_2"="Siren 2";

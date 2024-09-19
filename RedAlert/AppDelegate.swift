@@ -62,6 +62,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, UNUs
                 // Update it                
                 RedAlertAPI.updateTokenAsync(token: token)
             }
+            
+            // Check if we need to ask user to reselect cities due to HFC changes
+            if (RedAlertAPI.shouldRequestCityReselection()) {
+                // Get localized strings
+                let title = NSLocalizedString("REGISTRATION_SUCCESS_TITLE", comment: "Registration success title")
+                let message = NSLocalizedString("REGISTRATION_SUCCESS_RESELECT_MESSAGE", comment: "Registration success reselect message")
+                
+                // Show success message
+                Dialogs.message(title: title, message: message, delegate: self)
+                
+                // Asked user to reselect cities
+                return RedAlertAPI.setCityReselectionRequested()
+            }
         }
     }
     
