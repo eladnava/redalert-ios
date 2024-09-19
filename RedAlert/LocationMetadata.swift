@@ -12,20 +12,22 @@ struct LocationMetadata {
     // Cache JSON in-memory    
     static var cityCache: [City] = []
     static var zoneCache: NSArray?
+    static var polygonCache: [CityPolygons] = []
     
-    // Get cities from JSON    
+    // Get cities from JSON
     static func getCities() -> [City] {
-        // Return city cache, if exists        
+        // Return city cache, if exists
         if (cityCache.count > 0) {
             return cityCache
         }
         
-        // Cache cities for later        
+        // Cache cities for later
         let cities = JSON.parseJSONFile(file: "Cities")
         
-        // Traverse cities        
+        // Traverse cities
         for city in cities as! [NSDictionary] {
             // Extract data from JSON
+            let id = city["id"] as! Int
             let name = city["name"] as! String
             let name_en = city["name_en"] as! String
             let zone = city["zone"] as! String
@@ -43,15 +45,44 @@ struct LocationMetadata {
                 shelters = city["shelters"] as! Int
             }
             
-            // Create new city object            
-            let item = City(name: name, name_en: name_en, zone: zone, zone_en: zone_en, time: time, time_en: time_en, countdown: countdown, lat: lat, lng: lng, value: value, shelters: shelters)
+            // Create new city object
+            let item = City(id: id, name: name, name_en: name_en, zone: zone, zone_en: zone_en, time: time, time_en: time_en, countdown: countdown, lat: lat, lng: lng, value: value, shelters: shelters)
             
-            // Add it to cache            
+            // Add it to cache
             cityCache.append(item)
         }
         
-        // Return city array        
+        // Return city array
         return cityCache
+    }
+    
+    // Get cities from JSON
+    static func getPolygons() -> [CityPolygons] {
+        // Return polygon cache, if exists
+        if (polygonCache.count > 0) {
+            return polygonCache
+        }
+        
+        // Load polygons from JSON
+        let polygons = JSON.parseJSONDictionaryFile(file: "Polygons")
+        
+        // Traverse dictionary
+        for polygon in polygons! {
+            // Convert dictionary key to String (city polygon ID)
+            if let polygonId = polygon.key as? String {
+                // Convert value to [Double] array (polygon coordinates)
+                if let coordinates = polygon.value as? [[Double]] {
+                    // Create new city polygons object
+                    let item = CityPolygons(id: Int(polygonId)!, coordinates: coordinates)
+                    
+                    // Add it to cache
+                    polygonCache.append(item)
+                }
+            }
+        }
+        
+        // Return polygon array
+        return polygonCache
     }
     
     // Get zones from JSON

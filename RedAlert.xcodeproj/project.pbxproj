@@ -48,6 +48,8 @@
 		E42C319819EFB5DD00105195 /* Cities.json in Resources */ = {isa = PBXBuildFile; fileRef = E42C319619EFB5DD00105195 /* Cities.json */; };
 		E43053F819FF90B0003086ED /* AlertTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43053F719FF90B0003086ED /* AlertTypes.swift */; };
 		E43053FC19FF9A76003086ED /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43053FB19FF9A76003086ED /* Notifications.swift */; };
+		E43E1DD12C9CDE8600632A4F /* CityPolygons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43E1DD02C9CDE8600632A4F /* CityPolygons.swift */; };
+		E43E1DD32C9CE31D00632A4F /* Polygons.json in Resources */ = {isa = PBXBuildFile; fileRef = E43E1DD22C9CE31C00632A4F /* Polygons.json */; };
 		E44A5E371A064207005BD387 /* SecondaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44A5E361A064207005BD387 /* SecondaryViewController.swift */; };
 		E45649281A07D2CD000562A9 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45649271A07D2CD000562A9 /* Alert.swift */; };
 		E456492A1A07F8E9000562A9 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45649291A07F8E9000562A9 /* Localization.swift */; };
@@ -181,6 +183,8 @@
 		E42C319619EFB5DD00105195 /* Cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Cities.json; sourceTree = "<group>"; };
 		E43053F719FF90B0003086ED /* AlertTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTypes.swift; sourceTree = "<group>"; };
 		E43053FB19FF9A76003086ED /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		E43E1DD02C9CDE8600632A4F /* CityPolygons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPolygons.swift; sourceTree = "<group>"; };
+		E43E1DD22C9CE31C00632A4F /* Polygons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Polygons.json; sourceTree = "<group>"; };
 		E44A5E361A064207005BD387 /* SecondaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondaryViewController.swift; sourceTree = "<group>"; };
 		E45649271A07D2CD000562A9 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		E45649291A07F8E9000562A9 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
@@ -413,6 +417,7 @@
 		E412A62D19F268750065B337 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
+				E43E1DD22C9CE31C00632A4F /* Polygons.json */,
 				E499EBC022D43EAA0048F0DA /* Zones.json */,
 				E42C319619EFB5DD00105195 /* Cities.json */,
 				E412A64719F300800065B337 /* Sounds.json */,
@@ -543,6 +548,7 @@
 			children = (
 				E456492B1A08142E000562A9 /* City.swift */,
 				E45649271A07D2CD000562A9 /* Alert.swift */,
+				E43E1DD02C9CDE8600632A4F /* CityPolygons.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -837,6 +843,7 @@
 				E49D94561A0BC46B008DD93E /* tiny.aifc in Resources */,
 				E49D94511A0BC46B008DD93E /* calm2.aifc in Resources */,
 				E49D94551A0BC46B008DD93E /* funny.aifc in Resources */,
+				E43E1DD32C9CE31D00632A4F /* Polygons.json in Resources */,
 				E49D944B1A0BC46B008DD93E /* alarm1.aifc in Resources */,
 				E49D94531A0BC46B008DD93E /* calm4.aifc in Resources */,
 				E412A61919F19A6A0065B337 /* KNSelectorTip@2x.png in Resources */,
@@ -888,6 +895,7 @@
 				E49EA9501A09766400052C44 /* Async.swift in Sources */,
 				E412A5EB19F18F2E0065B337 /* IASKSettingsStore.m in Sources */,
 				E456492C1A08142E000562A9 /* City.swift in Sources */,
+				E43E1DD12C9CDE8600632A4F /* CityPolygons.swift in Sources */,
 				E412A63419F2740F0065B337 /* MultiValueSelection.swift in Sources */,
 				E4C40BB419ED6AE00097D0FB /* AlertTableViewController.swift in Sources */,
 				E4FEC7AD19FEE057009BD163 /* AdditionalViewController.swift in Sources */,

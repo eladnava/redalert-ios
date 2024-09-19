@@ -11,25 +11,48 @@ import Foundation
 struct JSON
 {
     static func parseJSONFile(file: String) -> NSArray? {
-        // Construct physical path to json file        
+        // Construct physical path to json file
         let path = Bundle.main.path(forResource: file, ofType: "json")
         
-        // Load file into memory        
+        // Load file into memory
         let jsonData = try! NSData(contentsOfFile:path!, options: .mappedIfSafe)
         
-        // Prepare as JSON array        
+        // Prepare as JSON array
         var json: NSArray?
         
         do {
-            // Serialize request JSON into string            
+            // Serialize request JSON into string
             json = try JSONSerialization.jsonObject(with: jsonData as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray
         }
         catch {
-            // Return nil            
+            // Return nil
             return nil
         }
         
-        // Return zones array        
+        // Return zones array
+        return json
+    }
+    
+    static func parseJSONDictionaryFile(file: String) -> NSDictionary? {
+        // Construct physical path to json file
+        let path = Bundle.main.path(forResource: file, ofType: "json")
+        
+        // Load file into memory
+        let jsonData = try! NSData(contentsOfFile:path!, options: .mappedIfSafe)
+        
+        // Parse as JSON dictionary
+        var json: NSDictionary?
+        
+        do {
+            // Convert JSON string into NSDictionary
+            json = try JSONSerialization.jsonObject(with: jsonData as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
+        }
+        catch {
+            // Return nil
+            return nil
+        }
+        
+        // Return dictionary
         return json
     }
 }
