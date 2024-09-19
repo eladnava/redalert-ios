@@ -403,10 +403,14 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             cell.time.textAlignment = NSTextAlignment.right
             
             // Increase font size in case device language is Hebrew
-            cell.city.font = cell.city.font.withSize(20.5)
-            cell.desc.font = cell.desc.font.withSize(16)
-            cell.time.font = cell.time.font.withSize(14)
-
+            cell.city.font = cell.city.font.withSize(21)
+            cell.desc.font = cell.desc.font.withSize(16.25)
+            cell.time.font = cell.time.font.withSize(14.25)
+            
+            // Reduce font letter spacing
+            cell.city.attributedText = NSAttributedString(string: cell.city.text!, attributes: [.kern: -0.3])
+            cell.desc.attributedText = NSAttributedString(string: cell.desc.text!, attributes: [.kern: -0.3])
+            cell.time.attributedText = NSAttributedString(string: cell.time.text!, attributes: [.kern: -0.3])
         }
         
         // Return configured cell        
