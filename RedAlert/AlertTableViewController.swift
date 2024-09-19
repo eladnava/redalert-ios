@@ -335,13 +335,6 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
                 // Start updating
                 tableView.beginUpdates()
                 
-                // Scroll to top
-                if #available(iOS 11.0, *) {
-                    tableView.setContentOffset(CGPoint(x: 0, y: -tableView.adjustedContentInset.top), animated: false)
-                } else {
-                    tableView.setContentOffset(CGPoint(x: 0, y: -tableView.contentInset.top), animated: false)
-                }
-                
                 // Done updating table
                 tableView.endUpdates()
             }
