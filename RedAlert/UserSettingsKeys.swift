@@ -25,5 +25,5 @@ struct UserSettingsKeys {
     static var deviceToken = "deviceToken"
     static var notifications = "notifications"
     
-    static var cityReselectionRequested = "city_reselection_requested_10190"
+    static var cityReselectionRequested = "city_reselection_requested_10200"
 }
