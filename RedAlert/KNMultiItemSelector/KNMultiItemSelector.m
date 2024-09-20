@@ -540,6 +540,11 @@
   }
 
   if (selectorMode == KNSelectorModeSelected) {
+      // Invalid index?
+      if (r >= self.selectedItems.count) {
+          return nil;
+      }
+      
     return [self.selectedItems objectAtIndex:r];
   }
 

@@ -45,13 +45,13 @@ class AdditonalViewController: IASKAppSettingsViewController, IASKSettingsDelega
         let language = UserSettings.getString(key: UserSettingsKeys.language, defaultValue: "")
         
         // Show loading dialog        
-        MBProgressHUD.showAdded(to: self.navigationController!.view, animated: true)
+        MBProgressHUD.showAdded(to: self.navigationController?.view, animated: true)
         
         // Re-subscribe        
         RedAlertAPI.updateLanguageAsync(language: language) { (err: NSError?) -> () in
             
             // Hide loading dialog            
-            MBProgressHUD.hide(for: self.navigationController!.view, animated: true)
+            MBProgressHUD.hide(for: self.navigationController?.view, animated: true)
             
             // Error?
             if let theErr = err {                

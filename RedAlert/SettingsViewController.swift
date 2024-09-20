@@ -26,13 +26,13 @@ class SettingsViewController: IASKAppSettingsViewController, IASKSettingsDelegat
         let secondaryValue = UserSettings.getBool(key: UserSettingsKeys.secondaryNotifications, defaultValue: true)
         
         // Show loading dialog        
-        MBProgressHUD.showAdded(to: self.navigationController!.view, animated: true)
+        MBProgressHUD.showAdded(to: self.navigationController?.view, animated: true)
         
         // Re-subscribe        
         RedAlertAPI.updateNotificationsAsync(primary: value, secondary: secondaryValue) { (err: NSError?) -> () in
             
             // Hide loading dialog            
-            MBProgressHUD.hide(for: self.navigationController!.view, animated: true)
+            MBProgressHUD.hide(for: self.navigationController?.view, animated: true)
             
             // JSON parse error?
             if let theErr = err {
@@ -117,14 +117,14 @@ class SettingsViewController: IASKAppSettingsViewController, IASKSettingsDelegat
     
     func requestSelfTest() {
         // Show loading dialog        
-        let hud = MBProgressHUD.showAdded(to: self.navigationController!.view, animated: true)!
+        let hud = MBProgressHUD.showAdded(to: self.navigationController?.view, animated: true)!
         
         // Re-subscribe        
         RedAlertAPI.requestSelfTestAsync() { (err: NSError?) -> () in
             // Error?
             if let theErr = err {
                 // Hide loading dialog
-                MBProgressHUD.hide(for: self.navigationController!.view, animated: true)
+                MBProgressHUD.hide(for: self.navigationController?.view, animated: true)
                 
                 // Default message
                 var message = NSLocalizedString("SELF_TEST_ERROR", comment: "Self test error message")
@@ -205,7 +205,7 @@ class SettingsViewController: IASKAppSettingsViewController, IASKSettingsDelegat
         }
         
         // Show loading dialog        
-        MBProgressHUD.showAdded(to: self.navigationController!.view, animated: true)
+        MBProgressHUD.showAdded(to: self.navigationController?.view, animated: true)
         
         // Prepare window title        
         let title = NSLocalizedString("CITY_SELECTION", comment: "City selection title")
@@ -222,7 +222,7 @@ class SettingsViewController: IASKAppSettingsViewController, IASKSettingsDelegat
             selected = self.getSelectedItems(key: UserSettingsKeys.citySelection, items: items)
         }, uiCallback: { () -> () in
             // Show loading dialog            
-            MBProgressHUD.hide(for: self.navigationController!.view, animated: true)
+            MBProgressHUD.hide(for: self.navigationController?.view, animated: true)
             
             // Show selector control            
             self.showSelection(key: UserSettingsKeys.citySelection, title: title, items: items, selected: selected)
@@ -238,10 +238,13 @@ class SettingsViewController: IASKAppSettingsViewController, IASKSettingsDelegat
     }
     
     func showSelection(key: String, title: String, items: [KNSelectorItem], selected: [KNSelectorItem]) {
-        // Prepare selector control        
-        let selection = MultiValueSelection(key: key, items:items, preselectedItems: selected, title: title, navigationController: self.navigationController!)
-        
-        // Show the selector        
-        selection.show()
+        // Unwrap safely
+        if let navigationController = self.navigationController {
+            // Prepare selector control
+            let selection = MultiValueSelection(key: key, items:items, preselectedItems: selected, title: title, navigationController: navigationController)
+            
+            // Show the selector
+            selection.show()
+        }
     }
 }

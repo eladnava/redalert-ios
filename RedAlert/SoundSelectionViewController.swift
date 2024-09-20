@@ -60,7 +60,7 @@ class SoundSelectionViewController: UITableViewController {
         stopAudioPlayer()
 
         // Selection cancelled, go back to settings        
-        self.navigationController!.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func doneTapped(sender: UIBarButtonItem) {
@@ -68,7 +68,7 @@ class SoundSelectionViewController: UITableViewController {
         stopAudioPlayer()
         
         // Show loading dialog        
-        MBProgressHUD.showAdded(to: self.navigationController!.view, animated: true)
+        MBProgressHUD.showAdded(to: self.navigationController?.view, animated: true)
         
         // Prepare primary and secondary sounds        
         var primary = "", secondary = ""
@@ -85,7 +85,7 @@ class SoundSelectionViewController: UITableViewController {
         RedAlertAPI.updateSoundsAsync(primary: primary, secondary: secondary) { (err: NSError?) -> () in
             
             // Hide loading dialog            
-            MBProgressHUD.hide(for: self.navigationController!.view, animated: true)
+            MBProgressHUD.hide(for: self.navigationController?.view, animated: true)
             
             // JSON parse error?
             if let theErr = err {
@@ -105,7 +105,7 @@ class SoundSelectionViewController: UITableViewController {
             UserDefaults.standard.set(self.selection, forKey: self.key)
             
             // Go back to settings            
-            self.navigationController!.popViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     

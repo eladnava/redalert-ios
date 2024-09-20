@@ -95,19 +95,18 @@ struct Notifications {
         let title = NSLocalizedString("APP_NAME", comment: "Name of app")
         
         // Get APS object        
-        let aps = notification["aps"] as! NSDictionary
-        
-        // Get actual push message        
-        let alert = aps["alert"] as! String
-        
-        // Set library to use iOS7 style in-app notification        
-        JCNotificationCenter.shared().presenter = JCNotificationBannerPresenterIOS7Style()
-        
-        // Show the notification        
-        JCNotificationCenter.enqueueNotification(withTitle: title, message: alert, tapHandler: { () -> Void in
-            
-            // Stop the notification sound            
-            self.stopSound()
-        })
+        if let aps = notification["aps"] as? NSDictionary {
+            // Get actual push message
+            if let alert = aps["alert"] as? String {
+                // Set library to use iOS7 style in-app notification
+                JCNotificationCenter.shared().presenter = JCNotificationBannerPresenterIOS7Style()
+                
+                // Show the notification
+                JCNotificationCenter.enqueueNotification(withTitle: title, message: alert, tapHandler: { () -> Void in
+                    // Stop the notification sound
+                    self.stopSound()
+                })
+            }
+        }
     }
 }

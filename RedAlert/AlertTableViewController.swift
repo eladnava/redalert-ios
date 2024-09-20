@@ -67,14 +67,17 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             
             // Unwrap variable            
             if let path = path {
-                // Get alert at index
-                let alert = self.alerts[path.row]
-                
-                // Let the API handle it                
-                let vc = segue.destination as! AlertViewController
-                
-                // Pass the alert                
-                vc.setAlert(alert: alert)
+                // Make sure index is valid
+                if path.row < self.alerts.count {
+                    // Get alert at index
+                    let alert = self.alerts[path.row]
+                    
+                    // Let the API handle it
+                    let vc = segue.destination as! AlertViewController
+                    
+                    // Pass the alert
+                    vc.setAlert(alert: alert)
+                }
             }
         }
     }
@@ -107,8 +110,11 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         // Get UI view        
         self.noAlerts = xib.object(at: 0) as! UIView
         
-        // Set frame without navbar            
-        self.noAlerts.frame = CGRect(0, 0, tableView.frame.width, tableView.frame.height - self.navigationController!.navigationBar.frame.height - UIApplication.shared.statusBarFrame.size.height - Config.imSafeButtonHeight)
+        // Unwrap safely
+        if let navigationController = self.navigationController {
+            // Set frame without navbar
+            self.noAlerts.frame = CGRect(0, 0, tableView.frame.width, tableView.frame.height - navigationController.navigationBar.frame.height - UIApplication.shared.statusBarFrame.size.height - Config.imSafeButtonHeight)
+        }
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -393,6 +399,11 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         
         // Get re-usable cell for better scrolling performance        
         cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! AlertTableViewCell
+        
+        // Invalid index?
+        if (indexPath.row >= alerts.count) {
+            return cell
+        }
         
         // Get alert by index        
         let alert = alerts[indexPath.row]
