@@ -12,7 +12,7 @@ The app relays real-time safety alerts published by the Home Front Command (Piku
 
 ## Screenshots
 
-<img src="./RedAlert/Screenshots/1.webp" width="250"> <img src="./RedAlert/Screenshots/2.webp" width="250">
+<img src="./RedAlert/Screenshots/1.png" width="250"> <img src="./RedAlert/Screenshots/2.png" width="250"> <img src="./RedAlert/Screenshots/3.png" width="250">
 
 ## Achievements
 
