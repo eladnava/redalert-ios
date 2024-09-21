@@ -14,6 +14,8 @@ The app relays real-time safety alerts published by the Home Front Command (Piku
 
 <img src="./RedAlert/Screenshots/1.png" width="250"> <img src="./RedAlert/Screenshots/2.png" width="250"> <img src="./RedAlert/Screenshots/3.png" width="250">
 
+<img src="./RedAlert/Screenshots/4.png" width="250"> <img src="./RedAlert/Screenshots/5.png" width="250"> <img src="./RedAlert/Screenshots/6.png" width="250">
+
 ## Achievements
 
 * Published by **Geektime** as [the fastest rocket alert app](http://www.geektime.co.il/push-notifications-at-protective-edge/)
