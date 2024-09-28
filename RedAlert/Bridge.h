@@ -9,5 +9,3 @@
 #import "MBProgressHUD.h"
 #import "KNMultiItemSelector.h"
 #import "IASKAppSettingsViewController.h"
-#import "JCNotificationCenter.h"
-#import "JCNotificationBannerPresenterIOS7Style.h"

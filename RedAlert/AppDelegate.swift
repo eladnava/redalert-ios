@@ -81,11 +81,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, UNUs
     // Display in-app notification banners (iOS 10+)
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {        
-        // Show in-app banner
-        completionHandler([.alert])
-        
-        // Play sound
-        Notifications.playSoundAndVibrate(notification: notification.request.content.userInfo)
+        // Show in-app banner & play sound
+        completionHandler([.alert, .sound])
     }
     
     func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
@@ -113,16 +110,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, UNUs
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         // Show the error        
         Dialogs.error(message: NSLocalizedString("PUSH_ERROR", comment: "Push registration error message"))
-    }
-    
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        // Ignore background pushes        
-        if (application.applicationState != UIApplicationState.active) {
-            return
-        }
-        
-        // Show in-app notif
-        Notifications.inAppPushNotification(notification: userInfo)
     }
 }
 
