@@ -32,8 +32,6 @@ struct LocationMetadata {
             let name_en = city["name_en"] as! String
             let zone = city["zone"] as! String
             let zone_en = city["zone_en"] as! String
-            let time = city["time"] as! String
-            let time_en = city["time_en"] as! String
             let countdown = city["countdown"] as! Int
             let lat = city["lat"] as! Double
             let lng = city["lng"] as! Double
@@ -46,7 +44,7 @@ struct LocationMetadata {
             }
             
             // Create new city object
-            let item = City(id: id, name: name, name_en: name_en, zone: zone, zone_en: zone_en, time: time, time_en: time_en, countdown: countdown, lat: lat, lng: lng, value: value, shelters: shelters)
+            let item = City(id: id, name: name, name_en: name_en, zone: zone, zone_en: zone_en, countdown: countdown, lat: lat, lng: lng, value: value, shelters: shelters)
             
             // Add it to cache
             cityCache.append(item)
@@ -200,7 +198,26 @@ struct LocationMetadata {
         }
     }
     
+    struct Countdown {
+        let countdown: Int
+        let time: String
+        let time_en: String
+        let time_ru: String
+        let time_ar: String
+    }
+    
     static func getLocalizedZoneWithCountdown(cityName: String) -> String {
+        // Define translations
+        let countdownTranslations: [Int: Countdown] = [
+            0: Countdown(countdown: 0, time: "מיידי", time_en: "Immediately", time_ru: "Немедленно", time_ar: "في الحال"),
+            15: Countdown(countdown: 15, time: "15 שניות", time_en: "15 seconds", time_ru: "15 секунд", time_ar: "۱٥ ثانية"),
+            30: Countdown(countdown: 30, time: "30 שניות", time_en: "30 seconds", time_ru: "30 секунд", time_ar: "۳۰ ثانية"),
+            45: Countdown(countdown: 45, time: "45 שניות", time_en: "45 seconds", time_ru: "45 секунд", time_ar: "٤٥ ثانية"),
+            60: Countdown(countdown: 60, time: "דקה", time_en: "A minute", time_ru: "Минута", time_ar: "دقيقة"),
+            90: Countdown(countdown: 90, time: "דקה וחצי", time_en: "A minute and a half", time_ru: "Полторы минуты", time_ar: "دقيقة ونصف"),
+            180: Countdown(countdown: 180, time: "3 דקות", time_en: "3 minutes", time_ru: "3 минуты", time_ar: "۳ دقائق")
+        ]
+        
         // Get cities as array
         let cities = getCities()
         
@@ -209,7 +226,7 @@ struct LocationMetadata {
             // Find by name
             if (city.name == cityName) {
                 // Return english zone
-                return (Localization.isEnglish()) ? city.zone_en  + " (" + city.time_en + ")" : city.zone + " (" + city.time + ")"
+                return (Localization.isEnglish()) ? city.zone_en  + " (" + countdownTranslations[city.countdown]!.time_en + ")" : city.zone + " (" + countdownTranslations[city.countdown]!.time + ")"
             }
         }
         

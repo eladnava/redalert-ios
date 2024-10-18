@@ -9,17 +9,15 @@
 import Foundation
 
 class City {
-    var id: Int, name: String, name_en: String, zone: String, zone_en: String, time: String, time_en: String, countdown: Int, lat: Double, lng: Double, value: String, shelters: Int
+    var id: Int, name: String, name_en: String, zone: String, zone_en: String, countdown: Int, lat: Double, lng: Double, value: String, shelters: Int
     
     // Main INIT function    
-    init(id: Int, name: String, name_en: String, zone: String, zone_en: String, time: String, time_en: String, countdown: Int, lat: Double, lng: Double, value: String, shelters: Int) {
+    init(id: Int, name: String, name_en: String, zone: String, zone_en: String, countdown: Int, lat: Double, lng: Double, value: String, shelters: Int) {
         self.id = id
         self.name = name
         self.name_en = name_en
         self.zone = zone
         self.zone_en = zone_en
-        self.time = time
-        self.time_en = time_en
         self.countdown = countdown
         self.lat = lat
         self.lng = lng
