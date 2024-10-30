@@ -38,6 +38,12 @@
 "REGISTRATION_SUCCESS_TITLE"="בחר אזור מגורים";
 "REGISTRATION_SUCCESS_MESSAGE"="עליך לבחור יישוב או עיר מגורים כדי לקבל התרעות בזמן אמת.";
 "REGISTRATION_SUCCESS_RESELECT_MESSAGE"="עקב שינויים של פיקוד העורף, עליך לבחור מחדש יישוב או עיר מגורים כדי לקבל התרעות בזמן אמת.";
+
+"CITIES"="יישובים";
+"ZONES"="מרחבים נוספים";
+"SECONDARY_CITIES"="יישובי משנה";
+"MORE_INFO"="מידע נוסף";
+
 "SIREN_1"="סירנה 1";
 "SIREN_2"="סירנה 2";
 "SIREN_3"="סירנה 3";

@@ -100,6 +100,12 @@ struct LocationMetadata {
     static func getLocalizedZone(zone: String) -> String {
         // Create names array
         if (!Localization.isEnglish()) {
+            // All selected?
+            if zone == "all" {
+                return "הכל"
+            }
+            
+            // Return Hebrew zone name
             return zone
         }
         
@@ -122,6 +128,12 @@ struct LocationMetadata {
     static func getLocalizedCityName(cityName: String) -> String {
         // Not English?
         if (!Localization.isEnglish()) {
+            // All selected?
+            if cityName == "all" {
+                return "הכל"
+            }
+            
+            // Return Hebrew city name
             return cityName
         }
         

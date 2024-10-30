@@ -174,13 +174,72 @@ class AdditonalViewController: IASKAppSettingsViewController, IASKSettingsDelega
         var messageBody = NSLocalizedString("EMAIL_BODY_ERROR_DESC", comment: "Error description in e-mail body")
         
         // Add some line breaks        
-        messageBody += "\n\n\n\n"
+        messageBody += "\n\n\n\n\n"
         
-        // Get user ID        
-        let uid = UserSettings.getString(key: UserSettingsKeys.userID, defaultValue: "")
+        // Get primary & secondary selection
+        var cities = UserSettings.getStringArray(key: UserSettingsKeys.citySelection)
+        var zones = UserSettings.getStringArray(key: UserSettingsKeys.zoneSelection)
+        var secondaryCities = UserSettings.getStringArray(key: UserSettingsKeys.secondaryCitySelection)
+        
+        // Localize cities
+        for (i, city) in cities.enumerated() {
+            cities[i] = LocationMetadata.getLocalizedCityName(cityName: city)
+        }
+        
+        // Localize zones
+        for (i, zone) in zones.enumerated() {
+            zones[i] = LocationMetadata.getLocalizedZone(zone: zone)
+        }
+        
+        // Localize secondary cities
+        for (i, city) in secondaryCities.enumerated() {
+            secondaryCities[i] = LocationMetadata.getLocalizedCityName(cityName: city)
+        }
+        
+        // Add selected cities
+        messageBody += NSLocalizedString("CITIES", comment: "City info in e-mail body") + ": " + cities.joined(separator: ", ").capitalized + "\n"
+        
+        // Add selected zones
+        messageBody += NSLocalizedString("ZONES", comment: "Zone info in e-mail body") + ": " + zones.joined(separator: ", ").capitalized + "\n\n"
+        
+        // Add selected secondary cities
+        messageBody += NSLocalizedString("SECONDARY_CITIES", comment: "Secondary city info in e-mail body") + ": " + secondaryCities.joined(separator: ", ").capitalized + "\n\n"
+        
+        // Add additional debug info
+        messageBody += NSLocalizedString("MORE_INFO", comment: "Additional debug info in e-mail body") + ": "
+
+        // Add UID
+        messageBody += "user.id=" + UserSettings.getString(key: UserSettingsKeys.userID, defaultValue: "") + ", "
+
+        // Add user hash
+        messageBody += "user.hash=" + UserSettings.getString(key: UserSettingsKeys.userHash, defaultValue: "") + ", "
+        
+        // Add primary enabled
+        messageBody += "primary.enabled=" + String(UserSettings.getBool(key: UserSettingsKeys.notifications, defaultValue: true)) + ", "
+        
+        // Add secondary enabled
+        messageBody += "secondary.enabled=" + String(UserSettings.getBool(key: UserSettingsKeys.secondaryNotifications, defaultValue: true)) + ", "
+        
+        // Add primary sound
+        messageBody += "primary.sound=" + UserSettings.getString(key: UserSettingsKeys.soundSelection, defaultValue: UserSettingsDefaults.soundSelection) + ", "
+        
+        // Add secondary sound
+        messageBody += "secondary.sound=" + UserSettings.getString(key: UserSettingsKeys.secondarySoundSelection, defaultValue: UserSettingsDefaults.secondarySoundSelection) + ", "
+        
+        // Add APNs registration status
+        messageBody += "apns=" + String(UserSettings.getString(key: UserSettingsKeys.deviceToken, defaultValue: "") != "") + ", "
+        
+        // Add APNs token
+        messageBody += "apns.token=" + UserSettings.getString(key: UserSettingsKeys.deviceToken, defaultValue: "") + ", "
+        
+        // Add iOS version
+        messageBody += "ios.version=" + UIDevice.current.systemVersion + ", "
+        
+        // Add iOS model
+        messageBody += "ios.model=" + UIDevice.current.localizedModel + "ֿ\n\n"
         
         // Add sent via info for debugging purposes        
-        messageBody += String.localizedStringWithFormat(NSLocalizedString("EMAIL_BODY_SENT_VIA", comment: "Application info in e-mail body"), App.getVersion()) + " (" + (uid) + ")"
+        messageBody += String.localizedStringWithFormat(NSLocalizedString("EMAIL_BODY_SENT_VIA", comment: "Application info in e-mail body"), App.getVersion())
         
         // Create mail view controller        
         let mc: MFMailComposeViewController = MFMailComposeViewController()
