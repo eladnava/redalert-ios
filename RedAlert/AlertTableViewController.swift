@@ -451,6 +451,9 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         // Fix for really annoying bug with UILabel multiline height
         cell.city.preferredMaxLayoutWidth = 0
         
+        // Disable truncation for zone names & countdown list
+        cell.desc.preferredMaxLayoutWidth = 0
+        
         // No cities? Protect against UI failure
         if (alert.localizedZoneWithCountdown == "") {
             cell.desc.text = " "
