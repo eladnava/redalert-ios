@@ -12,7 +12,15 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
     // Class members    
     var reloading = false, imSafe = UIView(), noAlerts = UIView(), pullToRefresh = UIRefreshControl(), alerts: [Alert] = [], currentScrollPos : CGFloat?
     
-    // View loaded initially (called once)    
+    override func viewWillAppear(_ animated: Bool) {
+        // Do we have any alerts being displayed?
+        if (self.alerts.count > 0) {
+            // Refresh display of alerts to update bold styling in case selected cities/zones changed
+            self.refreshAlertsTable()
+        }
+    }
+    
+    // View loaded initially (called once)
     override func viewDidLoad() {
         // Call super function        
         super.viewDidLoad()
@@ -300,6 +308,11 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             if (!currentAlert.localizedZoneWithCountdown.isEmpty) {
                 currentAlert.groupedDescriptions.append(currentAlert.localizedZoneWithCountdown)
             }
+            
+            // Add '@' sign to user-selected cities so they are sorted first
+            if (shouldBoldCity(city: currentAlert.city)) {
+                currentAlert.localizedCity = "@" + currentAlert.localizedCity;
+            }
 
             // Add current localized city name to grouped cities list
             currentAlert.groupedLocalizedCities.append(currentAlert.localizedCity)
@@ -330,7 +343,7 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
                     }
                 }
                 
-                lastAlert?.groupedCities.append(currentAlert.city)
+                previousAlert.groupedCities.append(currentAlert.city)
             } else {
                 // New alert (not grouped with the previous item)
                 groupedAlerts.append(currentAlert)
@@ -347,6 +360,9 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             // Join arrays into CSV strings
             alert.localizedCity = alert.groupedLocalizedCities.joined(separator: ", ")
             alert.localizedZoneWithCountdown = alert.groupedDescriptions.joined(separator: ", ")
+            
+            // Remove @ signs
+            alert.localizedCity = alert.localizedCity.replacingOccurrences(of: "@", with: "")
         }
 
         // All done
@@ -427,6 +443,34 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         return alerts.count
     }
     
+    func shouldBoldCity(city: String) -> Bool {
+        // Get selected cities, zones, and secondary cities
+        let cities = UserSettings.getStringArray(key: UserSettingsKeys.citySelection)
+        let zones = UserSettings.getStringArray(key: UserSettingsKeys.zoneSelection)
+        let secondaryCities = UserSettings.getStringArray(key: UserSettingsKeys.secondaryCitySelection)
+        
+        // City selected primarily?
+        if cities.contains(city) {
+            return true
+        }
+        
+        // City selected secondarily?
+        if secondaryCities.contains(city) {
+            return true
+        }
+        
+        // Get zone for city
+        let zone = LocationMetadata.getZoneByCity(cityName: city)
+        
+        // Zone of city selected?
+        if zones.contains(zone) {
+            return true
+        }
+        
+        // No match
+        return false
+    }
+    
     // Table cell display    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Create generic cell        
@@ -443,8 +487,6 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         // Get alert by index        
         let alert = alerts[indexPath.row]
         
-        // Set cell label values
-        cell.city.text = alert.localizedCity
         cell.desc.text = alert.localizedZoneWithCountdown
         cell.time.text = alert.localizedThreat + " • " + DateFormatterStruct.ConvertUnixTimestampToDateTime(unixTimestamp: alert.date)
         
@@ -467,15 +509,46 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             cell.time.textAlignment = NSTextAlignment.right
             
             // Increase font size in case device language is Hebrew
-            cell.city.font = cell.city.font.withSize(20)
             cell.desc.font = cell.desc.font.withSize(16)
             cell.time.font = cell.time.font.withSize(14)
             
             // Reduce font letter spacing
-            cell.city.attributedText = NSAttributedString(string: cell.city.text!, attributes: [.kern: -0.3])
             cell.desc.attributedText = NSAttributedString(string: cell.desc.text!, attributes: [.kern: -0.3])
             cell.time.attributedText = NSAttributedString(string: cell.time.text!, attributes: [.kern: -0.3])
         }
+        
+        // Default letter spacing & size for city text
+        var letterSpacing = 0.0, cityFontSize = 18;
+        
+        // Hebrew?
+        if (Localization.isRTL()) {
+            // Less letter spacing
+            letterSpacing = -0.3;
+            
+            // Larger font
+            cityFontSize = 20;
+        }
+        
+        // Create an attributed string (reduce font letter spacing using .kern)
+        let attributedString = NSMutableAttributedString(string: alert.localizedCity, attributes: [.font:  UIFont(name: "Arial", size: CGFloat(cityFontSize)) ?? UIFont.systemFont(ofSize: CGFloat(cityFontSize)), .kern: letterSpacing])
+
+        // Traverse all grouped cities in alert
+        for city in alert.groupedCities {
+            // City / zone selected?
+            if shouldBoldCity(city: city) {
+                // Get localized city name
+                let localizedCity = LocationMetadata.getLocalizedCityName(cityName: city)
+                
+                // Find the range of localized city to replace with bold font
+                if let boldRange = alert.localizedCity.range(of: localizedCity) {
+                    // Apply bold font to the specified range
+                    attributedString.addAttribute(.font, value: UIFont(name: "Arial-BoldMT", size: CGFloat(cityFontSize)) ?? UIFont.boldSystemFont(ofSize: CGFloat(cityFontSize)), range: NSRange(boldRange, in: alert.localizedCity))
+                }
+            }
+        }
+        
+        // Set city as attributed text for bold styling to work
+        cell.city.attributedText = attributedString
         
         // Update image based on threat type
         cell.threatImage.image = getThreatImage(alert.threat)

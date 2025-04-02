@@ -171,6 +171,23 @@ struct LocationMetadata {
         return ""
     }
     
+    static func getZoneByCity(cityName: String) -> String {
+        // Get cities as array
+        let cities = getCities()
+        
+        // Loop over them
+        for city in cities {
+            // Find by name
+            if (city.name == cityName) {
+                // Return zone
+                return city.zone
+            }
+        }
+        
+        // No match, return empty string
+        return ""
+    }
+    
     static func getLocalizedThreat(threat: String) -> String {
         switch threat {
             case "test":
