@@ -295,14 +295,22 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             
             // Initialize city names list for map display
             currentAlert.groupedCities.append(currentAlert.city)
+            
+            // If current alert desc is not empty, add it to grouped desc list
+            if (!currentAlert.localizedZoneWithCountdown.isEmpty) {
+                currentAlert.groupedDescriptions.append(currentAlert.localizedZoneWithCountdown)
+            }
 
+            // Add current localized city name to grouped cities list
+            currentAlert.groupedLocalizedCities.append(currentAlert.localizedCity)
+            
             // Check whether this new alert can be grouped with the previous one
             // (Same region + 15 second cutoff threshold in either direction)
             if let previousAlert = lastAlert,
                 currentAlert.date >= previousAlert.date - 15,
                 currentAlert.date <= previousAlert.date + 15 {
                 // Group with the previous alert list item
-                lastAlert?.localizedCity += ", " + currentAlert.localizedCity
+                previousAlert.groupedLocalizedCities.append(currentAlert.localizedCity)
                 
                 // Add current alert zone if new
                 if !previousAlert.localizedZoneWithCountdown.contains(currentAlert.localizedZone) {
@@ -310,6 +318,7 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
                     if previousAlert.localizedZoneWithCountdown.isEmpty && !currentAlert.localizedZoneWithCountdown.isEmpty {
                         // Occupy previous alert's zone with current alert zone
                         previousAlert.localizedZoneWithCountdown = currentAlert.localizedZoneWithCountdown
+                        previousAlert.groupedDescriptions.append(currentAlert.localizedZoneWithCountdown)
                     }
                     else if currentAlert.localizedZoneWithCountdown.isEmpty {
                         // Do nothing
@@ -317,6 +326,7 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
                     else {
                         // Comma-separated zones and countdowns
                         previousAlert.localizedZoneWithCountdown += ", " + currentAlert.localizedZoneWithCountdown
+                        previousAlert.groupedDescriptions.append(currentAlert.localizedZoneWithCountdown)
                     }
                 }
                 
@@ -326,6 +336,17 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
                 groupedAlerts.append(currentAlert)
                 lastAlert = currentAlert
             }
+        }
+        
+        // Sort all grouped alerts
+        for alert in groupedAlerts {
+            // Sort city & zone names alphabetically
+            alert.groupedDescriptions = alert.groupedDescriptions.sorted { $0 < $1 }
+            alert.groupedLocalizedCities = alert.groupedLocalizedCities.sorted { $0 < $1 }
+
+            // Join arrays into CSV strings
+            alert.localizedCity = alert.groupedLocalizedCities.joined(separator: ", ")
+            alert.localizedZoneWithCountdown = alert.groupedDescriptions.joined(separator: ", ")
         }
 
         // All done
