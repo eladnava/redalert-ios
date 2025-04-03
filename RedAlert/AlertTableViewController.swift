@@ -542,7 +542,7 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
                 // Find the range of localized city to replace with bold font
                 if let boldRange = alert.localizedCity.range(of: localizedCity) {
                     // Apply bold font to the specified range
-                    attributedString.addAttribute(.font, value: UIFont(name: "Arial-BoldMT", size: CGFloat(cityFontSize)) ?? UIFont.boldSystemFont(ofSize: CGFloat(cityFontSize)), range: NSRange(boldRange, in: alert.localizedCity))
+                    attributedString.addAttributes([.font: UIFont(name: "Arial-BoldMT", size: CGFloat(cityFontSize)) ?? UIFont.boldSystemFont(ofSize: CGFloat(cityFontSize)), .kern: -0.2], range: NSRange(boldRange, in: alert.localizedCity))
                 }
             }
         }
