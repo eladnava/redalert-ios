@@ -14,9 +14,9 @@ struct Localization {
         return UIApplication.shared.userInterfaceLayoutDirection == UIUserInterfaceLayoutDirection.rightToLeft
     }
     
-    static func isEnglish() -> Bool {
-        // Return true in case device language is English        
-        return self.getDeviceLanguageCode().starts(with: "en")
+    static func shouldLocalizeToEnglish() -> Bool {
+        // Return true unless device language is set to Hebrew
+        return !self.getDeviceLanguageCode().starts(with: "he")
     }
     
     static func getDeviceLanguageCode() -> String {

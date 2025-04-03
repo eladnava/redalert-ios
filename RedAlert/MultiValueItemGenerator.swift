@@ -22,7 +22,7 @@ struct MultiValueItemGenerator {
         }
         
         // Check locale first        
-        let isEnglish = Localization.isEnglish()
+        let isEnglish = Localization.shouldLocalizeToEnglish()
         
         // Loop over them        
         for zone in zones as! [NSDictionary] {
@@ -50,7 +50,7 @@ struct MultiValueItemGenerator {
         }
         
         // Check locale first        
-        let isEnglish = Localization.isEnglish()
+        let isEnglish = Localization.shouldLocalizeToEnglish()
         
         // Loop over them        
         for city in cities {

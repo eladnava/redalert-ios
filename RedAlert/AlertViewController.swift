@@ -56,7 +56,7 @@ class AlertViewController: UIViewController, MKMapViewDelegate {
         var allPolygonPoints:[CLLocationCoordinate2D] = []
         
         // Check locale first        
-        let isEnglish = Localization.isEnglish()
+        let isEnglish = Localization.shouldLocalizeToEnglish()
         
         // Load polygons from JSON
         let polygonCache = LocationMetadata.getPolygons()

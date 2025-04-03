@@ -99,7 +99,7 @@ struct LocationMetadata {
     
     static func getLocalizedZone(zone: String) -> String {
         // Create names array
-        if (!Localization.isEnglish()) {
+        if (!Localization.shouldLocalizeToEnglish()) {
             // All selected?
             if zone == "all" {
                 return "הכל"
@@ -127,7 +127,7 @@ struct LocationMetadata {
     
     static func getLocalizedCityName(cityName: String) -> String {
         // Not English?
-        if (!Localization.isEnglish()) {
+        if (!Localization.shouldLocalizeToEnglish()) {
             // All selected?
             if cityName == "all" {
                 return "הכל"
@@ -163,7 +163,7 @@ struct LocationMetadata {
             // Find by name
             if (city.name == cityName) {
                 // Return english zone
-                return (Localization.isEnglish()) ? city.zone_en : city.zone
+                return (Localization.shouldLocalizeToEnglish()) ? city.zone_en : city.zone
             }
         }
         
@@ -255,7 +255,7 @@ struct LocationMetadata {
             // Find by name
             if (city.name == cityName) {
                 // Return english zone
-                return (Localization.isEnglish()) ? city.zone_en  + " (" + countdownTranslations[city.countdown]!.time_en + ")" : city.zone + " (" + countdownTranslations[city.countdown]!.time + ")"
+                return (Localization.shouldLocalizeToEnglish()) ? city.zone_en  + " (" + countdownTranslations[city.countdown]!.time_en + ")" : city.zone + " (" + countdownTranslations[city.countdown]!.time + ")"
             }
         }
         
