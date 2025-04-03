@@ -15,8 +15,8 @@ struct RedAlertAPI {
     }
     
     static func shouldRequestCityReselection() -> Bool {
-        // Check if key exists and is true
-        return !UserSettings.getBool(key: UserSettingsKeys.cityReselectionRequested, defaultValue: false)
+        // Disable for now
+        return false
     }
     
     static func setCityReselectionRequested() {
