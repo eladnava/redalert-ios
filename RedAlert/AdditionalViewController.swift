@@ -236,7 +236,7 @@ class AdditonalViewController: IASKAppSettingsViewController, IASKSettingsDelega
         messageBody += "ios.version=" + UIDevice.current.systemVersion + ", "
         
         // Add iOS model
-        messageBody += "ios.model=" + UIDevice.current.localizedModel + "ֿ\n\n"
+        messageBody += "ios.model=" + UIDevice.current.localizedModel + "\n\n"
         
         // Add sent via info for debugging purposes        
         messageBody += String.localizedStringWithFormat(NSLocalizedString("EMAIL_BODY_SENT_VIA", comment: "Application info in e-mail body"), App.getVersion())
