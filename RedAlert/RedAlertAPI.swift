@@ -16,7 +16,7 @@ struct RedAlertAPI {
     
     static func shouldRequestCityReselection() -> Bool {
         // Check if key exists and is true
-        return !UserSettings.getBool(key: UserSettingsKeys.cityReselectionRequested, defaultValue: false)
+        return UserSettings.getBool(key: UserSettingsKeys.cityReselectionRequestedPrevious, defaultValue: true) && !UserSettings.getBool(key: UserSettingsKeys.cityReselectionRequested, defaultValue: false)
     }
     
     static func setCityReselectionRequested() {
@@ -97,6 +97,9 @@ struct RedAlertAPI {
                 // Get localized strings                
                 let title = NSLocalizedString("REGISTRATION_SUCCESS_TITLE", comment: "Registration success title")
                 let message = NSLocalizedString("REGISTRATION_SUCCESS_MESSAGE", comment: "Registration success message")
+                
+                // No need to ask user to reselect cities
+                RedAlertAPI.setCityReselectionRequested()
                 
                 // Show success message                
                 return Dialogs.message(title: title, message: message, delegate: delegate)
