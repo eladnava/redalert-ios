@@ -10,7 +10,7 @@ import UIKit
 
 class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
     // Class members    
-    var reloading = false, imSafe = UIView(), noAlerts = UIView(), pullToRefresh = UIRefreshControl(), alerts: [Alert] = [], currentScrollPos : CGFloat?, reloadTimer: Timer?
+    var reloading = false, imSafe = UIView(), noAlerts = UIView(), pullToRefresh = UIRefreshControl(), alerts: [Alert] = [], reloadTimer: Timer?
     
     override func viewWillAppear(_ animated: Bool) {
         // Do we have any alerts being displayed?
@@ -208,11 +208,6 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // Reposition the safe button by placing it at bottom of table, minus its height and adding the scroll amount        
         self.imSafe.frame.origin.y = scrollView.frame.height - self.imSafe.frame.height + scrollView.contentOffset.y
-        
-        // Force the tableView to stay at same scroll position when reloading data
-        if currentScrollPos != nil {
-            tableView.setContentOffset(CGPoint(x: 0, y: currentScrollPos!), animated: false)
-        }
     }
     
     @objc func safeButtonTapped(recognizer: UITapGestureRecognizer) {
@@ -292,11 +287,14 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             // Store grouped alerts in member
             self.alerts = self.groupAlerts(alerts!)
             
-            // Refresh table with data            
-            self.refreshAlertsTable()
-            
-            // Hide loading indicator            
-            self.toggleNetworkActivity(visible: false)
+            // Invoke callback on main thread
+            DispatchQueue.main.async {
+                // Refresh table with data
+                self.refreshAlertsTable()
+                
+                // Hide loading indicator
+                self.toggleNetworkActivity(visible: false)
+            }
         })
     }
     
@@ -397,9 +395,6 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             
             // Unwrap variable            
             if let tableView = self.tableView {
-                // Save current scroll position
-                self.currentScrollPos = self.tableView.contentOffset.y
-
                 // Reload table view data
                 tableView.reloadData()
                 
@@ -411,9 +406,6 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
                     // Done updating table
                     tableView.endUpdates()
                 }
-                
-                // No longer lock the table at same scroll position
-                self.currentScrollPos = nil
             }
         }
         else {

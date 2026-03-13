@@ -117,40 +117,41 @@ struct HTTP {
         // Execute request async        
         let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void
             in
-            // Get response string            let strData = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) Prepare response JSON            
-            var json: AnyObject?
-            
-            
-            // Request failed?
-            if (data == nil) {
-                return getCompleted(NSError(domain: NSURLErrorDomain, code: NSURLErrorNotConnectedToInternet, userInfo: nil), nil)
-            }
-            
-            do {
-                // Serialize request JSON into string                
-                if (dictionary) {
-                    json = try JSONSerialization.jsonObject(with: data!, options: .mutableLeaves) as? NSDictionary
+            // Run on async thread
+            DispatchQueue.global(qos: .userInitiated).async {
+                var json: AnyObject?
+                
+                // Request failed?
+                if (data == nil) {
+                    return getCompleted(NSError(domain: NSURLErrorDomain, code: NSURLErrorNotConnectedToInternet, userInfo: nil), nil)
                 }
-                else {
-                    json = try JSONSerialization.jsonObject(with: data!, options: .mutableLeaves) as? NSArray
-                }
-            }
-            catch let err as NSError {
-                // Return the error                
-                return getCompleted(err, nil)
-            }
             
-            // Unwrap JSON            
-            if let parseJSON = json as? NSDictionary {
-                // Got a JSON error?                
-                if (parseJSON["message"] != nil) {
-                    // Return the error                    
-                    return getCompleted(NSError(domain: NSURLErrorDomain, code: NSURLErrorBadServerResponse, userInfo: ["error": parseJSON["message"]!]), parseJSON)
+                do {
+                    // Serialize request JSON into string
+                    if (dictionary) {
+                        json = try JSONSerialization.jsonObject(with: data!, options: .mutableLeaves) as? NSDictionary
+                    }
+                    else {
+                        json = try JSONSerialization.jsonObject(with: data!, options: .mutableLeaves) as? NSArray
+                    }
                 }
+                catch let err as NSError {
+                    // Return the error
+                    return getCompleted(err, nil)
+                }
+                
+                // Unwrap JSON
+                if let parseJSON = json as? NSDictionary {
+                    // Got a JSON error?
+                    if (parseJSON["message"] != nil) {
+                        // Return the error
+                        return getCompleted(NSError(domain: NSURLErrorDomain, code: NSURLErrorBadServerResponse, userInfo: ["error": parseJSON["message"]!]), parseJSON)
+                    }
+                }
+                
+                // Return the JSON
+                return getCompleted(nil, json)
             }
-            
-            // Return the JSON            
-            return getCompleted(nil, json)
         })
         
         // Start running task        

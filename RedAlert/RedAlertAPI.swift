@@ -129,24 +129,27 @@ struct RedAlertAPI {
                 
                 // Compare build numbers                
                 if (showDialog! && installedBuild! < latestBuildNumber!) {
-                    // Create new alert view
-                    let alert = UIAlertView()
-                    
-                    // Set delegate so we can capture tap event                    
-                    alert.delegate = delegate
-                    
-                    // Set title, message                    
-                    alert.title = NSLocalizedString("UPDATE_DIALOG_TITLE", comment: "Update dialog title")
-                    
-                    // Set message and insert new version code                    
-                    alert.message = String.localizedStringWithFormat(NSLocalizedString("UPDATE_DIALOG_MESSAGE", comment: "Update dialog message"), latestVersion!)
-                    
-                    // Add buttons                    
-                    alert.addButton(withTitle: NSLocalizedString("NOT_NOW_BUTTON", comment: "Not now button text"))
-                    alert.addButton(withTitle: NSLocalizedString("UPDATE_BUTTON", comment: "Update button text"))
-
-                    // Show alert view                    
-                    alert.show()
+                    // Run on main thread
+                    DispatchQueue.main.async {
+                        // Create new alert view
+                        let alert = UIAlertView()
+                        
+                        // Set delegate so we can capture tap event
+                        alert.delegate = delegate
+                        
+                        // Set title, message
+                        alert.title = NSLocalizedString("UPDATE_DIALOG_TITLE", comment: "Update dialog title")
+                        
+                        // Set message and insert new version code
+                        alert.message = String.localizedStringWithFormat(NSLocalizedString("UPDATE_DIALOG_MESSAGE", comment: "Update dialog message"), latestVersion!)
+                        
+                        // Add buttons
+                        alert.addButton(withTitle: NSLocalizedString("NOT_NOW_BUTTON", comment: "Not now button text"))
+                        alert.addButton(withTitle: NSLocalizedString("UPDATE_BUTTON", comment: "Update button text"))
+                        
+                        // Show alert view
+                        alert.show()
+                    }
                 }
             }
         }
@@ -420,7 +423,7 @@ struct RedAlertAPI {
                     }
                 }
                 
-                // Return callback                
+                // Return callback
                 return callback(nil, alerts)
             }
         }
