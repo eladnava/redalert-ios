@@ -328,11 +328,14 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             // Add current localized city name to grouped cities list
             currentAlert.groupedLocalizedCities.append(currentAlert.localizedCity)
             
+            // Alert grouping date cutoff threshold (seconds)
+            let dateGroupingThreshold: Double = 3 * 60;
+            
             // Check whether this new alert can be grouped with the previous one
-            // (Same region + 15 second cutoff threshold in either direction)
+            // (Same region + 3 minute cutoff threshold in either direction)
             if let previousAlert = lastAlert,
-                currentAlert.date >= previousAlert.date - 15,
-                currentAlert.date <= previousAlert.date + 15 {
+                currentAlert.date >= previousAlert.date - dateGroupingThreshold,
+                currentAlert.date <= previousAlert.date + dateGroupingThreshold {
                 // Group with the previous alert list item
                 previousAlert.groupedLocalizedCities.append(currentAlert.localizedCity)
                 
