@@ -71,17 +71,17 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Only handle alertview segue        
+        // Only handle alertview segue
         if (segue.identifier != "AlertViewSegue") {
             return
         }
         
-        // Unwrap variable        
+        // Unwrap variable
         if let tableView = self.tableView {
-            // Get selected index            
+            // Get selected index
             let path = tableView.indexPathForSelectedRow
             
-            // Unwrap variable            
+            // Unwrap variable
             if let path = path {
                 // Make sure index is valid
                 if path.row < self.alerts.count {
@@ -285,7 +285,27 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             }
             
             // Store grouped alerts in member
-            self.alerts = self.groupAlerts(alerts!)
+            let alerts = self.groupAlerts(alerts!)
+            
+            // Alert count hasn't changed between reloads?
+            if alerts.count == self.alerts.count {
+                // Loop over old alerts
+                for i in 0..<self.alerts.count {
+                    let alert = self.alerts[i]
+
+                    // User tapped to expand?
+                    if alert.isExpanded {
+                        // Safeguard: check if new alert at same position has the same date
+                        if self.alerts[i].date == alerts[i].date {
+                            // Preserve expanded state after refresh
+                            alerts[i].isExpanded = true
+                        }
+                    }
+                }
+            }
+            
+            // Overwrite previously displayed alerts
+            self.alerts = alerts
             
             // Invoke callback on main thread
             DispatchQueue.main.async {
@@ -536,6 +556,31 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             cell.time.attributedText = NSAttributedString(string: cell.time.text!, attributes: [.kern: -0.3])
         }
         
+        
+        // Alert already expanded?
+        if alert.isExpanded {
+            // Unlimited lines
+            cell.city.numberOfLines = 0
+        } else {
+            // Max 3 lines
+            cell.city.numberOfLines = 3
+        }
+        
+        // Set ellipsis / truncation
+        cell.city.lineBreakMode = .byTruncatingTail
+        
+        // Capture click event
+        cell.city.isUserInteractionEnabled = true
+        
+        // Remove previous gesture recognizers to avoid duplicates
+        cell.city.gestureRecognizers?.forEach { cell.city.removeGestureRecognizer($0) }
+
+        // Add tap event on UILabel
+        cell.city.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cityLabelTapped(_:))))
+
+        // Tag the label with the indexPath.row so we know which alert it belongs to
+        cell.city.tag = indexPath.row
+        
         // Default letter spacing & size for city text
         var letterSpacing = 0.0, cityFontSize = 18;
         
@@ -574,6 +619,49 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         
         // Return configured cell        
         return cell
+    }
+    
+    @objc func cityLabelTapped(_ sender: UITapGestureRecognizer) {
+        // Get UILabel that was tapped
+        guard let label = sender.view as? UILabel else { return }
+        
+        // Get row number
+        let row = label.tag
+        let alert = alerts[row]
+        
+        // Alert doesn't need expansion?
+        if (!alert.isExpanded && !label.isEllipsized) {
+            // Get superview
+            var view = label.superview
+            
+            // Find UITableViewCell
+            while view != nil && !(view is UITableViewCell) {
+                view = view?.superview
+            }
+
+            // Ensure we have a cell
+            guard let cell = view as? UITableViewCell else { return }
+
+            // Ask the table for the index path of this cell
+            guard let indexPath = tableView.indexPath(for: cell) else { return }
+
+            // Select row
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+
+            // Open map (alert view)
+            self.performSegue(withIdentifier: "AlertViewSegue", sender: alert)
+
+            // Stop execution (no need to toggle expansion)
+            return;
+        }
+        
+        // Toggle expansion
+        alert.isExpanded.toggle()
+        
+        // Animate height change
+        tableView.beginUpdates()
+        tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
+        tableView.endUpdates()
     }
     
     func getThreatImage(_ threat: String) -> UIImage? {
@@ -629,5 +717,31 @@ extension CGSize{
 extension CGPoint{
     init(_ x:CGFloat,_ y:CGFloat) {
         self.init(x:x,y:y)
+    }
+}
+
+extension UILabel {
+    var isEllipsized: Bool {
+        // Get attributed text
+        guard let attributedText = self.attributedText else { return false }
+        
+        // 1. Create a framesetter with your attributed string
+        let framesetter = CTFramesetterCreateWithAttributedString(attributedText)
+        
+        // 2. Define the constraints (Current width, infinite height)
+        let targetSize = CGSize(width: self.bounds.width, height: CGFloat.greatestFiniteMagnitude)
+        
+        // 3. Calculate the actual size required
+        let fitSize = CTFramesetterSuggestFrameSizeWithConstraints(
+            framesetter,
+            CFRangeMake(0, attributedText.length),
+            nil,
+            targetSize,
+            nil
+        )
+        
+        // 4. Compare required height vs actual label height
+        // We use a small tolerance (1.0) for rounding
+        return ceil(fitSize.height) > ceil(self.bounds.height) + 1.0
     }
 }
