@@ -395,16 +395,23 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             
             // Unwrap variable            
             if let tableView = self.tableView {
-                // Reload table view data
-                tableView.reloadData()
+                let previousOffset = tableView.contentOffset
+                let previousContentHeight = tableView.contentSize.height
                 
                 // Don't animate cell redrawing
                 UIView.performWithoutAnimation {
-                    // Start updating
-                    tableView.beginUpdates()
-                    
-                    // Done updating table
-                    tableView.endUpdates()
+                    // Reload table view data
+                    tableView.reloadData()
+                }
+                
+                // Maintain scrollbar position
+                if (previousContentHeight > 0) {
+                    let newContentHeight = tableView.contentSize.height
+                    let offsetAdjustment = newContentHeight - previousContentHeight
+                    tableView.contentOffset = CGPoint(
+                        x: previousOffset.x,
+                        y: max(0, previousOffset.y + offsetAdjustment)
+                    )
                 }
             }
         }
