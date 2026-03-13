@@ -10,7 +10,7 @@ import UIKit
 
 class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
     // Class members    
-    var reloading = false, imSafe = UIView(), noAlerts = UIView(), pullToRefresh = UIRefreshControl(), alerts: [Alert] = [], currentScrollPos : CGFloat?
+    var reloading = false, imSafe = UIView(), noAlerts = UIView(), pullToRefresh = UIRefreshControl(), alerts: [Alert] = [], currentScrollPos : CGFloat?, reloadTimer: Timer?
     
     override func viewWillAppear(_ animated: Bool) {
         // Do we have any alerts being displayed?
@@ -18,6 +18,20 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             // Refresh display of alerts to update bold styling in case selected cities/zones changed
             self.refreshAlertsTable()
         }
+        
+        // Create timer to refresh recent alerts list
+        self.startReloadTimer()
+        
+        // Reload recent alerts (Timer does not tick when initialized)
+        self.reloadRecentAlerts()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Stop the timer
+        reloadTimer?.invalidate()
+        reloadTimer = nil
     }
     
     // View loaded initially (called once)
@@ -39,12 +53,6 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         
         // Programatic pull to refresh        
         self.initialPullToRefresh()
-        
-        // Reload recent alerts (Timer does not tick when initialized)        
-        self.reloadRecentAlerts()
-        
-        // Create timer to refresh recent alerts list        
-        self.startReloadTimer()
         
         // Make sure we can  receive alerts        
         self.verifyPushCapability()
@@ -239,8 +247,11 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
     }
     
     func startReloadTimer() {
-        // Simply start the timer every X seconds        
-        Timer.scheduledTimer(timeInterval: Config.recentAlertsRefreshIntervalSeconds, target: self, selector: #selector(AlertTableViewController.reloadRecentAlerts), userInfo: nil, repeats: true)
+        // Invalidate existing timer just in case
+        reloadTimer?.invalidate()
+        
+        // Simply start the timer every X seconds
+        reloadTimer = Timer.scheduledTimer(timeInterval: Config.recentAlertsRefreshIntervalSeconds, target: self, selector: #selector(AlertTableViewController.reloadRecentAlerts), userInfo: nil, repeats: true)
     }
     
     @objc func reloadRecentAlerts() {
@@ -370,7 +381,13 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
     }
     
     func refreshAlertsTable() {
-        // Do we have any alerts?        
+        // Table not in view hierarchy yet?
+        guard tableView.window != nil else {
+            // Defer refresh
+            return
+        }
+        
+        // Do we have any alerts?
         if (self.alerts.count > 0) {
             // Hide default view            
             self.toggleDefaultView(visible: false)
