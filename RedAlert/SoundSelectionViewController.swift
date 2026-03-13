@@ -37,8 +37,8 @@ class SoundSelectionViewController: UITableViewController {
         }
         
         // Set navigation buttons        
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(SoundSelectionViewController.doneTapped(sender:)))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.undo, target: self, action: #selector(SoundSelectionViewController.cancelTapped(sender:)))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(SoundSelectionViewController.doneTapped(sender:)))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(SoundSelectionViewController.cancelTapped(sender:)))
         
         // Set bar button appearance        
         UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18), NSAttributedStringKey.foregroundColor: UIColor.red ], for: UIControlState.normal)
