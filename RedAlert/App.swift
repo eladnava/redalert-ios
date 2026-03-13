@@ -15,17 +15,20 @@ struct App {
     }
     
     static func openAppStore() {
-        // Open app store page        
-        UIApplication.shared.openURL(URL(string: Config.appStoreURL)!)
+        if let url = URL(string: Config.appStoreURL) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     static func openWebSite() {
-        // Open official Web site
-        UIApplication.shared.openURL(URL(string: Config.webSiteURL)!)
+        if let url = URL(string: Config.webSiteURL) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     static func openLifeshieldWebsite() {
-        // Open Lifeshield official Web site
-        UIApplication.shared.openURL(URL(string: Config.lifeshieldWebSiteURL)!)
+        if let url = URL(string: Config.lifeshieldWebSiteURL) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
 }
