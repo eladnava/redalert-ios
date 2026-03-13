@@ -7,8 +7,11 @@
 */
 "ERROR_DIALOG"="Error";
 "OK_BUTTON"="OK";
+"CANCEL_BUTTON"="Cancel";
 "EMAIL_TITLE"="Red Alert";
+"REPORT_BUG"="Contact Us";
 "EMAIL_BODY_ERROR_DESC"="Problem description:";
+"EMAIL_BODY_SHORT_ERROR_DESC"="Please enter a message with at least 10 characters.";
 "EMAIL_BODY_SENT_VIA"="Sent via Red Alert %@ for iPhone";
 "CONTACT_ERROR"="E-mail cannot be sent from this device, you must configure the Mail app first.";
 "IM_SAFE_MESSAGE"="I'm safe - sent via Red Alert for iOS - https://redalert.me";

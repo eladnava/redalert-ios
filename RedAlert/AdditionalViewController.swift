@@ -119,7 +119,7 @@ class AdditonalViewController: IASKAppSettingsViewController, IASKSettingsDelega
         
         // Contact button        
         if (specifier.key() == "contactButton") {
-            contactMe()
+            contactMe("")
         }
         
         // Rate button        
@@ -160,8 +160,71 @@ class AdditonalViewController: IASKAppSettingsViewController, IASKSettingsDelega
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
-    func contactMe() {
-        // No e-mail capability?        
+    func contactMe(_ message: String) {
+        // Create alert
+        let alert = UIAlertController(title: NSLocalizedString("REPORT_BUG", comment: "Report a problem"), message: NSLocalizedString("EMAIL_BODY_ERROR_DESC", comment: "Problem description:"), preferredStyle: .alert)
+        
+        // Create a UITextView
+        let textView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
+        textView.font = UIFont.systemFont(ofSize: 14)
+        textView.layer.borderColor = UIColor.systemGray.cgColor
+        textView.layer.borderWidth = 1
+        textView.layer.cornerRadius = 6
+        textView.text = message
+        
+        // Embed the text view in a view controller
+        let textViewController = UIViewController()
+        textViewController.preferredContentSize = CGSize(width: 250, height: 100)
+        textViewController.view.addSubview(textView)
+        
+        // Add the view controller to the alert
+        alert.setValue(textViewController, forKey: "contentViewController")
+        
+        // Add actions
+        alert.addAction(UIAlertAction(title: NSLocalizedString("CANCEL_BUTTON", comment: "Cancel"), style: .cancel, handler: nil))
+        
+        // Create send action
+        let send = UIAlertAction(title: NSLocalizedString("OK_BUTTON", comment: "OK"), style: .default, handler: { _ in
+            // Get problem description
+            let message = textView.text ?? ""
+            
+            // Validation: minimum 10 characters
+            if message.trimmingCharacters(in: .whitespacesAndNewlines).count < 10 {
+                // Show an error alert
+                let errorAlert = UIAlertController(title: NSLocalizedString("ERROR_DIALOG", comment: "Error"), message: NSLocalizedString("EMAIL_BODY_SHORT_ERROR_DESC", comment: "Please enter a message with at least 10 characters."), preferredStyle: .alert)
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    // Optional: focus back on the text view
+                    textView.becomeFirstResponder()
+                    
+                    // Re-display dialog with message
+                    self.contactMe(message)
+                }))
+                
+                // Show alert dialog
+                if let vc = UIApplication.shared.keyWindow?.rootViewController {
+                    vc.present(errorAlert, animated: true, completion: nil)
+                }
+                
+                // Stop execution
+                return
+            }
+            
+            // Send e-mail with problem description
+            self.sendContactEmail(message)
+        })
+        
+        // Add action & set as preferred so it shows up as bold
+        alert.addAction(send)
+        alert.preferredAction = send
+
+        // Present the alert
+        if let vc = UIApplication.shared.keyWindow?.rootViewController {
+            vc.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func sendContactEmail(_ message: String) {
+        // No e-mail capability?
         if (!MFMailComposeViewController.canSendMail()) {
             Dialogs.error(message: NSLocalizedString("CONTACT_ERROR", comment: "Can't send contact e-mail."))
             return
@@ -171,10 +234,16 @@ class AdditonalViewController: IASKAppSettingsViewController, IASKSettingsDelega
         let emailTitle = NSLocalizedString("EMAIL_TITLE", comment: "Title of contact e-mail")
         
         // Initialize body with error description        
-        var messageBody = NSLocalizedString("EMAIL_BODY_ERROR_DESC", comment: "Error description in e-mail body")
+        var messageBody = NSLocalizedString("EMAIL_BODY_ERROR_DESC", comment: "Error description in e-mail body") + "\n\n" + message
         
         // Add some line breaks        
-        messageBody += "\n\n\n\n\n"
+        messageBody += "\n\n"
+        
+        // Add sent via info for debugging purposes
+        messageBody += String.localizedStringWithFormat(NSLocalizedString("EMAIL_BODY_SENT_VIA", comment: "Application info in e-mail body"), App.getVersion())
+        
+        // Add some line breaks
+        messageBody += "\n\n"
         
         // Get primary & secondary selection
         var cities = UserSettings.getStringArray(key: UserSettingsKeys.citySelection)
@@ -237,9 +306,6 @@ class AdditonalViewController: IASKAppSettingsViewController, IASKSettingsDelega
         
         // Add iOS model
         messageBody += "ios.model=" + UIDevice.current.localizedModel + "\n\n"
-        
-        // Add sent via info for debugging purposes        
-        messageBody += String.localizedStringWithFormat(NSLocalizedString("EMAIL_BODY_SENT_VIA", comment: "Application info in e-mail body"), App.getVersion())
         
         // Create mail view controller        
         let mc: MFMailComposeViewController = MFMailComposeViewController()

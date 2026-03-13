@@ -6,12 +6,15 @@
   Copyright (c) 2021 Elad Nava. All rights reserved.
  */
 "ERROR_DIALOG"="שגיאה";
+"CANCEL_BUTTON"="ביטול";
 "OK_BUTTON"="אוקי";
 "EMAIL_TITLE"="צבע אדום";
 "All"="הכל";
 "Selected (0)"="נבחרו (0)";
 "Selected (%d)"="נבחרו (%d)";
+"REPORT_BUG"="דווח על תקלה";
 "EMAIL_BODY_ERROR_DESC"="תיאור התקלה:";
+"EMAIL_BODY_SHORT_ERROR_DESC"="אנא הזן הודעה באורך של יותר מ‑10 תווים.";
 "EMAIL_BODY_SENT_VIA"="נשלח באמצעות צבע אדום %@ לאייפון";
 "CONTACT_ERROR"="אין אפשרות לשלוח דואר אלקטרוני ממכשיר זה. עליך להגדיר את אפליקציית הדואר ולנסות שוב.";
 "IM_SAFE_MESSAGE"="אני במרחב מוגן - נשלח באמצעות צבע אדום לאייפון - https://redalert.me";
