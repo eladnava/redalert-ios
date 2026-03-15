@@ -1,0 +1,87 @@
+/* 
+  Localizable.strings
+  RedAlert
+
+  Created by Elad on 10/27/14.
+  Copyright (c) 2021 Elad Nava. All rights reserved.
+*/
+"ERROR_DIALOG"="Erro";
+"OK_BUTTON"="OK";
+"CANCEL_BUTTON"="Cancelar";
+"EMAIL_TITLE"="Red Alert";
+"REPORT_BUG"="Fale Conosco";
+"EMAIL_BODY_ERROR_DESC"="Descrição do problema:";
+"EMAIL_BODY_SHORT_ERROR_DESC"="Por favor, insira uma mensagem com pelo menos 10 caracteres.";
+"EMAIL_BODY_SENT_VIA"="Enviado via Red Alert %@ para iPhone";
+"CONTACT_ERROR"="O e-mail não pode ser enviado deste dispositivo. Você precisa configurar o aplicativo Mail primeiro.";
+"IM_SAFE_MESSAGE"="Estou seguro - enviado via Red Alert para iOS - https://redalert.me";
+"REGISTRATION_ERROR"="Ocorreu um erro ao se registrar para receber alertas. Tente novamente mais tarde.";
+"PUSH_ERROR"="Ocorreu um erro ao se registrar para notificações push. Tente novamente mais tarde.";
+"UNREGISTERED_ERROR"="Você não está registrado para receber alertas. Ative as notificações do Red Alert nas configurações do dispositivo.\n\nVá em Ajustes -> Notificações -> RedAlert -> Permitir Notificações.";
+"RECENT_ALERTS_ERROR"="Ocorreu um erro ao conectar ao servidor do aplicativo. Tente novamente mais tarde.";
+"USER_UPDATE_ERROR"="Ocorreu um erro ao atualizar sua assinatura de alertas. Tente novamente mais tarde.";
+"SOUND_ERROR"="Ocorreu um erro ao reproduzir o som.";
+"SOUND_SAVE_ERROR"="Ocorreu um erro ao salvar o som. Tente novamente mais tarde.";
+"NOTIFICATIONS_SAVE_ERROR"="Ocorreu um erro ao salvar a configuração. Tente novamente mais tarde.";
+"SELF_TEST_ERROR"="Ocorreu um erro ao executar o autoteste. Tente novamente mais tarde.";
+"APP_NAME"="Red Alert";
+"SAVE_SUBSCRIPTIONS_FAILED"="Ocorreu um erro ao salvar a configuração. Tente novamente mais tarde.";
+"UPDATE_DIALOG_TITLE"="Nova Versão";
+"UPDATE_DIALOG_MESSAGE"="Uma nova versão deste aplicativo está disponível (%@). Por favor, atualize.";
+"UPDATE_BUTTON"="Atualizar";
+"NOT_NOW_BUTTON"="Agora Não";
+"WAIT_FOR_TEST_RESULT"="Aguarde o alerta de teste...";
+"CITY_SELECTION"="Cidades";
+"ZONE_SELECTION"="Regiões adicionais";
+"SOUND_SELECTION"="Sons";
+"SEARCH_PLACEHOLDER"="Digite palavras-chave para busca...";
+"LANGUAGE_DIALOG_TITLE"="Mudança de Idioma";
+"LANGUAGE_DIALOG_MESSAGE"="Você precisa reabrir o aplicativo após alterar o idioma.";
+"REGISTRATION_SUCCESS_TITLE"="Selecione sua cidade";
+"REGISTRATION_SUCCESS_MESSAGE"="Você deve selecionar sua cidade para começar a receber alertas.";
+"REGISTRATION_SUCCESS_RESELECT_MESSAGE"="Devido a mudanças recentes do Comando da Frente Interna, você precisa selecionar novamente sua cidade para continuar recebendo alertas.";
+
+"CITIES"="Cidades";
+"ZONES"="Regiões adicionais";
+"SECONDARY_CITIES"="Cidades secundárias";
+"MORE_INFO"="Mais informações";
+
+"SIREN_1"="Sirene 1";
+"SIREN_2"="Sirene 2";
+"SIREN_3"="Sirene 3";
+"SIREN_4"="Sirene 4";
+"SIREN_5"="Sirene 5";
+"FUNNY"="Divertido";
+"CALM_1"="Relaxante 1";
+"CALM_2"="Relaxante 2";
+"CALM_3"="Relaxante 3";
+"CALM_4"="Relaxante 4";
+"CALM_5"="Relaxante 5";
+"SHORT_1"="Curto 1";
+"SHORT_2"="Curto 2";
+"SHORT_3"="Curto 3";
+"SHORT_4"="Curto 4";
+"SHORT_5"="Curto 5";
+"SILENT"="Silencioso";
+
+"TEST"="Teste";
+"MISSILES"="Disparo de foguetes";
+"RADIOLOGICAL_EVENT"="Evento radiológico";
+"EARTHQUAKE"="Terremoto";
+"TSUNAMI"="Alerta de tsunami";
+"HOSTILE_AIRCRAFT_INTRUSION"="Intrusão de aeronave hostil";
+"HAZARDOUS_MATERIALS"="Evento com materiais perigosos";
+"TERRORIST_INFILTRATION"="Infiltração terrorista";
+"MISSILES_DRILL"="Simulação: Disparo de foguetes";
+"EARTHQUAKE_DRILL"="Simulação: Terremoto";
+"RADIOLOGICAL_EVENT_DRILL"="Simulação: Evento radiológico";
+"TSUNAMI_DRILL"="Simulação: Alerta de tsunami";
+"HOSTILE_AIRCRAFT_INTRUSION_DRILL"="Simulação: Intrusão de aeronave hostil";
+"HAZARDOUS_MATERIALS_DRILL"="Simulação: Evento com materiais perigosos";
+"TERRORIST_INFILTRATION_DRILL"="Simulação: Infiltração terrorista";
+"UNKNOWN"="Alerta";
+"SYSTEM"="Alerta do sistema";
+
+"LIFESHIELD_SHELTERS"="Abrigos Lifeshield:";
+
+

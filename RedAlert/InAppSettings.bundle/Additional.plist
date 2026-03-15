@@ -42,12 +42,14 @@
 				<string>AUTOMATIC</string>
 				<string>עברית</string>
 				<string>English</string>
+				<string>Portuguese</string>
 			</array>
 			<key>Values</key>
 			<array>
 				<string></string>
 				<string>he</string>
 				<string>en</string>
+				<string>pt-BR</string>
 			</array>
 		</dict>
 		<dict>

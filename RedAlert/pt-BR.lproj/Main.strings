@@ -1,15 +1,14 @@
-
 /* Class = "IBUIBarButtonItem"; title = "Settings"; ObjectID = "7jC-HH-oAq"; */
-"7jC-HH-oAq.title" = "Settings";
+"7jC-HH-oAq.title" = "Configurações";
 
 /* Class = "IBUITableViewController"; title = "Settings"; ObjectID = "JaO-zN-Z1I"; */
-"JaO-zN-Z1I.title" = "Settings";
+"JaO-zN-Z1I.title" = "Configurações";
 
 /* Class = "IBUITableViewController"; title = "Settings"; ObjectID = "JaO-zN-Z1I"; */
-"fmR-DC-UVs.title" = "Additional Settings";
+"fmR-DC-UVs.title" = "Configurações adicionais";
 
 /* Class = "IBUITableViewController"; title = "Settings"; ObjectID = "JaO-zN-Z1I"; */
-"nHK-zS-dkJ.title" = "Secondary Alerts";
+"nHK-zS-dkJ.title" = "Alertas secundários";
 
 /* Class = "IBUINavigationItem"; title = "Recent Alerts"; ObjectID = "Ss2-3G-LoG"; */
-"Ss2-3G-LoG.title" = "Recent Alerts";
+"Ss2-3G-LoG.title" = "Alertas recentes";
