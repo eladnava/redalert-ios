@@ -340,14 +340,14 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             
             // Add '@' sign to user-selected cities so they are sorted first
             if (shouldBoldCity(city: currentAlert.city)) {
-                currentAlert.localizedCity = "@" + currentAlert.localizedCity;
+                currentAlert.localizedCity = "@" + currentAlert.localizedCity
             }
 
             // Add current localized city name to grouped cities list
             currentAlert.groupedLocalizedCities.append(currentAlert.localizedCity)
             
             // Alert grouping date cutoff threshold (seconds)
-            let dateGroupingThreshold: Double = 3 * 60;
+            let dateGroupingThreshold: Double = 3 * 60
             
             // Check whether this new alert can be grouped with the previous one
             // (Same region + 3 minute cutoff threshold in either direction)
@@ -526,8 +526,24 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         // Get alert by index        
         let alert = alerts[indexPath.row]
         
+        // Mutuate localized city string
+        var localizedCity = alert.localizedCity
+        
+        // If at least 15 cities, display alert city count with threat name
+        if (alert.groupedCities.count >= 15) {
+            // Prefix with {threat} • {count} Cities
+            localizedCity = alert.localizedThreat + " • " + String(alert.groupedCities.count) + " " + NSLocalizedString("CITIES", comment: "Cities") + "\n\n" + alert.localizedCity
+            
+            // No need to display threat twice
+            cell.time.text = DateFormatterStruct.ConvertUnixTimestampToDateTime(unixTimestamp: alert.date)
+        }
+        else {
+            // Add threat to time label
+            cell.time.text = alert.localizedThreat + " • " + DateFormatterStruct.ConvertUnixTimestampToDateTime(unixTimestamp: alert.date)
+        }
+        
+        // Prepare text
         cell.desc.text = alert.localizedZoneWithCountdown
-        cell.time.text = alert.localizedThreat + " • " + DateFormatterStruct.ConvertUnixTimestampToDateTime(unixTimestamp: alert.date)
         
         // Fix for really annoying bug with UILabel multiline height
         cell.city.preferredMaxLayoutWidth = 0
@@ -562,8 +578,8 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             // Unlimited lines
             cell.city.numberOfLines = 0
         } else {
-            // Max 3 lines
-            cell.city.numberOfLines = 3
+            // Max 5 lines
+            cell.city.numberOfLines = 5
         }
         
         // Set ellipsis / truncation
@@ -582,19 +598,19 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         cell.city.tag = indexPath.row
         
         // Default letter spacing & size for city text
-        var letterSpacing = 0.0, cityFontSize = 18;
+        var letterSpacing = 0.0, cityFontSize = 18
         
         // Hebrew?
         if (Localization.isRTL()) {
             // Less letter spacing
-            letterSpacing = -0.3;
+            letterSpacing = -0.3
             
             // Larger font
-            cityFontSize = 20;
+            cityFontSize = 20
         }
         
         // Create an attributed string (reduce font letter spacing using .kern)
-        let attributedString = NSMutableAttributedString(string: alert.localizedCity, attributes: [.font:  UIFont(name: "Arial", size: CGFloat(cityFontSize)) ?? UIFont.systemFont(ofSize: CGFloat(cityFontSize)), .kern: letterSpacing])
+        let attributedString = NSMutableAttributedString(string: localizedCity, attributes: [.font:  UIFont(name: "Arial", size: CGFloat(cityFontSize)) ?? UIFont.systemFont(ofSize: CGFloat(cityFontSize)), .kern: letterSpacing])
 
         // Traverse all grouped cities in alert
         for city in alert.groupedCities {
@@ -604,9 +620,9 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
                 let localizedCity = LocationMetadata.getLocalizedCityName(cityName: city)
                 
                 // Find the range of localized city to replace with bold font
-                if let boldRange = alert.localizedCity.range(of: localizedCity) {
+                if let boldRange = localizedCity.range(of: localizedCity) {
                     // Apply bold font to the specified range
-                    attributedString.addAttributes([.font: UIFont(name: "Arial-BoldMT", size: CGFloat(cityFontSize)) ?? UIFont.boldSystemFont(ofSize: CGFloat(cityFontSize)), .kern: -0.2], range: NSRange(boldRange, in: alert.localizedCity))
+                    attributedString.addAttributes([.font: UIFont(name: "Arial-BoldMT", size: CGFloat(cityFontSize)) ?? UIFont.boldSystemFont(ofSize: CGFloat(cityFontSize)), .kern: -0.2], range: NSRange(boldRange, in: localizedCity))
                 }
             }
         }
@@ -652,7 +668,7 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             self.performSegue(withIdentifier: "AlertViewSegue", sender: alert)
 
             // Stop execution (no need to toggle expansion)
-            return;
+            return
         }
         
         // Toggle expansion
