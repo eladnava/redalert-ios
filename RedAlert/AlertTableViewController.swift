@@ -617,10 +617,10 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             // City / zone selected?
             if shouldBoldCity(city: city) {
                 // Get localized city name
-                let localizedCity = LocationMetadata.getLocalizedCityName(cityName: city)
+                let localizedCityName = LocationMetadata.getLocalizedCityName(cityName: city)
                 
                 // Find the range of localized city to replace with bold font
-                if let boldRange = localizedCity.range(of: localizedCity) {
+                if let boldRange = localizedCity.range(of: localizedCityName) {
                     // Apply bold font to the specified range
                     attributedString.addAttributes([.font: UIFont(name: "Arial-BoldMT", size: CGFloat(cityFontSize)) ?? UIFont.boldSystemFont(ofSize: CGFloat(cityFontSize)), .kern: -0.2], range: NSRange(boldRange, in: localizedCity))
                 }
