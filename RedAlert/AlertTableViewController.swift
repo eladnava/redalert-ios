@@ -531,15 +531,24 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         
         // If at least 15 cities, display alert city count with threat name
         if (alert.groupedCities.count >= 15) {
+            // Set alert 'has title' flag
+            alert.hasTitle = true
+            
             // Prefix with {threat} • {count} Cities
             localizedCity = alert.localizedThreat + " • " + String(alert.groupedCities.count) + " " + NSLocalizedString("CITIES", comment: "Cities") + "\n\n" + alert.localizedCity
             
             // No need to display threat twice
             cell.time.text = DateFormatterStruct.ConvertUnixTimestampToDateTime(unixTimestamp: alert.date)
+            
+            // Max 5 lines
+            cell.city.numberOfLines = 5
         }
         else {
             // Add threat to time label
             cell.time.text = alert.localizedThreat + " • " + DateFormatterStruct.ConvertUnixTimestampToDateTime(unixTimestamp: alert.date)
+            
+            // Max 3 lines
+            cell.city.numberOfLines = 3
         }
         
         // Prepare text
@@ -577,9 +586,6 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         if alert.isExpanded {
             // Unlimited lines
             cell.city.numberOfLines = 0
-        } else {
-            // Max 5 lines
-            cell.city.numberOfLines = 5
         }
         
         // Set ellipsis / truncation
@@ -645,8 +651,14 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         let row = label.tag
         let alert = alerts[row]
         
+        // Get view
+        guard let view = sender.view else { return }
+
+        // Get point
+        let point = sender.location(in: view)
+
         // Alert doesn't need expansion?
-        if (!alert.isExpanded && !label.isEllipsized) {
+        if ((alert.hasTitle && point.y < 40) || (!alert.isExpanded && !label.isEllipsized)) {
             // Get superview
             var view = label.superview
             
