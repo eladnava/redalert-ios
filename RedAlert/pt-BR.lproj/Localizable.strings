@@ -10,6 +10,9 @@
 "CANCEL_BUTTON"="Cancelar";
 "EMAIL_TITLE"="Red Alert";
 "REPORT_BUG"="Fale Conosco";
+"All"="Tudo";
+"Selected (0)"="Seleções (0)";
+"Selected (%d)"="Seleções (%d)";
 "EMAIL_BODY_ERROR_DESC"="Descrição do problema:";
 "EMAIL_BODY_SHORT_ERROR_DESC"="Por favor, insira uma mensagem com pelo menos 10 caracteres.";
 "EMAIL_BODY_SENT_VIA"="Enviado via Red Alert %@ para iPhone";

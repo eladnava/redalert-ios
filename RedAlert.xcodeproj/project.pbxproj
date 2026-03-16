@@ -111,6 +111,7 @@
 		E40053052F66F66700008D6D /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/NoAlertsView.strings"; sourceTree = "<group>"; };
 		E40053062F66F66700008D6D /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/SafeButtonView.strings"; sourceTree = "<group>"; };
 		E40053072F66F66700008D6D /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
+		E40FBA382F6821B4003ABE7B /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E412A5C319F18E1D0065B337 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E412A5C519F18EDA0065B337 /* Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
 		E412A5C819F18F2E0065B337 /* IASKAppSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IASKAppSettingsViewController.h; sourceTree = "<group>"; };
@@ -931,6 +932,7 @@
 			children = (
 				E4FEC78519FEDA00009BD163 /* en */,
 				E4FEC78619FEDA01009BD163 /* he */,
+				E40FBA382F6821B4003ABE7B /* pt-BR */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
