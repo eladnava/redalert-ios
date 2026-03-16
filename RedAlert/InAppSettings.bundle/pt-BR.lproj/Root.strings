@@ -1,0 +1,31 @@
+/* A single strings file, whose title is specified in your preferences schema. The strings files provide the localized content to display to the user for each of your preferences. */
+
+"APP"="RedAlert";
+"APP_DESC"="Ativar notificações e realizar um teste de conectividade";
+"REALTIME_NOTIFICATIONS"="Receber alertas";
+"SELF_TEST"="Auto teste";
+"ALERTS"="Alertas";
+"ALERTS_DESC"="Receber alertas sobre cidades, municípios e regiões específicas";
+"CITY_SELECTION"="Cidades";
+"ZONE_SELECTION"="Regiões adicionais";
+"ALERT_SOUND"="Som do alerta";
+"OPTIONS"="Configurações";
+"SOUNDS"="Sons";
+"SOUNDS_DESC"="Selecione o som do alerta.";
+"OPTIONS_DESC"="Configure alertas secundários, altere o idioma e mais";
+"ADDITIONAL_SETTINGS"="Configurações adicionais";
+"ADDITIONAL_ALERTS_DESC"="Configure alertas secundários além dos alertas principais";
+"SECONDARY_ALERTS"="Alertas secundários";
+"LANGUAGE"="Idioma";
+"LANGUAGE_SELECTION"="Idioma do aplicativo";
+"AUTOMATIC"="Automático";
+"LINKS"="Links";
+"LINKS_DESC"="Entre em contato, avalie o aplicativo e visite nosso site";
+"REPORT_BUG"="Fale conosco";
+"RATE_APP"="Avaliar o aplicativo";
+"VISIT_US"="Visite nosso site";
+"SECONDARY_CONTROL_DESC"="Ativar ou desativar alertas secundários";
+"SECONDARY_ALERTS_DESC"="Selecione as áreas de alerta secundário relevantes e o som";
+"SECONDARY_CITY_SELECTION"="Cidades secundárias";
+"SECONDARY_ALERT_SOUND"="Som secundário";
+"LEARN_ABOUT_LIFESHIELD"="Saiba mais sobre o Lifeshield";
