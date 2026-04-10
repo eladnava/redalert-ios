@@ -720,6 +720,12 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         else if threat.contains("earthQuake") {
             return UIImage(named: "EarthquakeIcon")
         }
+        else if threat.contains("leaveShelter") {
+            return UIImage(named: "LeaveShelterIcon")
+        }
+        else if threat.contains("earlyWarning") {
+            return UIImage(named: "EarlyWarningIcon")
+        }
         else {
             // Unknown type
             return UIImage(named: "AlertIcon")

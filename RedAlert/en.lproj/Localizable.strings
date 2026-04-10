@@ -72,6 +72,8 @@
 "HOSTILE_AIRCRAFT_INTRUSION"="Hostile aircraft intrusion";
 "HAZARDOUS_MATERIALS"="Hazardous materials event";
 "TERRORIST_INFILTRATION"="Terrorist infiltration";
+"EARLY_WARNING"="Early warning";
+"LEAVE_SHELTER"="Event ended";
 "MISSILES_DRILL"="Drill: Rocket fire";
 "EARTHQUAKE_DRILL"="Drill: Earthquake";
 "RADIOLOGICAL_EVENT_DRILL"="Drill: Radiological event";

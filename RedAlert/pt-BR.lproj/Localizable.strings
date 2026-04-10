@@ -75,6 +75,8 @@
 "HOSTILE_AIRCRAFT_INTRUSION"="Intrusão de aeronave hostil";
 "HAZARDOUS_MATERIALS"="Evento com materiais perigosos";
 "TERRORIST_INFILTRATION"="Infiltração terrorista";
+"EARLY_WARNING"="Alerta antecipado";
+"LEAVE_SHELTER"="Deixe o abrigo";
 "MISSILES_DRILL"="Simulação: Disparo de foguetes";
 "EARTHQUAKE_DRILL"="Simulação: Terremoto";
 "RADIOLOGICAL_EVENT_DRILL"="Simulação: Evento radiológico";

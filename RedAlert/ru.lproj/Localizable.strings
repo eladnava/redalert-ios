@@ -55,4 +55,7 @@
 "SHORT_5"="Short 5";
 "SILENT"="Silent";
 
+"EARLY_WARNING"="Предварительное предупреждение";
+"LEAVE_SHELTER"="Покиньте укрытие";
+
 "LIFESHIELD_SHELTERS"="Lifeshield Shelters:";

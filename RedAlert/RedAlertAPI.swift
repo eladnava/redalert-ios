@@ -393,7 +393,7 @@ struct RedAlertAPI {
     // Recent Alerts    
     static func getRecentAlerts(callback: @escaping (_ err: NSError?, _ alerts: [Alert]?) -> ()) {
         // Execute post request        
-        HTTP.getAsync(urlString: Config.apiBaseURL + "/alerts", dictionary: false) { (err: NSError?, json: AnyObject?) -> () in
+        HTTP.getAsync(urlString: Config.apiBaseURL + "/alerts/all", dictionary: false) { (err: NSError?, json: AnyObject?) -> () in
             
             // JSON parse error?            
             if let err = err {

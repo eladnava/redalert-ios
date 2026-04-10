@@ -206,6 +206,10 @@ struct LocationMetadata {
                 return NSLocalizedString("HAZARDOUS_MATERIALS", comment: "hazardousMaterials")
             case "terroristInfiltration":
                 return NSLocalizedString("TERRORIST_INFILTRATION", comment: "terroristInfiltration")
+            case "earlyWarning":
+                return NSLocalizedString("EARLY_WARNING", comment: "earlyWarning")
+            case "leaveShelter":
+                return NSLocalizedString("LEAVE_SHELTER", comment: "leaveShelter")
             case "missilesDrill":
                 return NSLocalizedString("MISSILES_DRILL", comment: "missilesDrill")
             case "earthQuakeDrill":
