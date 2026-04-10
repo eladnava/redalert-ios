@@ -334,8 +334,8 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             currentAlert.groupedCities.append(currentAlert.city)
             
             // If current alert desc is not empty, add it to grouped desc list
-            if (!currentAlert.localizedZoneWithCountdown.isEmpty) {
-                currentAlert.groupedDescriptions.append(currentAlert.localizedZoneWithCountdown)
+            if (!currentAlert.localizedZone.isEmpty) {
+                currentAlert.groupedDescriptions.append(currentAlert.localizedZone)
             }
             
             // Add '@' sign to user-selected cities so they are sorted first
@@ -358,20 +358,20 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
                 previousAlert.groupedLocalizedCities.append(currentAlert.localizedCity)
                 
                 // Add current alert zone if new
-                if !previousAlert.localizedZoneWithCountdown.contains(currentAlert.localizedZone) {
+                if !previousAlert.localizedZone.contains(currentAlert.localizedZone) {
                     // Support for unknown city (no prefixing with comma)
-                    if previousAlert.localizedZoneWithCountdown.isEmpty && !currentAlert.localizedZoneWithCountdown.isEmpty {
+                    if previousAlert.localizedZone.isEmpty && !currentAlert.localizedZone.isEmpty {
                         // Occupy previous alert's zone with current alert zone
-                        previousAlert.localizedZoneWithCountdown = currentAlert.localizedZoneWithCountdown
-                        previousAlert.groupedDescriptions.append(currentAlert.localizedZoneWithCountdown)
+                        previousAlert.localizedZone = currentAlert.localizedZone
+                        previousAlert.groupedDescriptions.append(currentAlert.localizedZone)
                     }
-                    else if currentAlert.localizedZoneWithCountdown.isEmpty {
+                    else if currentAlert.localizedZone.isEmpty {
                         // Do nothing
                     }
                     else {
                         // Comma-separated zones and countdowns
-                        previousAlert.localizedZoneWithCountdown += ", " + currentAlert.localizedZoneWithCountdown
-                        previousAlert.groupedDescriptions.append(currentAlert.localizedZoneWithCountdown)
+                        previousAlert.localizedZone += ", " + currentAlert.localizedZone
+                        previousAlert.groupedDescriptions.append(currentAlert.localizedZone)
                     }
                 }
                 
@@ -391,7 +391,7 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
 
             // Join arrays into CSV strings
             alert.localizedCity = alert.groupedLocalizedCities.joined(separator: ", ")
-            alert.localizedZoneWithCountdown = alert.groupedDescriptions.joined(separator: ", ")
+            alert.localizedZone = alert.groupedDescriptions.joined(separator: ", ")
             
             // Remove @ signs
             alert.localizedCity = alert.localizedCity.replacingOccurrences(of: "@", with: "")
@@ -531,28 +531,22 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         
         // If at least 15 cities, display alert city count with threat name
         if (alert.groupedCities.count >= 15) {
-            // Set alert 'has title' flag
-            alert.hasTitle = true
-            
             // Prefix with {threat} • {count} Cities
             localizedCity = alert.localizedThreat + " • " + String(alert.groupedCities.count) + " " + NSLocalizedString("CITIES", comment: "Cities") + "\n\n" + alert.localizedCity
-            
-            // No need to display threat twice
-            cell.time.text = DateFormatterStruct.ConvertUnixTimestampToDateTime(unixTimestamp: alert.date)
-            
-            // Max 5 lines
-            cell.city.numberOfLines = 5
         }
         else {
-            // Add threat to time label
-            cell.time.text = alert.localizedThreat + " • " + DateFormatterStruct.ConvertUnixTimestampToDateTime(unixTimestamp: alert.date)
-            
-            // Max 3 lines
-            cell.city.numberOfLines = 3
+            // Prefix with {threat} • {count} Cities
+            localizedCity = alert.localizedThreat + "\n\n" + alert.localizedCity
         }
         
+        // No need to display threat twice
+        cell.time.text = DateFormatterStruct.ConvertUnixTimestampToDateTime(unixTimestamp: alert.date)
+        
+        // Max 5 lines
+        cell.city.numberOfLines = 5
+        
         // Prepare text
-        cell.desc.text = alert.localizedZoneWithCountdown
+        cell.desc.text = alert.localizedZone
         
         // Fix for really annoying bug with UILabel multiline height
         cell.city.preferredMaxLayoutWidth = 0
@@ -561,7 +555,7 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         cell.desc.preferredMaxLayoutWidth = 0
         
         // No cities? Protect against UI failure
-        if (alert.localizedZoneWithCountdown == "") {
+        if (alert.localizedZone == "") {
             cell.desc.text = " "
         }
         
@@ -658,7 +652,7 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         let point = sender.location(in: view)
 
         // Alert doesn't need expansion?
-        if ((alert.hasTitle && point.y < 40) || (!alert.isExpanded && !label.isEllipsized)) {
+        if (point.y < 40 || (!alert.isExpanded && !label.isEllipsized)) {
             // Get superview
             var view = label.superview
             
