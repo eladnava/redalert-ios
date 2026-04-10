@@ -350,10 +350,16 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             let dateGroupingThreshold: Double = 3 * 60
             
             // Check whether this new alert can be grouped with the previous one
-            // (Same region + 3 minute cutoff threshold in either direction)
+            // (Same threat + same region + 3 minute cutoff threshold in either direction)
             if let previousAlert = lastAlert,
+                currentAlert.localizedThreat == previousAlert.localizedThreat,
                 currentAlert.date >= previousAlert.date - dateGroupingThreshold,
                 currentAlert.date <= previousAlert.date + dateGroupingThreshold {
+                // Skip duplicate alerts for same city name
+                if (previousAlert.groupedLocalizedCities.contains(currentAlert.localizedCity)) {
+                    continue
+                }
+                
                 // Group with the previous alert list item
                 previousAlert.groupedLocalizedCities.append(currentAlert.localizedCity)
                 
