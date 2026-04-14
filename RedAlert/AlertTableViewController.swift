@@ -460,14 +460,17 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
     }
     
     func toggleNetworkActivity(visible: Bool) {
-        // Toggle iOS status bar network activity indicator
-        UIApplication.shared.isNetworkActivityIndicatorVisible = visible
-        
-        // Pulled to refresh?
-        if pullToRefresh.isRefreshing && !visible {
-            // Hide loading indicator
-            pullToRefresh.endRefreshing()
-        }
+        // Run code on UI thread
+        DispatchQueue.main.async(execute: {
+            // Toggle iOS status bar network activity indicator
+            UIApplication.shared.isNetworkActivityIndicatorVisible = visible
+            
+            // Pulled to refresh?
+            if self.pullToRefresh.isRefreshing && !visible {
+                // Hide loading indicator
+                self.pullToRefresh.endRefreshing()
+            }
+        })
     }
     
     // Out-of-memory    
