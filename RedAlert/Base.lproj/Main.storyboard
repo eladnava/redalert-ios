@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iUn-hH-bSw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iUn-hH-bSw">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,7 +12,7 @@
             <objects>
                 <tableViewController id="BZT-Tm-3he" customClass="AlertTableViewController" customModule="RedAlert" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="84" sectionHeaderHeight="22" sectionFooterHeight="22" id="t8S-mE-q3z">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.92000001668930054" green="0.92000001668930054" blue="0.92000001668930054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -26,19 +26,19 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" restorationIdentifier="Title" text="Dan 161" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="79" translatesAutoresizingMaskIntoConstraints="NO" id="Fuq-zH-5hN">
-                                            <rect key="frame" x="11" y="12" width="303" height="24"/>
+                                            <rect key="frame" x="11" y="12" width="293" height="24"/>
                                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
                                             <color key="textColor" red="0.26262813354983472" green="0.26262813354983472" blue="0.26262813354983472" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Nir Oz, Alumim" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="518" translatesAutoresizingMaskIntoConstraints="NO" id="quQ-XG-RIT">
-                                            <rect key="frame" x="11" y="40" width="303" height="19.5"/>
+                                            <rect key="frame" x="11" y="40" width="293" height="19.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.34318747770304636" green="0.34318747770304636" blue="0.34318747770304636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="13:03:31" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="52" translatesAutoresizingMaskIntoConstraints="NO" id="sm6-0m-u6c">
-                                            <rect key="frame" x="11" y="62.5" width="303" height="15"/>
+                                            <rect key="frame" x="11" y="62.5" width="293" height="15"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.34129908048745361" green="0.34129908048745361" blue="0.34129908048745361" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -53,16 +53,16 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Fuq-zH-5hN" firstAttribute="leading" secondItem="W4b-Uu-Z1K" secondAttribute="leadingMargin" constant="-5" id="13B-vi-PhB"/>
-                                        <constraint firstItem="ohz-QQ-kLI" firstAttribute="leading" secondItem="sm6-0m-u6c" secondAttribute="trailing" constant="5" id="IWJ-gd-cGE"/>
+                                        <constraint firstItem="ohz-QQ-kLI" firstAttribute="leading" secondItem="sm6-0m-u6c" secondAttribute="trailing" constant="15" id="IWJ-gd-cGE"/>
                                         <constraint firstItem="Fuq-zH-5hN" firstAttribute="top" secondItem="W4b-Uu-Z1K" secondAttribute="topMargin" id="MN1-AB-UWv"/>
                                         <constraint firstItem="quQ-XG-RIT" firstAttribute="leading" secondItem="W4b-Uu-Z1K" secondAttribute="leadingMargin" constant="-5" id="PML-so-tmJ"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="ohz-QQ-kLI" secondAttribute="trailingMargin" id="QMC-dI-p7a"/>
-                                        <constraint firstItem="ohz-QQ-kLI" firstAttribute="leading" secondItem="Fuq-zH-5hN" secondAttribute="trailing" constant="5" id="Ual-oQ-29Y"/>
+                                        <constraint firstItem="ohz-QQ-kLI" firstAttribute="leading" secondItem="Fuq-zH-5hN" secondAttribute="trailing" constant="15" id="Ual-oQ-29Y"/>
                                         <constraint firstAttribute="bottom" secondItem="sm6-0m-u6c" secondAttribute="bottom" constant="6.5" id="bEe-qK-9AS"/>
                                         <constraint firstItem="quQ-XG-RIT" firstAttribute="leading" secondItem="sm6-0m-u6c" secondAttribute="leading" id="cAL-78-KSQ"/>
                                         <constraint firstItem="sm6-0m-u6c" firstAttribute="top" secondItem="quQ-XG-RIT" secondAttribute="bottom" constant="3" id="f0x-jT-2am"/>
                                         <constraint firstItem="quQ-XG-RIT" firstAttribute="top" secondItem="Fuq-zH-5hN" secondAttribute="bottom" constant="4" id="lRn-nv-YWp"/>
-                                        <constraint firstItem="ohz-QQ-kLI" firstAttribute="leading" secondItem="quQ-XG-RIT" secondAttribute="trailing" constant="5" id="sPx-cN-XXl"/>
+                                        <constraint firstItem="ohz-QQ-kLI" firstAttribute="leading" secondItem="quQ-XG-RIT" secondAttribute="trailing" constant="15" id="sPx-cN-XXl"/>
                                         <constraint firstItem="ohz-QQ-kLI" firstAttribute="centerY" secondItem="W4b-Uu-Z1K" secondAttribute="centerY" id="txV-NB-Uk5"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -99,7 +99,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="Settings" title="Settings" id="JaO-zN-Z1I" customClass="SettingsViewController" customModule="RedAlert" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="BgE-Rw-2Bc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -187,7 +187,7 @@
                         <viewControllerLayoutGuide type="bottom" id="VxS-Lr-Z5n"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="h74-SZ-Vco">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zbu-A1-zJ4">
@@ -219,7 +219,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iUn-hH-bSw" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="2N1-Fq-XE4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.14627013543639522" green="0.14627013543639522" blue="0.14627013543639522" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="1" green="0.17721694270642829" blue="0.16755211110946144" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
