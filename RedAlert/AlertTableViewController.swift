@@ -615,15 +615,12 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         cell.cities.tag = indexPath.row
         
         // Default letter spacing & size for city text
-        var letterSpacing = 0.0, boldLetterSpacing = 0.0, cityFontSize = 18
+        var letterSpacing = 0.0, cityFontSize = 18
         
         // Hebrew?
         if (Localization.isRTL()) {
             // Less letter spacing
-            letterSpacing = -0.8
-            
-            // Less bold letter spacing
-            boldLetterSpacing = -0.5
+            letterSpacing = -0.5
             
             // Larger font
             cityFontSize = 20
@@ -642,7 +639,7 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
                 // Find the range of localized city to replace with bold font
                 if let boldRange = alert.localizedCity.range(of: localizedCityName) {
                     // Apply bold font to the specified range
-                    attributedString.addAttributes([.font: UIFont(name: "Arial-BoldMT", size: CGFloat(cityFontSize)) ?? UIFont.boldSystemFont(ofSize: CGFloat(cityFontSize)), .kern: boldLetterSpacing], range: NSRange(boldRange, in: alert.localizedCity))
+                    attributedString.addAttributes([.font: UIFont(name: "Arial-BoldMT", size: CGFloat(cityFontSize)) ?? UIFont.boldSystemFont(ofSize: CGFloat(cityFontSize)), .kern: letterSpacing], range: NSRange(boldRange, in: alert.localizedCity))
                 }
             }
         }
