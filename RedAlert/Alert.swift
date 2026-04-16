@@ -9,7 +9,7 @@
 import Foundation
 
 class Alert {
-    var city: String, date: Double, threat: String, localizedThreat: String, localizedZone: String, localizedCity: String, groupedCities: [String], groupedLocalizedCities: [String], groupedDescriptions: [String], isExpanded = false
+    var city: String, date: Double, threat: String, localizedThreat: String, localizedZone: String, localizedCity: String, groupedCities: [String], groupedLocalizedCities: [String], groupedDescriptions: [String], isExpanded = false, minDate: Double, maxDate: Double
     
     // Main INIT function
     init(city: String, date: Double, threat: String) {
@@ -27,5 +27,9 @@ class Alert {
         self.groupedCities = []
         self.groupedDescriptions = []
         self.groupedLocalizedCities = []
+
+        // Initialize date range
+        self.minDate = date
+        self.maxDate = date
     }
 }

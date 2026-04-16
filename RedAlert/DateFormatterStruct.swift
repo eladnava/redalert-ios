@@ -44,4 +44,32 @@ struct DateFormatterStruct {
         }
 
     }
+    
+    static func ConvertUnixTimestampRangeToDateTime(minTimestamp: Double, maxTimestamp: Double) -> String {
+        // Convert timestamps to Date objects
+        let minDate = Date(timeIntervalSince1970: TimeInterval(minTimestamp))
+        let maxDate = Date(timeIntervalSince1970: TimeInterval(maxTimestamp))
+
+        // Prepare date formatter
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss"
+        
+        let minTime = dateFormatter.string(from: minDate)
+        let maxTime = dateFormatter.string(from: maxDate)
+        
+        // iOS 13+ required to access RelativeDateTimeFormatter
+        if #available(iOS 13.0, *) {
+            // Initialize formatter
+            let relativeFormatter = RelativeDateTimeFormatter()
+
+            // Calculate relative time ago (use min date)
+            let relativeDate = relativeFormatter.localizedString(for: minDate, relativeTo: Date())
+            
+            // Return relative date with time range
+            return relativeDate + " (" + minTime + " - " + maxTime + ")"
+        } else {
+            // Fallback to just displaying the time range
+            return minTime + " - " + maxTime
+        }
+    }
 }

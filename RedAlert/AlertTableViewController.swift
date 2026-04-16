@@ -382,6 +382,10 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
                 }
                 
                 previousAlert.groupedCities.append(currentAlert.city)
+                
+                // Update date range
+                previousAlert.minDate = min(previousAlert.minDate, currentAlert.date)
+                previousAlert.maxDate = max(previousAlert.maxDate, currentAlert.date)
             } else {
                 // New alert (not grouped with the previous item)
                 groupedAlerts.append(currentAlert)
@@ -548,14 +552,21 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             title = alert.localizedThreat
         }
         
-        // Display capitalized title
-        cell.title.text = title.capitalized
+        // Display title
+        cell.title.text = title
         
         // Max 3 lines for cities
         cell.cities.numberOfLines = 3
         
         // Prepare time text
-        cell.time.text = DateFormatterStruct.ConvertUnixTimestampToDateTime(unixTimestamp: alert.date)
+        if alert.groupedCities.count > 1 && alert.minDate != alert.maxDate {
+            cell.time.text = DateFormatterStruct.ConvertUnixTimestampRangeToDateTime(minTimestamp: alert.minDate, maxTimestamp: alert.maxDate)
+        } else {
+            cell.time.text = DateFormatterStruct.ConvertUnixTimestampToDateTime(unixTimestamp: alert.date)
+        }
+        
+        // Capitalize first letter only
+        cell.time.text = cell.time.text?.capitalizeFirstWordOnly()
         
         // Zones label
         cell.zones.text = alert.localizedZone
@@ -578,6 +589,7 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             // Reduce font letter spacing
             cell.title.attributedText = NSAttributedString(string: cell.title.text!, attributes: [.kern: -0.3])
             cell.time.attributedText = NSAttributedString(string: cell.time.text!, attributes: [.kern: -0.3])
+            cell.cities.attributedText = NSAttributedString(string: cell.cities.text!, attributes: [.kern: -0.3])
         }
         
         
@@ -603,12 +615,15 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         cell.cities.tag = indexPath.row
         
         // Default letter spacing & size for city text
-        var letterSpacing = 0.0, cityFontSize = 18
+        var letterSpacing = 0.0, boldLetterSpacing = 0.0, cityFontSize = 18
         
         // Hebrew?
         if (Localization.isRTL()) {
             // Less letter spacing
-            letterSpacing = -0.3
+            letterSpacing = -0.8
+            
+            // Less bold letter spacing
+            boldLetterSpacing = -0.5
             
             // Larger font
             cityFontSize = 20
@@ -627,7 +642,7 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
                 // Find the range of localized city to replace with bold font
                 if let boldRange = alert.localizedCity.range(of: localizedCityName) {
                     // Apply bold font to the specified range
-                    attributedString.addAttributes([.font: UIFont(name: "Arial-BoldMT", size: CGFloat(cityFontSize)) ?? UIFont.boldSystemFont(ofSize: CGFloat(cityFontSize)), .kern: -0.2], range: NSRange(boldRange, in: alert.localizedCity))
+                    attributedString.addAttributes([.font: UIFont(name: "Arial-BoldMT", size: CGFloat(cityFontSize)) ?? UIFont.boldSystemFont(ofSize: CGFloat(cityFontSize)), .kern: boldLetterSpacing], range: NSRange(boldRange, in: alert.localizedCity))
                 }
             }
         }
@@ -744,6 +759,12 @@ extension CGSize{
 extension CGPoint{
     init(_ x:CGFloat,_ y:CGFloat) {
         self.init(x:x,y:y)
+    }
+}
+
+extension String {
+    func capitalizeFirstWordOnly() -> String {
+        return prefix(1).uppercased() + dropFirst().lowercased()
     }
 }
 
