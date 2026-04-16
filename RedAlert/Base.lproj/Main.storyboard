@@ -18,36 +18,42 @@
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <color key="sectionIndexBackgroundColor" red="0.92000001668930054" green="0.92000001668930054" blue="0.92000001668930054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="Cell" rowHeight="84" id="lQs-L7-7ou" customClass="AlertTableViewCell" customModule="RedAlert" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="375" height="84"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="Cell" rowHeight="100" id="lQs-L7-7ou" customClass="AlertTableViewCell" customModule="RedAlert" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lQs-L7-7ou" id="W4b-Uu-Z1K">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" restorationIdentifier="Title" text="Dan 161" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="79" translatesAutoresizingMaskIntoConstraints="NO" id="Fuq-zH-5hN">
-                                            <rect key="frame" x="11" y="12" width="293" height="24"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" restorationIdentifier="Title" text="Rocket fire" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="79" translatesAutoresizingMaskIntoConstraints="NO" id="Fuq-zH-5hN">
+                                            <rect key="frame" x="11" y="12" width="297" height="41"/>
                                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
                                             <color key="textColor" red="0.26262813354983472" green="0.26262813354983472" blue="0.26262813354983472" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Nir Oz, Alumim" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="518" translatesAutoresizingMaskIntoConstraints="NO" id="quQ-XG-RIT">
-                                            <rect key="frame" x="11" y="40" width="293" height="19.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="A few seconds ago (00:01)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="518" translatesAutoresizingMaskIntoConstraints="NO" id="quQ-XG-RIT">
+                                            <rect key="frame" x="11" y="40" width="297" height="19.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.34318747770304636" green="0.34318747770304636" blue="0.34318747770304636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="13:03:31" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="52" translatesAutoresizingMaskIntoConstraints="NO" id="sm6-0m-u6c">
-                                            <rect key="frame" x="11" y="62.5" width="293" height="15"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Nir Oz, Alumim" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="52" translatesAutoresizingMaskIntoConstraints="NO" id="sm6-0m-u6c">
+                                            <rect key="frame" x="11" y="62.5" width="297" height="15"/>
+                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
                                             <color key="textColor" red="0.34129908048745361" green="0.34129908048745361" blue="0.34129908048745361" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AlertIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ohz-QQ-kLI">
-                                            <rect key="frame" x="319" y="18" width="48" height="48"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Confrontation Line" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="52" translatesAutoresizingMaskIntoConstraints="NO" id="jkl-01-234">
+                                            <rect key="frame" x="11" y="80.5" width="112.5" height="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.34129908048745361" green="0.34129908048745361" blue="0.34129908048745361" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="AlertIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ohz-QQ-kLI">
+                                            <rect key="frame" x="319" y="26" width="46" height="46"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="48" id="Kgd-nq-5c2"/>
-                                                <constraint firstAttribute="height" constant="48" id="a8y-42-kiC"/>
+                                                <constraint firstAttribute="width" constant="44" id="Kgd-nq-5c2"/>
+                                                <constraint firstAttribute="height" constant="44" id="a8y-42-kiC"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
@@ -58,10 +64,12 @@
                                         <constraint firstItem="quQ-XG-RIT" firstAttribute="leading" secondItem="W4b-Uu-Z1K" secondAttribute="leadingMargin" constant="-5" id="PML-so-tmJ"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="ohz-QQ-kLI" secondAttribute="trailingMargin" id="QMC-dI-p7a"/>
                                         <constraint firstItem="ohz-QQ-kLI" firstAttribute="leading" secondItem="Fuq-zH-5hN" secondAttribute="trailing" constant="15" id="Ual-oQ-29Y"/>
-                                        <constraint firstAttribute="bottom" secondItem="sm6-0m-u6c" secondAttribute="bottom" constant="6.5" id="bEe-qK-9AS"/>
+                                        <constraint firstAttribute="bottom" secondItem="jkl-01-234" secondAttribute="bottom" constant="10" id="bEe-qK-9AS"/>
                                         <constraint firstItem="quQ-XG-RIT" firstAttribute="leading" secondItem="sm6-0m-u6c" secondAttribute="leading" id="cAL-78-KSQ"/>
-                                        <constraint firstItem="sm6-0m-u6c" firstAttribute="top" secondItem="quQ-XG-RIT" secondAttribute="bottom" constant="3" id="f0x-jT-2am"/>
-                                        <constraint firstItem="quQ-XG-RIT" firstAttribute="top" secondItem="Fuq-zH-5hN" secondAttribute="bottom" constant="4" id="lRn-nv-YWp"/>
+                                        <constraint firstItem="sm6-0m-u6c" firstAttribute="top" secondItem="quQ-XG-RIT" secondAttribute="bottom" constant="5" id="f0x-jT-2am"/>
+                                        <constraint firstItem="quQ-XG-RIT" firstAttribute="top" secondItem="Fuq-zH-5hN" secondAttribute="bottom" constant="5" id="lRn-nv-YWp"/>
+                                        <constraint firstItem="jkl-01-234" firstAttribute="leading" secondItem="sm6-0m-u6c" secondAttribute="leading" id="mno-56-789"/>
+                                        <constraint firstItem="jkl-01-234" firstAttribute="top" secondItem="sm6-0m-u6c" secondAttribute="bottom" constant="5" id="pqr-90-123"/>
                                         <constraint firstItem="ohz-QQ-kLI" firstAttribute="leading" secondItem="quQ-XG-RIT" secondAttribute="trailing" constant="15" id="sPx-cN-XXl"/>
                                         <constraint firstItem="ohz-QQ-kLI" firstAttribute="centerY" secondItem="W4b-Uu-Z1K" secondAttribute="centerY" id="txV-NB-Uk5"/>
                                     </constraints>
@@ -69,10 +77,11 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
-                                    <outlet property="city" destination="Fuq-zH-5hN" id="XVy-1N-nNv"/>
-                                    <outlet property="desc" destination="quQ-XG-RIT" id="Nl4-ch-fFX"/>
+                                    <outlet property="cities" destination="sm6-0m-u6c" id="3i1-XE-xLc"/>
                                     <outlet property="threatImage" destination="ohz-QQ-kLI" id="fKo-wI-ygG"/>
-                                    <outlet property="time" destination="sm6-0m-u6c" id="3i1-XE-xLc"/>
+                                    <outlet property="time" destination="quQ-XG-RIT" id="Nl4-ch-fFX"/>
+                                    <outlet property="title" destination="Fuq-zH-5hN" id="XVy-1N-nNv"/>
+                                    <outlet property="zones" destination="jkl-01-234" id="stu-45-678"/>
                                     <segue destination="nx8-0S-zAB" kind="show" identifier="AlertViewSegue" id="Zo5-Xr-OIf"/>
                                 </connections>
                             </tableViewCell>

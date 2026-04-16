@@ -9,9 +9,10 @@
 import UIKit
 
 class AlertTableViewCell: UITableViewCell {
-    @IBOutlet weak var city: UILabel!
-    @IBOutlet weak var desc: UILabel!
+    @IBOutlet weak var title: UILabel!
     @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var cities: UILabel!
+    @IBOutlet weak var zones: UILabel!
     @IBOutlet weak var threatImage: UIImageView!
 
     override func awakeFromNib() {

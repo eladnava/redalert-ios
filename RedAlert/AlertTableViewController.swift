@@ -536,51 +536,47 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         let alert = alerts[indexPath.row]
         
         // Mutuate localized city string
-        var localizedCity = alert.localizedCity
+        var title: String
         
         // If at least 15 cities, display alert city count with threat name
         if (alert.groupedCities.count >= 15) {
             // Prefix with {threat} • {count} Cities
-            localizedCity = alert.localizedThreat + " • " + String(alert.groupedCities.count) + " " + NSLocalizedString("CITIES", comment: "Cities") + "\n\n" + alert.localizedCity
+            title = alert.localizedThreat + " • " + String(alert.groupedCities.count) + " " + NSLocalizedString("CITIES", comment: "Cities")
         }
         else {
             // Prefix with {threat} • {count} Cities
-            localizedCity = alert.localizedThreat + "\n\n" + alert.localizedCity
+            title = alert.localizedThreat
         }
         
-        // No need to display threat twice
+        // Display capitalized title
+        cell.title.text = title.capitalized
+        
+        // Max 3 lines for cities
+        cell.cities.numberOfLines = 3
+        
+        // Prepare time text
         cell.time.text = DateFormatterStruct.ConvertUnixTimestampToDateTime(unixTimestamp: alert.date)
         
-        // Max 5 lines
-        cell.city.numberOfLines = 5
-        
-        // Prepare text
-        cell.desc.text = alert.localizedZone
+        // Zones label
+        cell.zones.text = alert.localizedZone
         
         // Fix for really annoying bug with UILabel multiline height
-        cell.city.preferredMaxLayoutWidth = 0
-        
-        // Disable truncation for zone names & countdown list
-        cell.desc.preferredMaxLayoutWidth = 0
-        
-        // No cities? Protect against UI failure
-        if (alert.localizedZone == "") {
-            cell.desc.text = " "
-        }
+        cell.cities.preferredMaxLayoutWidth = 0
         
         // RTL cities in case device language is Hebrew        
         if (Localization.isRTL()) {
             // Set text alignment to RTL            
-            cell.city.textAlignment = NSTextAlignment.right
-            cell.desc.textAlignment = NSTextAlignment.right
+            cell.title.textAlignment = NSTextAlignment.right
             cell.time.textAlignment = NSTextAlignment.right
-            
+            cell.cities.textAlignment = NSTextAlignment.right
+            cell.zones.textAlignment = NSTextAlignment.right
+
             // Increase font size in case device language is Hebrew
-            cell.desc.font = cell.desc.font.withSize(16)
-            cell.time.font = cell.time.font.withSize(14)
+            cell.title.font = cell.title.font.withSize(19)
+            cell.zones.font = cell.zones.font.withSize(14)
             
             // Reduce font letter spacing
-            cell.desc.attributedText = NSAttributedString(string: cell.desc.text!, attributes: [.kern: -0.3])
+            cell.title.attributedText = NSAttributedString(string: cell.title.text!, attributes: [.kern: -0.3])
             cell.time.attributedText = NSAttributedString(string: cell.time.text!, attributes: [.kern: -0.3])
         }
         
@@ -588,23 +584,23 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         // Alert already expanded?
         if alert.isExpanded {
             // Unlimited lines
-            cell.city.numberOfLines = 0
+            cell.cities.numberOfLines = 0
         }
         
         // Set ellipsis / truncation
-        cell.city.lineBreakMode = .byTruncatingTail
+        cell.cities.lineBreakMode = .byTruncatingTail
         
         // Capture click event
-        cell.city.isUserInteractionEnabled = true
+        cell.cities.isUserInteractionEnabled = true
         
         // Remove previous gesture recognizers to avoid duplicates
-        cell.city.gestureRecognizers?.forEach { cell.city.removeGestureRecognizer($0) }
+        cell.cities.gestureRecognizers?.forEach { cell.cities.removeGestureRecognizer($0) }
 
         // Add tap event on UILabel
-        cell.city.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cityLabelTapped(_:))))
+        cell.cities.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cityLabelTapped(_:))))
 
         // Tag the label with the indexPath.row so we know which alert it belongs to
-        cell.city.tag = indexPath.row
+        cell.cities.tag = indexPath.row
         
         // Default letter spacing & size for city text
         var letterSpacing = 0.0, cityFontSize = 18
@@ -619,7 +615,7 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         }
         
         // Create an attributed string (reduce font letter spacing using .kern)
-        let attributedString = NSMutableAttributedString(string: localizedCity, attributes: [.font:  UIFont(name: "Arial", size: CGFloat(cityFontSize)) ?? UIFont.systemFont(ofSize: CGFloat(cityFontSize)), .kern: letterSpacing])
+        let attributedString = NSMutableAttributedString(string: alert.localizedCity, attributes: [.font:  UIFont(name: "Arial", size: CGFloat(cityFontSize)) ?? UIFont.systemFont(ofSize: CGFloat(cityFontSize)), .kern: letterSpacing])
 
         // Traverse all grouped cities in alert
         for city in alert.groupedCities {
@@ -629,15 +625,15 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
                 let localizedCityName = LocationMetadata.getLocalizedCityName(cityName: city)
                 
                 // Find the range of localized city to replace with bold font
-                if let boldRange = localizedCity.range(of: localizedCityName) {
+                if let boldRange = alert.localizedCity.range(of: localizedCityName) {
                     // Apply bold font to the specified range
-                    attributedString.addAttributes([.font: UIFont(name: "Arial-BoldMT", size: CGFloat(cityFontSize)) ?? UIFont.boldSystemFont(ofSize: CGFloat(cityFontSize)), .kern: -0.2], range: NSRange(boldRange, in: localizedCity))
+                    attributedString.addAttributes([.font: UIFont(name: "Arial-BoldMT", size: CGFloat(cityFontSize)) ?? UIFont.boldSystemFont(ofSize: CGFloat(cityFontSize)), .kern: -0.2], range: NSRange(boldRange, in: alert.localizedCity))
                 }
             }
         }
         
         // Set city as attributed text for bold styling to work
-        cell.city.attributedText = attributedString
+        cell.cities.attributedText = attributedString
         
         // Update image based on threat type
         cell.threatImage.image = getThreatImage(alert.threat)
@@ -653,15 +649,9 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         // Get row number
         let row = label.tag
         let alert = alerts[row]
-        
-        // Get view
-        guard let view = sender.view else { return }
-
-        // Get point
-        let point = sender.location(in: view)
-
+                
         // Alert doesn't need expansion?
-        if (point.y < 40 || (!alert.isExpanded && !label.isEllipsized)) {
+        if (!alert.isExpanded && !label.isEllipsized) {
             // Get superview
             var view = label.superview
             
@@ -717,8 +707,8 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         else if threat.contains("missiles") {
             return UIImage(named: "AlertIcon")
         }
-        else if threat.contains("terroristInfilitration") {
-            return UIImage(named: "TerroristInfilitrationIcon")
+        else if threat.contains("terroristInfiltration") {
+            return UIImage(named: "TerroristInfiltrationIcon")
         }
         else if threat.contains("earthQuake") {
             return UIImage(named: "EarthquakeIcon")
