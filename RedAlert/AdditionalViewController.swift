@@ -31,30 +31,34 @@ class AdditonalViewController: IASKAppSettingsViewController, IASKSettingsDelega
     }
     
     @objc func settingChanged(notif: NSNotification) {
-        // Handle langauge changes        
-        if (notif.object as! String != "language") {
-            return
+        // Handle language changes
+        if (notif.object as! String == UserSettingsKeys.language) {
+            // Update language
+            self.saveAppLanguage()
         }
         
-        // Update server        
-        self.saveAppLanguage()
+        // Handle volume changes
+        else if (notif.object as! String == UserSettingsKeys.primaryVolume) {
+            // Update volume
+            self.saveVolume()
+        }
     }
     
     func saveAppLanguage() {
-        // Get new language        
+        // Get new language
         let language = UserSettings.getString(key: UserSettingsKeys.language, defaultValue: "")
         
-        // Show loading dialog        
+        // Show loading dialog
         MBProgressHUD.showAdded(to: self.navigationController?.view, animated: true)
         
-        // Re-subscribe        
+        // Re-subscribe
         RedAlertAPI.updateLanguageAsync(language: language) { (err: NSError?) -> () in
             
-            // Hide loading dialog            
+            // Hide loading dialog
             MBProgressHUD.hide(for: self.navigationController?.view, animated: true)
             
             // Error?
-            if let theErr = err {                
+            if let theErr = err {
                 // Default message
                 var message = NSLocalizedString("NOTIFICATIONS_SAVE_ERROR", comment: "Error saving notifications")
                 
@@ -67,11 +71,36 @@ class AdditonalViewController: IASKAppSettingsViewController, IASKSettingsDelega
                 return Dialogs.error(message: message)
             }
             
-            // Override the language            
+            // Override the language
             Localization.overrideAppLanguage()
             
-            // Tell user to reopen app            
+            // Tell user to reopen app
             self.languageChanged()
+        }
+    }
+    
+    func saveVolume() {
+        // Show loading dialog
+        MBProgressHUD.showAdded(to: self.navigationController?.view, animated: true)
+        
+        // Update sounds & volume
+        RedAlertAPI.updateSoundsAsync(primary: "", secondary: "") { (err: NSError?) -> () in
+            // Hide loading dialog
+            MBProgressHUD.hide(for: self.navigationController?.view, animated: true)
+            
+            // Error?
+            if let theErr = err {
+                // Default message
+                var message = NSLocalizedString("SOUND_SAVE_ERROR", comment: "Error saving volume")
+                
+                // Error provided?
+                if let errMsg = theErr.userInfo["error"] as? String {
+                    message += "\n\n" + errMsg
+                }
+                
+                // Show the error
+                return Dialogs.error(message: message)
+            }
         }
     }
     

@@ -51,7 +51,24 @@ struct UserSettings {
         }
     }
     
+    static func getDouble(key: String, defaultValue: Double) -> Double {
+        // Check if it exists first
+        if (UserDefaults.standard.object(forKey: key) != nil) {
+            // Return stored value
+            return UserDefaults.standard.double(forKey: key)
+        }
+        else {
+            // Return default value if doesn't exist yet
+            return defaultValue
+        }
+    }
+    
     static func setBool(key: String, value: Bool) {
+        // Set stored value        
+        return UserDefaults.standard.set(value, forKey: key)
+    }
+    
+    static func setDouble(key: String, value: Double) {
         // Set stored value        
         return UserDefaults.standard.set(value, forKey: key)
     }

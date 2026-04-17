@@ -28,10 +28,49 @@ class SecondaryViewController: IASKAppSettingsViewController, IASKSettingsDelega
     
     override func viewWillAppear(_ animated: Bool) {
         // Listen to toggle change event        
-        NotificationCenter.default.addObserver(self, selector: #selector(SecondaryViewController.toggleChanged), name: NSNotification.Name(rawValue: "kAppSettingChanged"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SecondaryViewController.settingChanged), name: NSNotification.Name(rawValue: "kAppSettingChanged"), object: nil)
     }
     
-    @objc func toggleChanged() {
+    @objc func settingChanged(notif: NSNotification) {
+        // Handle toggle changes
+        if (notif.object as! String == UserSettingsKeys.secondaryNotifications) {
+            // Update toggle
+            self.secondaryToggleChanged()
+        }
+        
+        // Handle volume changes
+        else if (notif.object as! String == UserSettingsKeys.secondaryVolume) {
+            // Update volume
+            self.saveVolume()
+        }
+    }
+    
+    func saveVolume() {
+        // Show loading dialog
+        MBProgressHUD.showAdded(to: self.navigationController?.view, animated: true)
+        
+        // Update sounds & volume
+        RedAlertAPI.updateSoundsAsync(primary: "", secondary: "") { (err: NSError?) -> () in
+            // Hide loading dialog
+            MBProgressHUD.hide(for: self.navigationController?.view, animated: true)
+            
+            // Error?
+            if let theErr = err {
+                // Default message
+                var message = NSLocalizedString("SOUND_SAVE_ERROR", comment: "Error saving volume")
+                
+                // Error provided?
+                if let errMsg = theErr.userInfo["error"] as? String {
+                    message += "\n\n" + errMsg
+                }
+                
+                // Show the error
+                return Dialogs.error(message: message)
+            }
+        }
+    }
+    
+    @objc func secondaryToggleChanged() {
         // Do something
         let value = UserSettings.getBool(key: UserSettingsKeys.notifications, defaultValue: true)
         let secondaryValue = UserSettings.getBool(key: UserSettingsKeys.secondaryNotifications, defaultValue: true)

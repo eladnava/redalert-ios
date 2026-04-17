@@ -8,6 +8,26 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
+			<string>VOLUME_LEVEL</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSSliderSpecifier</string>
+			<key>Title</key>
+			<string>VOLUME</string>
+			<key>Key</key>
+			<string>primaryVolume</string>
+			<key>DefaultValue</key>
+			<real>1.0</real>
+			<key>MinimumValue</key>
+			<real>0.0</real>
+			<key>MaximumValue</key>
+			<real>1.0</real>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
 			<string>ALERTS</string>
 			<key>FooterText</key>
 			<string>ADDITIONAL_ALERTS_DESC</string>

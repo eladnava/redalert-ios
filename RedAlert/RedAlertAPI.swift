@@ -332,8 +332,12 @@ struct RedAlertAPI {
         let primary = (primary.isEmpty) ? UserSettings.getString(key: UserSettingsKeys.soundSelection, defaultValue: UserSettingsDefaults.soundSelection) : primary
         let secondary = (secondary.isEmpty) ? UserSettings.getString(key: UserSettingsKeys.secondarySoundSelection, defaultValue: UserSettingsDefaults.secondarySoundSelection) : secondary
         
+        // Get volumes (round to 2 decimal places)
+        let primaryVolume = UserSettings.getDouble(key: UserSettingsKeys.primaryVolume, defaultValue: UserSettingsDefaults.primaryVolume).rounded(to: 2)
+        let secondaryVolume = UserSettings.getDouble(key: UserSettingsKeys.secondaryVolume, defaultValue: UserSettingsDefaults.secondaryVolume).rounded(to: 2)
+                
         // Prepare post data        
-        let params = ["primary": primary, "secondary": secondary, "uid": uid, "hash": hash]
+        let params = ["primary": primary, "secondary": secondary, "primaryVolume": primaryVolume, "secondaryVolume": secondaryVolume, "uid": uid, "hash": hash] as [String : Any]
         
         // Execute post request        
         HTTP.postAsync(urlString: Config.apiBaseURL + "/update/sounds", params: params as [String : AnyObject]) { (err: NSError?, json: NSDictionary?) -> () in
@@ -427,5 +431,15 @@ struct RedAlertAPI {
                 return callback(nil, alerts)
             }
         }
+    }
+}
+
+extension Double {
+    func rounded(to decimals: Int) -> Double {
+        // Use pow() to remove decimla places
+        let factor = pow(10.0, Double(decimals))
+        
+        // Return rounded figure
+        return (self * factor).rounded() / factor
     }
 }

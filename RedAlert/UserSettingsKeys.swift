@@ -16,6 +16,9 @@ struct UserSettingsKeys {
     static var zoneSelection = "zoneSelectionV2"
     static var soundSelection = "soundSelection"
     
+    static var primaryVolume = "primaryVolume"
+    static var secondaryVolume = "secondaryVolume"
+
     static var secondaryCitySelection = "secondaryCitySelectionV2"
     static var secondarySoundSelection = "secondarySoundSelection"
     static var secondaryNotifications = "secondaryNotifications"

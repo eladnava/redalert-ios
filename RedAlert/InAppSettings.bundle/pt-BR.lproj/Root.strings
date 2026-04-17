@@ -9,6 +9,8 @@
 "CITY_SELECTION"="Cidades";
 "ZONE_SELECTION"="Regiões adicionais";
 "ALERT_SOUND"="Som do alerta";
+"VOLUME"="Volume";
+"VOLUME_LEVEL"="Nível de volume";
 "OPTIONS"="Configurações";
 "SOUNDS"="Sons";
 "SOUNDS_DESC"="Selecione o som do alerta.";
