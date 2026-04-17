@@ -12,3 +12,9 @@
 
 /* Class = "IBUINavigationItem"; title = "Recent Alerts"; ObjectID = "Ss2-3G-LoG"; */
 "Ss2-3G-LoG.title" = "Alertas Recentes";
+
+/* Class = "IBUINavigationItem"; title = "Recent Alerts"; ObjectID = "Ss2-3G-LoG"; */
+"nHK-zS-dkK.title" = "Alertas Antecipados";
+
+/* Class = "IBUITableViewController"; title = "Settings"; ObjectID = "nHK-zS-dkL"; */
+"nHK-zS-dkL.title" = "Alertas de Saída do Abrigo";

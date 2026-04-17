@@ -33,4 +33,7 @@
 "EARLY_WARNINGS"="Alertas antecipados";
 "EARLY_WARNINGS_CONTROL_DESC"="Ativar ou desativar alertas antecipados";
 "EARLY_WARNING_SOUND"="Som de alerta antecipado";
+"LEAVE_SHELTER_ALERTS"="Alertas de saída do abrigo";
+"LEAVE_SHELTER_CONTROL_DESC"="Ativar ou desativar alertas de saída do abrigo";
+"LEAVE_SHELTER_SOUND"="Som de saída do abrigo";
 "LEARN_ABOUT_LIFESHIELD"="Saiba mais sobre o Lifeshield";

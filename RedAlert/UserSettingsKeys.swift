@@ -26,6 +26,9 @@ struct UserSettingsKeys {
     static var earlyWarningsNotifications = "earlyWarningsNotifications"
     static var earlyWarningsSoundSelection = "earlyWarningsSoundSelection"
     
+    static var leaveShelterNotifications = "leaveShelterNotifications"
+    static var leaveShelterSoundSelection = "leaveShelterSoundSelection"
+    
     static var userID = "userID_v2"
     static var userHash = "userHash"
     static var deviceToken = "deviceToken"

@@ -215,6 +215,34 @@
             </objects>
             <point key="canvasLocation" x="3337" y="800"/>
         </scene>
+        <!--Leave Shelter Alerts-->
+        <scene sceneID="LS1-sk-zKM">
+            <objects>
+                <tableViewController storyboardIdentifier="LeaveShelterSettings" title="Leave Shelter Alerts" id="nHK-zS-dkL" customClass="LeaveShelterViewController" customModule="RedAlert" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="6HJ-xB-hs11">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="1Xj-5W-opY1">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Xj-5W-opY1" id="fLQ-lm-p1R">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="nHK-zS-dkL" id="cew-zo-kP2"/>
+                            <outlet property="delegate" destination="nHK-zS-dkL" id="wGl-14-nxt"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sIS-m6-cQZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3337" y="1565"/>
+        </scene>
         <!--מפה-->
         <scene sceneID="efY-Cy-1Zj">
             <objects>

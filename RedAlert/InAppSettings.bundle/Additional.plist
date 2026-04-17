@@ -54,6 +54,16 @@
 		</dict>
 		<dict>
 			<key>Type</key>
+			<string>IASKButtonSpecifier</string>
+			<key>IASKTextAlignment</key>
+			<string>IASKUITextAlignmentLeft</string>
+			<key>Title</key>
+			<string>LEAVE_SHELTER_ALERTS</string>
+			<key>Key</key>
+			<string>leaveShelterSettingsButton</string>
+		</dict>
+		<dict>
+			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
 			<string>LANGUAGE</string>

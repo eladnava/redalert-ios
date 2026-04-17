@@ -33,5 +33,8 @@
 "EARLY_WARNINGS"="Early Warnings";
 "EARLY_WARNINGS_CONTROL_DESC"="Enable or disable early warnings";
 "EARLY_WARNING_SOUND"="Early Warning Sound";
+"LEAVE_SHELTER_ALERTS"="Leave Shelter Alerts";
+"LEAVE_SHELTER_CONTROL_DESC"="Enable or disable leave shelter alerts";
+"LEAVE_SHELTER_SOUND"="Leave Shelter Sound";
 "LEARN_ABOUT_LIFESHIELD"="Learn about Lifeshield";
 

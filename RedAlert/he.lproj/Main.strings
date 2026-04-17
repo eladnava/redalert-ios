@@ -11,8 +11,11 @@
 /* Class = "IBUITableViewController"; title = "Settings"; ObjectID = "JaO-zN-Z1I"; */
 "nHK-zS-dkJ.title" = "התרעות משנה";
 
-/* Class = "IBUITableViewController"; title = "Settings"; ObjectID = "JaO-zN-Z1I"; */
-"nHK-zS-dkK.title" = "התרעות מוקדמות";
-
 /* Class = "IBUINavigationItem"; title = "Recent Alerts"; ObjectID = "Ss2-3G-LoG"; */
 "Ss2-3G-LoG.title" = "התרעות אחרונות";
+
+/* Class = "IBUITableViewController"; title = "Settings"; ObjectID = "JaO-zN-Z1I"; */
+"nHK-zS-dkK.title" = "התרעות מקדימות";
+
+/* Class = "IBUITableViewController"; title = "Settings"; ObjectID = "nHK-zS-dkL"; */
+"nHK-zS-dkL.title" = "התרעות סיום התגוננות";

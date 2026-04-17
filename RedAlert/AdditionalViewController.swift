@@ -151,6 +151,11 @@ class AdditonalViewController: IASKAppSettingsViewController, IASKSettingsDelega
             earlyWarningsSettings()
         }
         
+        // Leave shelter settings button
+        if (specifier.key() == "leaveShelterSettingsButton") {
+            leaveShelterSettings()
+        }
+        
         // Contact button        
         if (specifier.key() == "contactButton") {
             contactMe("")
@@ -197,6 +202,14 @@ class AdditonalViewController: IASKAppSettingsViewController, IASKSettingsDelega
     func earlyWarningsSettings() {
         // Create VC using storyboard ID        
         let controller = self.storyboard!.instantiateViewController(withIdentifier: "EarlyWarningsSettings") as UIViewController
+        
+        // Push it into nav stack        
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func leaveShelterSettings() {
+        // Create VC using storyboard ID        
+        let controller = self.storyboard!.instantiateViewController(withIdentifier: "LeaveShelterSettings") as UIViewController
         
         // Push it into nav stack        
         self.navigationController?.pushViewController(controller, animated: true)

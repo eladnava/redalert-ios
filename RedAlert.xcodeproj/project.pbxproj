@@ -54,6 +54,7 @@
 		E456492A1A07F8E9000562A9 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45649291A07F8E9000562A9 /* Localization.swift */; };
 		E456492C1A08142E000562A9 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = E456492B1A08142E000562A9 /* City.swift */; };
 		E4569D2E2F922B1D0096FD44 /* EarlyWarningsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4569D2D2F922B1D0096FD44 /* EarlyWarningsViewController.swift */; };
+		E4569D302F9234010096FD44 /* LeaveShelterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4569D2F2F9234010096FD44 /* LeaveShelterViewController.swift */; };
 		E46CD5381A0E6FDB00A3D282 /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E46CD5371A0E6FDB00A3D282 /* InAppSettings.bundle */; };
 		E49682431A0837A4003C493D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E49682421A0837A4003C493D /* MapKit.framework */; };
 		E499EBC122D43EAA0048F0DA /* Zones.json in Resources */ = {isa = PBXBuildFile; fileRef = E499EBC022D43EAA0048F0DA /* Zones.json */; };
@@ -168,7 +169,6 @@
 		E4140D3B1A0AB601000EB05B /* KNMultiItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KNMultiItemCell.xib; sourceTree = "<group>"; };
 		E4140D421A0AD16C000EB05B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E4140D431A0AD16D000EB05B /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E4140D441A0AD16D000EB05B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E429B97F20D8A255000208ED /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		E429B98120D8A43E000208ED /* RedAlert.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RedAlert.entitlements; sourceTree = "<group>"; };
 		E42C319119EFB3C500105195 /* AlertTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
@@ -182,6 +182,7 @@
 		E45649291A07F8E9000562A9 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		E456492B1A08142E000562A9 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		E4569D2D2F922B1D0096FD44 /* EarlyWarningsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlyWarningsViewController.swift; sourceTree = "<group>"; };
+		E4569D2F2F9234010096FD44 /* LeaveShelterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveShelterViewController.swift; sourceTree = "<group>"; };
 		E46CD5371A0E6FDB00A3D282 /* InAppSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = InAppSettings.bundle; sourceTree = "<group>"; };
 		E49682421A0837A4003C493D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E499EBC022D43EAA0048F0DA /* Zones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Zones.json; sourceTree = "<group>"; };
@@ -192,9 +193,6 @@
 		E49C1F9E1A0A3DE600B7A71D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SafeButtonView.xib; sourceTree = "<group>"; };
 		E49C1FA11A0A3DEB00B7A71D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SafeButtonView.strings; sourceTree = "<group>"; };
 		E49C1FA31A0A3DEB00B7A71D /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/SafeButtonView.strings; sourceTree = "<group>"; };
-		E49C1FA41A0A6D6600B7A71D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/NoAlertsView.strings; sourceTree = "<group>"; };
-		E49C1FA51A0A6D6600B7A71D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SafeButtonView.strings; sourceTree = "<group>"; };
-		E49C1FA61A0A6D6600B7A71D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		E49D1B4419FCEA74002ACC61 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E49D4A871A052EE200898F45 /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		E49D4A8A1A05531E00898F45 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -425,6 +423,7 @@
 			isa = PBXGroup;
 			children = (
 				E4569D2D2F922B1D0096FD44 /* EarlyWarningsViewController.swift */,
+				E4569D2F2F9234010096FD44 /* LeaveShelterViewController.swift */,
 				E412A5C319F18E1D0065B337 /* SettingsViewController.swift */,
 				E4FEC7AC19FEE057009BD163 /* AdditionalViewController.swift */,
 				E44A5E361A064207005BD387 /* SecondaryViewController.swift */,
@@ -743,7 +742,6 @@
 				en,
 				Base,
 				he,
-				ru,
 				"pt-BR",
 			);
 			mainGroup = E4F41E4919ED5CF100037587;
@@ -824,6 +822,7 @@
 				E412A5E919F18F2E0065B337 /* IASKSpecifierValuesViewController.m in Sources */,
 				E412A61C19F19A6A0065B337 /* KNMultiItemSelector.m in Sources */,
 				E45649281A07D2CD000562A9 /* Alert.swift in Sources */,
+				E4569D302F9234010096FD44 /* LeaveShelterViewController.swift in Sources */,
 				E412A5F219F18F2E0065B337 /* IASKSlider.m in Sources */,
 				E43053F819FF90B0003086ED /* AlertTypes.swift in Sources */,
 				E412A5F019F18F2E0065B337 /* IASKPSTextFieldSpecifierViewCell.m in Sources */,
@@ -890,7 +889,6 @@
 			children = (
 				E4140D421A0AD16C000EB05B /* en */,
 				E4140D431A0AD16D000EB05B /* he */,
-				E4140D441A0AD16D000EB05B /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -901,7 +899,6 @@
 				E49BCB6E1A02BDD300530468 /* Base */,
 				E49BCB711A02BDD600530468 /* en */,
 				E49BCB731A02BDD800530468 /* he */,
-				E49C1FA41A0A6D6600B7A71D /* ru */,
 				E40053052F66F66700008D6D /* pt-BR */,
 			);
 			name = NoAlertsView.xib;
@@ -913,7 +910,6 @@
 				E49C1F9E1A0A3DE600B7A71D /* Base */,
 				E49C1FA11A0A3DEB00B7A71D /* en */,
 				E49C1FA31A0A3DEB00B7A71D /* he */,
-				E49C1FA51A0A6D6600B7A71D /* ru */,
 				E40053062F66F66700008D6D /* pt-BR */,
 			);
 			name = SafeButtonView.xib;
@@ -925,7 +921,6 @@
 				E4FEC77619FED87C009BD163 /* Base */,
 				E4FEC77719FED880009BD163 /* en */,
 				E4FEC77919FED8BB009BD163 /* he */,
-				E49C1FA61A0A6D6600B7A71D /* ru */,
 				E40053072F66F66700008D6D /* pt-BR */,
 			);
 			name = Main.storyboard;

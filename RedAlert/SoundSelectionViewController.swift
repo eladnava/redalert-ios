@@ -70,8 +70,8 @@ class SoundSelectionViewController: UITableViewController {
         // Show loading dialog        
         MBProgressHUD.showAdded(to: self.navigationController?.view, animated: true)
         
-        // Prepare primary and secondary sounds        
-        var primary = "", secondary = "", earlyWarnings = ""
+        // Prepare primary, secondary, and extra sounds
+        var primary = "", secondary = "", earlyWarnings = "", leaveShelter = ""
         
         // Set new value depending on key        
         if (self.key == UserSettingsKeys.soundSelection) {
@@ -83,9 +83,12 @@ class SoundSelectionViewController: UITableViewController {
         if (self.key == UserSettingsKeys.earlyWarningsSoundSelection) {
             earlyWarnings = self.selection
         }
+        if (self.key == UserSettingsKeys.leaveShelterSoundSelection) {
+            leaveShelter = self.selection
+        }
         
         // Save sounds serverside        
-        RedAlertAPI.updateSoundsAsync(primary: primary, secondary: secondary, earlyWarnings: earlyWarnings) { (err: NSError?) -> () in
+        RedAlertAPI.updateSoundsAsync(primary: primary, secondary: secondary, earlyWarnings: earlyWarnings, leaveShelter: leaveShelter) { (err: NSError?) -> () in
             
             // Hide loading dialog            
             MBProgressHUD.hide(for: self.navigationController?.view, animated: true)
