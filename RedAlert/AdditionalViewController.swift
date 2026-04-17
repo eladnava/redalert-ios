@@ -146,6 +146,11 @@ class AdditonalViewController: IASKAppSettingsViewController, IASKSettingsDelega
             secondarySettings()
         }
         
+        // Early warnings settings button
+        if (specifier.key() == "earlyWarningsSettingsButton") {
+            earlyWarningsSettings()
+        }
+        
         // Contact button        
         if (specifier.key() == "contactButton") {
             contactMe("")
@@ -184,6 +189,14 @@ class AdditonalViewController: IASKAppSettingsViewController, IASKSettingsDelega
     func secondarySettings() {
         // Create VC using storyboard ID        
         let controller = self.storyboard!.instantiateViewController(withIdentifier: "SecondarySettings") as UIViewController
+        
+        // Push it into nav stack        
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func earlyWarningsSettings() {
+        // Create VC using storyboard ID        
+        let controller = self.storyboard!.instantiateViewController(withIdentifier: "EarlyWarningsSettings") as UIViewController
         
         // Push it into nav stack        
         self.navigationController?.pushViewController(controller, animated: true)

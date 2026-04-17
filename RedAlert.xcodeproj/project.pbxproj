@@ -53,6 +53,7 @@
 		E45649281A07D2CD000562A9 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45649271A07D2CD000562A9 /* Alert.swift */; };
 		E456492A1A07F8E9000562A9 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45649291A07F8E9000562A9 /* Localization.swift */; };
 		E456492C1A08142E000562A9 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = E456492B1A08142E000562A9 /* City.swift */; };
+		E4569D2E2F922B1D0096FD44 /* EarlyWarningsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4569D2D2F922B1D0096FD44 /* EarlyWarningsViewController.swift */; };
 		E46CD5381A0E6FDB00A3D282 /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E46CD5371A0E6FDB00A3D282 /* InAppSettings.bundle */; };
 		E49682431A0837A4003C493D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E49682421A0837A4003C493D /* MapKit.framework */; };
 		E499EBC122D43EAA0048F0DA /* Zones.json in Resources */ = {isa = PBXBuildFile; fileRef = E499EBC022D43EAA0048F0DA /* Zones.json */; };
@@ -180,6 +181,7 @@
 		E45649271A07D2CD000562A9 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		E45649291A07F8E9000562A9 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		E456492B1A08142E000562A9 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		E4569D2D2F922B1D0096FD44 /* EarlyWarningsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlyWarningsViewController.swift; sourceTree = "<group>"; };
 		E46CD5371A0E6FDB00A3D282 /* InAppSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = InAppSettings.bundle; sourceTree = "<group>"; };
 		E49682421A0837A4003C493D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E499EBC022D43EAA0048F0DA /* Zones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Zones.json; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 		E412A63C19F2B98D0065B337 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E4569D2D2F922B1D0096FD44 /* EarlyWarningsViewController.swift */,
 				E412A5C319F18E1D0065B337 /* SettingsViewController.swift */,
 				E4FEC7AC19FEE057009BD163 /* AdditionalViewController.swift */,
 				E44A5E361A064207005BD387 /* SecondaryViewController.swift */,
@@ -815,6 +818,7 @@
 				E412A63F19F2F4180065B337 /* SoundSelectionViewController.swift in Sources */,
 				E42C319519EFB55300105195 /* LocationMetadata.swift in Sources */,
 				E412A64219F2F8580065B337 /* SoundItem.swift in Sources */,
+				E4569D2E2F922B1D0096FD44 /* EarlyWarningsViewController.swift in Sources */,
 				E412A5F119F18F2E0065B337 /* IASKPSTitleValueSpecifierViewCell.m in Sources */,
 				E412A5EF19F18F2E0065B337 /* IASKPSSliderSpecifierViewCell.m in Sources */,
 				E412A5E919F18F2E0065B337 /* IASKSpecifierValuesViewController.m in Sources */,

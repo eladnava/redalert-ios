@@ -30,5 +30,8 @@
 "SECONDARY_ALERTS_DESC"="Select the relevant secondary alert areas and sound";
 "SECONDARY_CITY_SELECTION"="Secondary Cities";
 "SECONDARY_ALERT_SOUND"="Secondary Sound";
+"EARLY_WARNINGS"="Early Warnings";
+"EARLY_WARNINGS_CONTROL_DESC"="Enable or disable early warnings";
+"EARLY_WARNING_SOUND"="Early Warning Sound";
 "LEARN_ABOUT_LIFESHIELD"="Learn about Lifeshield";
 

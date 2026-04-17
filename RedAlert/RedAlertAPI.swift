@@ -201,7 +201,7 @@ struct RedAlertAPI {
         }
     }
     
-    static func updateNotificationsAsync(primary: Bool, secondary: Bool, callback: @escaping (_ err: NSError?) -> ()) {
+    static func updateNotificationsAsync(primary: Bool, secondary: Bool, earlyWarnings: Bool = false, callback: @escaping (_ err: NSError?) -> ()) {
         // Get credentials        
         let uid = UserSettings.getString(key: UserSettingsKeys.userID, defaultValue: "")
         let hash = UserSettings.getString(key: UserSettingsKeys.userHash, defaultValue: "")
@@ -209,9 +209,10 @@ struct RedAlertAPI {
         // Convert to int        
         let primary = (primary) ? "1" : "0"
         let secondary = (secondary) ? "1" : "0"
+        let earlyWarnings = (earlyWarnings) ? "1" : "0"
         
         // Prepare post data        
-        let params = ["primary": primary, "secondary": secondary, "uid": uid, "hash": hash]
+        let params = ["primary": primary, "secondary": secondary, "earlyWarnings": earlyWarnings, "uid": uid, "hash": hash]
         
         // Execute post request        
         HTTP.postAsync(urlString: Config.apiBaseURL + "/update/notifications", params: params as [String : AnyObject] as [String : AnyObject]) { (err: NSError?, json: NSDictionary?) -> () in
@@ -323,7 +324,7 @@ struct RedAlertAPI {
         return mobileProvision
     }
 
-    static func updateSoundsAsync(primary: String, secondary: String, callback: @escaping (_ err: NSError?) -> ()) {
+    static func updateSoundsAsync(primary: String, secondary: String, earlyWarnings: String = "", callback: @escaping (_ err: NSError?) -> ()) {
         // Get credentials        
         let uid = UserSettings.getString(key: UserSettingsKeys.userID, defaultValue: "")
         let hash = UserSettings.getString(key: UserSettingsKeys.userHash, defaultValue: "")
@@ -331,13 +332,14 @@ struct RedAlertAPI {
         // Get sound from stored preferences        
         let primary = (primary.isEmpty) ? UserSettings.getString(key: UserSettingsKeys.soundSelection, defaultValue: UserSettingsDefaults.soundSelection) : primary
         let secondary = (secondary.isEmpty) ? UserSettings.getString(key: UserSettingsKeys.secondarySoundSelection, defaultValue: UserSettingsDefaults.secondarySoundSelection) : secondary
+        let earlyWarnings = (earlyWarnings.isEmpty) ? UserSettings.getString(key: UserSettingsKeys.earlyWarningsSoundSelection, defaultValue: UserSettingsDefaults.earlyWarningsSoundSelection) : earlyWarnings
         
         // Get volumes (round to 2 decimal places)
         let primaryVolume = UserSettings.getDouble(key: UserSettingsKeys.primaryVolume, defaultValue: UserSettingsDefaults.primaryVolume).rounded(to: 2)
         let secondaryVolume = UserSettings.getDouble(key: UserSettingsKeys.secondaryVolume, defaultValue: UserSettingsDefaults.secondaryVolume).rounded(to: 2)
                 
         // Prepare post data        
-        let params = ["primary": primary, "secondary": secondary, "primaryVolume": primaryVolume, "secondaryVolume": secondaryVolume, "uid": uid, "hash": hash] as [String : Any]
+        let params = ["primary": primary, "secondary": secondary, "earlyWarnings": earlyWarnings, "primaryVolume": primaryVolume, "secondaryVolume": secondaryVolume, "uid": uid, "hash": hash] as [String : Any]
         
         // Execute post request        
         HTTP.postAsync(urlString: Config.apiBaseURL + "/update/sounds", params: params as [String : AnyObject]) { (err: NSError?, json: NSDictionary?) -> () in

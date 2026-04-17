@@ -29,5 +29,8 @@
 "SECONDARY_ALERTS_DESC"="בחר את היישובים עבורם תתקבל התרעת משנה ואת צליל ההתרעה";
 "SECONDARY_CITY_SELECTION"="יישובי משנה";
 "SECONDARY_ALERT_SOUND"="צליל משנה";
+"EARLY_WARNINGS"="התרעות מוקדמות";
+"EARLY_WARNINGS_CONTROL_DESC"="הפעל או כבה התרעות מוקדמות";
+"EARLY_WARNING_SOUND"="צליל התרעה מוקדמת";
 "LEARN_ABOUT_LIFESHIELD"="למד עוד על לייפשילד";
 

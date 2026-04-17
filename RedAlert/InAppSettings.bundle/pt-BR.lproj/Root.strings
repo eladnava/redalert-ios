@@ -30,4 +30,7 @@
 "SECONDARY_ALERTS_DESC"="Selecione as áreas de alerta secundário relevantes e o som";
 "SECONDARY_CITY_SELECTION"="Cidades secundárias";
 "SECONDARY_ALERT_SOUND"="Som secundário";
+"EARLY_WARNINGS"="Alertas antecipados";
+"EARLY_WARNINGS_CONTROL_DESC"="Ativar ou desativar alertas antecipados";
+"EARLY_WARNING_SOUND"="Som de alerta antecipado";
 "LEARN_ABOUT_LIFESHIELD"="Saiba mais sobre o Lifeshield";
