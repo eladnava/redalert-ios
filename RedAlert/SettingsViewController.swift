@@ -67,8 +67,53 @@ class SettingsViewController: IASKAppSettingsViewController, IASKSettingsDelegat
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        // Listen to toggle change event        
-        NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.toggleChanged), name: NSNotification.Name(rawValue: "kAppSettingChanged"), object: nil)
+        super.viewWillAppear(animated)
+
+        // Listen to setting changes        
+        NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.settingsChanged(notif:)), name: NSNotification.Name(rawValue: "kAppSettingChanged"), object: nil)
+    }
+    
+    @objc func settingsChanged(notif: NSNotification) {
+        // Check which key was changed
+        guard let key = notif.object as? String else {
+            return
+        }
+
+        // Primary volume changed?
+        if key == UserSettingsKeys.primaryVolume {
+            saveVolume()
+        
+        }
+
+        // Notifications toggled off?
+        else if key == UserSettingsKeys.notifications {
+            toggleChanged()
+        }
+    }
+
+    func saveVolume() {
+        // Show loading dialog
+        MBProgressHUD.showAdded(to: self.navigationController?.view, animated: true)
+
+        // Update sounds & volume
+        RedAlertAPI.updateSoundsAsync(primary: "", secondary: "") { (err: NSError?) -> () in
+            // Hide loading dialog
+            MBProgressHUD.hide(for: self.navigationController?.view, animated: true)
+
+            // Error?
+            if let theErr = err {
+                // Default message
+                var message = NSLocalizedString("SOUND_SAVE_ERROR", comment: "Error saving volume")
+
+                // Error provided?
+                if let errMsg = theErr.userInfo["error"] as? String {
+                    message += "\n\n" + errMsg
+                }
+
+                // Show the error
+                return Dialogs.error(message: message)
+            }
+        }
     }
     
     override func viewDidLoad() {

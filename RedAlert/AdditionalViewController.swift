@@ -36,12 +36,6 @@ class AdditonalViewController: IASKAppSettingsViewController, IASKSettingsDelega
             // Update language
             self.saveAppLanguage()
         }
-        
-        // Handle volume changes
-        else if (notif.object as! String == UserSettingsKeys.primaryVolume) {
-            // Update volume
-            self.saveVolume()
-        }
     }
     
     func saveAppLanguage() {
@@ -76,31 +70,6 @@ class AdditonalViewController: IASKAppSettingsViewController, IASKSettingsDelega
             
             // Tell user to reopen app
             self.languageChanged()
-        }
-    }
-    
-    func saveVolume() {
-        // Show loading dialog
-        MBProgressHUD.showAdded(to: self.navigationController?.view, animated: true)
-        
-        // Update sounds & volume
-        RedAlertAPI.updateSoundsAsync(primary: "", secondary: "") { (err: NSError?) -> () in
-            // Hide loading dialog
-            MBProgressHUD.hide(for: self.navigationController?.view, animated: true)
-            
-            // Error?
-            if let theErr = err {
-                // Default message
-                var message = NSLocalizedString("SOUND_SAVE_ERROR", comment: "Error saving volume")
-                
-                // Error provided?
-                if let errMsg = theErr.userInfo["error"] as? String {
-                    message += "\n\n" + errMsg
-                }
-                
-                // Show the error
-                return Dialogs.error(message: message)
-            }
         }
     }
     
