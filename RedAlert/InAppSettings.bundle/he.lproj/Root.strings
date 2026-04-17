@@ -31,9 +31,9 @@
 "SECONDARY_ALERT_SOUND"="צליל משנה";
 "EARLY_WARNINGS"="התרעות מקדימות";
 "EARLY_WARNINGS_CONTROL_DESC"="הפעל או כבה התרעות מקדימות";
-"EARLY_WARNING_SOUND"="צליל התרעה מוקדמת";
+"EARLY_WARNING_SOUND"="צליל התרעות מקדימות";
 "LEAVE_SHELTER_ALERTS"="התרעות סיום התגוננות";
 "LEAVE_SHELTER_CONTROL_DESC"="הפעל או כבה התרעות סיום התגוננות";
-"LEAVE_SHELTER_SOUND"="צליל סיום התגוננות";
+"LEAVE_SHELTER_SOUND"="צליל התרעות סיום התגוננות";
 "LEARN_ABOUT_LIFESHIELD"="למד עוד על לייפשילד";
 
