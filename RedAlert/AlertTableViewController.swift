@@ -48,6 +48,22 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         // Add default view in case of no alerts        
         self.addDefaultView()
         
+        // Create new Live Map button
+        let button = UIButton(type: .system)
+        
+        // Set image & click handler
+        button.setImage(UIImage(named: "MapIcon"), for: .normal)
+        button.addTarget(self, action:#selector(AlertTableViewController.openLiveMap), for: .touchUpInside)
+
+        // Set width & height of button
+        NSLayoutConstraint.activate([
+            button.widthAnchor.constraint(equalToConstant: 36),
+            button.heightAnchor.constraint(equalToConstant: 35)
+        ])
+        
+        // Set as left item (right in RTL mode)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+        
         // Hide the empty separators before content loads        
         self.hideEmptyCellSeparators()
         
@@ -228,6 +244,16 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
                 }
             }
         }
+    }
+    
+    @objc func openLiveMap() {
+        // Crete and push the new view controller
+        self.navigationController?.pushViewController(LiveMapViewController(), animated: true)
+    }
+    
+    @objc func openSettings() {
+        // Crete and push the new view controller
+        self.navigationController?.pushViewController(self.storyboard!.instantiateViewController(withIdentifier: "Settings") as UIViewController, animated: true)
     }
     
     func addPullToRefresh() {

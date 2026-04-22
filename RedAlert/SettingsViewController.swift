@@ -82,7 +82,6 @@ class SettingsViewController: IASKAppSettingsViewController, IASKSettingsDelegat
         // Primary volume changed?
         if key == UserSettingsKeys.primaryVolume {
             saveVolume()
-        
         }
 
         // Notifications toggled off?

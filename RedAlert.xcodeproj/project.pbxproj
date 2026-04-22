@@ -55,6 +55,7 @@
 		E456492C1A08142E000562A9 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = E456492B1A08142E000562A9 /* City.swift */; };
 		E4569D2E2F922B1D0096FD44 /* EarlyWarningsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4569D2D2F922B1D0096FD44 /* EarlyWarningsViewController.swift */; };
 		E4569D302F9234010096FD44 /* LeaveShelterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4569D2F2F9234010096FD44 /* LeaveShelterViewController.swift */; };
+		E4569D322F92551A0096FD44 /* LiveMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4569D312F92551A0096FD44 /* LiveMapViewController.swift */; };
 		E46CD5381A0E6FDB00A3D282 /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E46CD5371A0E6FDB00A3D282 /* InAppSettings.bundle */; };
 		E49682431A0837A4003C493D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E49682421A0837A4003C493D /* MapKit.framework */; };
 		E499EBC122D43EAA0048F0DA /* Zones.json in Resources */ = {isa = PBXBuildFile; fileRef = E499EBC022D43EAA0048F0DA /* Zones.json */; };
@@ -183,6 +184,7 @@
 		E456492B1A08142E000562A9 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		E4569D2D2F922B1D0096FD44 /* EarlyWarningsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlyWarningsViewController.swift; sourceTree = "<group>"; };
 		E4569D2F2F9234010096FD44 /* LeaveShelterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveShelterViewController.swift; sourceTree = "<group>"; };
+		E4569D312F92551A0096FD44 /* LiveMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMapViewController.swift; sourceTree = "<group>"; };
 		E46CD5371A0E6FDB00A3D282 /* InAppSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = InAppSettings.bundle; sourceTree = "<group>"; };
 		E49682421A0837A4003C493D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E499EBC022D43EAA0048F0DA /* Zones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Zones.json; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 				E49BCB6C1A02B84000530468 /* UI */,
 				E412A63219F272F30065B337 /* AlertView */,
 				E42C319119EFB3C500105195 /* AlertTableViewCell.swift */,
+				E4569D312F92551A0096FD44 /* LiveMapViewController.swift */,
 				E4C40BB319ED6AE00097D0FB /* AlertTableViewController.swift */,
 			);
 			name = RecentAlerts;
@@ -844,6 +847,7 @@
 				E49F586019F040EB00E46EEF /* DateFormatterStruct.swift in Sources */,
 				E4140D391A0AB0E2000EB05B /* KNMultiItemCell.m in Sources */,
 				E4C40BC119EECCC90097D0FB /* Config.swift in Sources */,
+				E4569D322F92551A0096FD44 /* LiveMapViewController.swift in Sources */,
 				E456492A1A07F8E9000562A9 /* Localization.swift in Sources */,
 				E412A5ED19F18F2E0065B337 /* IASKSettingsStoreUserDefaults.m in Sources */,
 				E412A5EC19F18F2E0065B337 /* IASKSettingsStoreFile.m in Sources */,
