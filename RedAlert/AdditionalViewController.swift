@@ -319,6 +319,27 @@ class AdditonalViewController: IASKAppSettingsViewController, IASKSettingsDelega
         // Add secondary sound
         messageBody += "secondary.sound=" + UserSettings.getString(key: UserSettingsKeys.secondarySoundSelection, defaultValue: UserSettingsDefaults.secondarySoundSelection) + ", "
         
+        // Add early warnings enabled
+        messageBody += "earlyWarnings.enabled=" + String(UserSettings.getBool(key: UserSettingsKeys.earlyWarningsNotifications, defaultValue: true)) + ", "
+        
+        // Add early warnings sound
+        messageBody += "earlyWarnings.sound=" + UserSettings.getString(key: UserSettingsKeys.earlyWarningsSoundSelection, defaultValue: UserSettingsDefaults.earlyWarningsSoundSelection) + ", "
+        
+        // Add leave shelter enabled
+        messageBody += "leaveShelter.enabled=" + String(UserSettings.getBool(key: UserSettingsKeys.leaveShelterNotifications, defaultValue: true)) + ", "
+        
+        // Add leave shelter sound
+        messageBody += "leaveShelter.sound=" + UserSettings.getString(key: UserSettingsKeys.leaveShelterSoundSelection, defaultValue: UserSettingsDefaults.leaveShelterSoundSelection) + ", "
+        
+        // Add language override value
+        messageBody += "language=" + UserSettings.getString(key: UserSettingsKeys.language, defaultValue: "") + ", "
+        
+        // Add configured primary volume
+        messageBody += "primary.volume=" + String(UserSettings.getDouble(key: UserSettingsKeys.primaryVolume, defaultValue: UserSettingsDefaults.primaryVolume)) + ", "
+        
+        // Add configured secondary volume
+        messageBody += "secondary.volume=" + String(UserSettings.getDouble(key: UserSettingsKeys.secondaryVolume, defaultValue: UserSettingsDefaults.secondaryVolume)) + ", "
+        
         // Add APNs registration status
         messageBody += "apns=" + String(UserSettings.getString(key: UserSettingsKeys.deviceToken, defaultValue: "") != "") + ", "
         
