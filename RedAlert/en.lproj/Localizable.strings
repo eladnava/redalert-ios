@@ -86,4 +86,6 @@
 
 "LIFESHIELD_SHELTERS"="Lifeshield Shelters:";
 "LIVE_MAP"="Live Map";
+"DISMISS_ALERTS_CONFIRM_TITLE"="Clear recent alerts?";
+"DISMISS_ALERTS_CONFIRM_MESSAGE"="Would you like to clear all recent alerts?";
 

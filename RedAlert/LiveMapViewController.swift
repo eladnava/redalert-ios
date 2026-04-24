@@ -2,7 +2,6 @@
 //  LiveMapViewController.swift
 //  RedAlert
 //
-//  Created by GitHub Copilot.
 //
 
 import UIKit
@@ -17,9 +16,15 @@ class LiveMapViewController: UIViewController, MKMapViewDelegate {
 
     // Currently displayed alerts (cached to detect changes between refresh cycles)
     var alerts: [Alert] = []
+    
+    // Full alerts list from API before dismiss/restore filtering
+    var allAlerts: [Alert] = []
 
     // Small activity spinner shown while loading network updates; placed in navigation bar
     var activityIndicator = UIActivityIndicatorView()
+    
+    // Dismiss/restore alerts action button in the navigation bar
+    var dismissAlertsButton = UIButton(type: .system)
     
     // Sets up UI elements (map view, activity indicator) and loads initial alerts
     override func viewDidLoad() {
@@ -39,8 +44,26 @@ class LiveMapViewController: UIViewController, MKMapViewDelegate {
         // Initialize activity indicator (spinner) for network operations
         activityIndicator.hidesWhenStopped = true
         
-        // Place the activity indicator in the navigation bar on the right side
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
+        // Configure dismiss/restore button
+        dismissAlertsButton.addTarget(self, action: #selector(dismissAlertsTapped), for: .touchUpInside)
+        
+        // Set width & height of button
+        NSLayoutConstraint.activate([
+            dismissAlertsButton.widthAnchor.constraint(equalToConstant: 25),
+            dismissAlertsButton.heightAnchor.constraint(equalToConstant: 25)
+        ])
+        
+        // Place action buttons in the navigation bar
+        let dismissAlertsBarButton = UIBarButtonItem(customView: dismissAlertsButton)
+        
+        // Wrap activity indicator view in a bar button item
+        let activityBarButton = UIBarButtonItem(customView: activityIndicator)
+        
+        // Show dismiss/restore first, then loading indicator on the right side
+        self.navigationItem.rightBarButtonItems = [dismissAlertsBarButton, activityBarButton]
+        
+        // Set the initial icon based on current dismiss/restore state
+        self.updateDismissAlertsButtonIcon()
 
         // Activate Auto Layout constraints for map view
         // Map view fills entire view (top/bottom/leading/trailing)
@@ -59,6 +82,12 @@ class LiveMapViewController: UIViewController, MKMapViewDelegate {
     // Starts the periodic reload timer for fetching new alerts
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Keep dismiss/restore icon in sync when returning to this screen
+        self.updateDismissAlertsButtonIcon()
+        
+        // Re-apply current filter to existing in-memory map alerts
+        self.refreshLiveMap(recenter: false)
 
         // Start the periodic reload timer when view appears on screen
         startReloadTimer()
@@ -135,21 +164,19 @@ class LiveMapViewController: UIViewController, MKMapViewDelegate {
 
                 // If server returned nil alerts, clear the map and don't recenter
                 guard let alerts = alerts else {
-                    self.updateMap(with: [], recenter: true)
+                    self.allAlerts = []
+                    self.refreshLiveMap(recenter: true)
                     return
                 }
 
                 // Determine whether to re-center the map based on whether alerts changed
                 let shouldRecenter = self.didReceiveNewAlerts(alerts)
-                
-                // Cache the new alerts for comparison on next refresh cycle
-                self.alerts = alerts
-                
-                // Any new alerts?
-                if (shouldRecenter) {
-                    // Update map with new annotations and optionally recenter view
-                    self.updateMap(with: alerts, recenter: shouldRecenter)
-                }
+                                
+                // Cache unfiltered alerts for comparisons and local dismiss/restore filtering
+                self.allAlerts = alerts
+                                
+                // Update map from local filtered state
+                self.refreshLiveMap(recenter: shouldRecenter)
             }
         }
     }
@@ -164,7 +191,7 @@ class LiveMapViewController: UIViewController, MKMapViewDelegate {
     func didReceiveNewAlerts(_ alerts: [Alert]) -> Bool {
         // First, check if the count of alerts changed
         // If counts differ, definitely recenter since alert set changed
-        if self.alerts.count != alerts.count {
+        if self.allAlerts.count != alerts.count {
             return true
         }
 
@@ -173,7 +200,7 @@ class LiveMapViewController: UIViewController, MKMapViewDelegate {
         for i in 0..<alerts.count {
             // Get current (new) and previous (cached) alert at index i
             let current = alerts[i]
-            let previous = self.alerts[i]
+            let previous = self.allAlerts[i]
             
             // Compare city name, threat level, and date timestamp
             // Return true if any field differs (indicating a change)
@@ -186,7 +213,78 @@ class LiveMapViewController: UIViewController, MKMapViewDelegate {
 
         // If nothing changed and we had no alerts before, return whether cache was empty
         // This prevents unnecessary recentering if alerts list was already empty
-        return self.alerts.isEmpty
+        return self.allAlerts.isEmpty
+    }
+    
+    func refreshLiveMap(recenter: Bool) {
+        // Default to all alerts
+        var filteredAlerts = self.allAlerts
+        
+        // Filter by dismissed timestamp if set
+        if let cutoff = UserDefaults.standard.object(forKey: UserSettingsKeys.dismissAlertsTimestamp) as? Double {
+            filteredAlerts = filteredAlerts.filter { $0.date > cutoff }
+        }
+        
+        // Cache filtered alerts currently displayed on map
+        self.alerts = filteredAlerts
+        
+        // Update map annotations immediately from local state
+        self.updateMap(with: filteredAlerts, recenter: recenter)
+    }
+    
+    @objc func dismissAlertsTapped() {
+        // Read existing dismiss cutoff timestamp
+        let ts = UserDefaults.standard.object(forKey: UserSettingsKeys.dismissAlertsTimestamp) as? Double
+        
+        // Existing cutoff means this tap is restore
+        if ts != nil {
+            // Remove dismiss cutoff to restore all visible alerts
+            UserDefaults.standard.removeObject(forKey: UserSettingsKeys.dismissAlertsTimestamp)
+            
+            // Update the button icon to the clear state
+            self.updateDismissAlertsButtonIcon()
+            
+            // Rebuild map and recenter to fit restored annotations
+            self.refreshLiveMap(recenter: true)
+            
+            // Stop here because restore flow is complete
+            return
+        }
+        
+        // Ask user to confirm dismissing currently shown alerts
+        let alert = UIAlertController(title: NSLocalizedString("DISMISS_ALERTS_CONFIRM_TITLE", comment: "Dismiss alerts title"), message: NSLocalizedString("DISMISS_ALERTS_CONFIRM_MESSAGE", comment: "Dismiss alerts message"), preferredStyle: .alert)
+        
+        // Add cancel action so user can back out safely
+        alert.addAction(UIAlertAction(title: NSLocalizedString("CANCEL_BUTTON", comment: "Cancel"), style: .cancel, handler: nil))
+        
+        // Add destructive action to apply dismiss cutoff
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON", comment: "OK"), style: .destructive, handler: { _ in
+            // Capture current time as dismiss cutoff
+            let now = Date().timeIntervalSince1970
+            
+            // Persist cutoff so older alerts are filtered out
+            UserDefaults.standard.set(now, forKey: UserSettingsKeys.dismissAlertsTimestamp)
+            
+            // Update the button icon to the restore state
+            self.updateDismissAlertsButtonIcon()
+            
+            // Refresh map from local data without forced recenter
+            self.refreshLiveMap(recenter: false)
+        }))
+        
+        // Present confirmation alert to the user
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func updateDismissAlertsButtonIcon() {
+        // Read dismiss cutoff to determine current mode
+        let ts = UserDefaults.standard.object(forKey: UserSettingsKeys.dismissAlertsTimestamp) as? Double
+        
+        // Pick clear icon when active or restore icon when dismissed
+        let imageName = ts == nil ? "ClearIcon" : "RestoreIcon"
+        
+        // Apply selected icon to dismiss/restore button
+        dismissAlertsButton.setImage(UIImage(named: imageName), for: .normal)
     }
 
     // Map Updates

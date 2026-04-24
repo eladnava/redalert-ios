@@ -10,14 +10,20 @@ import UIKit
 
 class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
     // Class members    
-    var reloading = false, imSafe = UIView(), noAlerts = UIView(), pullToRefresh = UIRefreshControl(), alerts: [Alert] = [], reloadTimer: Timer?
+    var reloading = false, imSafe = UIView(), noAlerts = UIView(), pullToRefresh = UIRefreshControl(), alerts: [Alert] = [], allAlerts: [Alert] = [], reloadTimer: Timer?
+    var dismissAlertsButton = UIButton(type: .system)
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         // Do we have any alerts being displayed?
         if (self.alerts.count > 0) {
             // Refresh display of alerts to update bold styling in case selected cities/zones changed
             self.refreshAlertsTable()
         }
+        
+        // Keep dismiss/restore icon in sync when returning to this screen
+        self.updateDismissAlertsButtonIcon()
         
         // Create timer to refresh recent alerts list
         self.startReloadTimer()
@@ -61,8 +67,20 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             button.heightAnchor.constraint(equalToConstant: 35)
         ])
         
-        // Set as left item (right in RTL mode)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+        // Add dismiss/restore icon button on the right side
+        dismissAlertsButton.addTarget(self, action: #selector(AlertTableViewController.dismissAlertsTapped), for: .touchUpInside)
+
+        // Set width & height of button
+        NSLayoutConstraint.activate([
+            dismissAlertsButton.widthAnchor.constraint(equalToConstant: 25),
+            dismissAlertsButton.heightAnchor.constraint(equalToConstant: 25)
+        ])
+        
+        // Place dismiss/restore next to live map on the left action buttons
+        navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: button), UIBarButtonItem(customView: dismissAlertsButton)]
+        
+        // Keep dismiss/restore icon in sync when returning to this screen
+        self.updateDismissAlertsButtonIcon()
         
         // Hide the empty separators before content loads        
         self.hideEmptyCellSeparators()
@@ -266,6 +284,61 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             tableView.addSubview(pullToRefresh)
         }
     }
+
+    @objc func dismissAlertsTapped() {
+        // Read the current dismiss cutoff timestamp from user defaults
+        let ts = UserDefaults.standard.object(forKey: UserSettingsKeys.dismissAlertsTimestamp) as? Double
+
+        // If a cutoff exists, alerts are currently dismissed and this tap means restore
+        if ts != nil {
+            // Remove the dismiss cutoff to restore all alerts in the list
+            UserDefaults.standard.removeObject(forKey: UserSettingsKeys.dismissAlertsTimestamp)
+            
+            // Switch the button image to the dismiss icon
+            self.updateDismissAlertsButtonIcon()
+            
+            // Re-apply filtering immediately to refresh visible rows
+            self.refreshAlertsTable()
+            
+            // Exit early because restore flow is complete
+            return
+        }
+
+        // Create a confirmation dialog before applying dismiss cutoff
+        let alert = UIAlertController(title: NSLocalizedString("DISMISS_ALERTS_CONFIRM_TITLE", comment: "Dismiss alerts title"), message: NSLocalizedString("DISMISS_ALERTS_CONFIRM_MESSAGE", comment: "Dismiss alerts message"), preferredStyle: .alert)
+        
+        // Add a cancel action so users can abort dismissing alerts
+        alert.addAction(UIAlertAction(title: NSLocalizedString("CANCEL_BUTTON", comment: "Cancel"), style: .cancel, handler: nil))
+        
+        // Add a confirm action that applies the dismiss cutoff
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON", comment: "OK"), style: .destructive, handler: { _ in
+            // Capture the current Unix timestamp as the new dismiss cutoff
+            let now = Date().timeIntervalSince1970
+            
+            // Persist the cutoff so older alerts are hidden
+            UserDefaults.standard.set(now, forKey: UserSettingsKeys.dismissAlertsTimestamp)
+            
+            // Switch the button image to the restore icon
+            self.updateDismissAlertsButtonIcon()
+            
+            // Re-filter the in-memory list for an instant UI update
+            self.refreshAlertsTable()
+        }))
+
+        // Present the confirmation dialog to the user
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func updateDismissAlertsButtonIcon() {
+        // Read the current dismiss cutoff timestamp from user defaults
+        let ts = UserDefaults.standard.object(forKey: UserSettingsKeys.dismissAlertsTimestamp) as? Double
+        
+        // Choose the clear icon when alerts are active, or restore icon when dismissed
+        let imageName = ts == nil ? "ClearIcon" : "RestoreIcon"
+        
+        // Apply the selected image to the dismiss/restore button
+        dismissAlertsButton.setImage(UIImage(named: imageName), for: .normal)
+    }
     
     func startReloadTimer() {
         // Invalidate existing timer just in case
@@ -310,19 +383,19 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
                 return Dialogs.error(message: message)
             }
             
-            // Store grouped alerts in member
-            let alerts = self.groupAlerts(alerts!)
-            
-            // Alert count hasn't changed between reloads?
-            if alerts.count == self.alerts.count {
+            // Store grouped alerts in member (unfiltered)
+            var alerts = self.groupAlerts(alerts!)
+
+            // Preserve expanded state where possible based on previous full alerts list
+            if alerts.count == self.allAlerts.count {
                 // Loop over old alerts
-                for i in 0..<self.alerts.count {
-                    let alert = self.alerts[i]
+                for i in 0..<self.allAlerts.count {
+                    let alert = self.allAlerts[i]
 
                     // User tapped to expand?
                     if alert.isExpanded {
                         // Safeguard: check if new alert at same position has the same date
-                        if self.alerts[i].date == alerts[i].date {
+                        if self.allAlerts[i].date == alerts[i].date {
                             // Preserve expanded state after refresh
                             alerts[i].isExpanded = true
                         }
@@ -330,12 +403,12 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
                 }
             }
             
-            // Overwrite previously displayed alerts
-            self.alerts = alerts
+            // Overwrite full alerts list (unfiltered)
+            self.allAlerts = alerts
             
             // Invoke callback on main thread
             DispatchQueue.main.async {
-                // Refresh table with data
+                // Refresh table with data (will apply dismiss/restore filter)
                 self.refreshAlertsTable()
                 
                 // Hide loading indicator
@@ -443,6 +516,20 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             // Defer refresh
             return
         }
+
+        // Start from full alerts list
+        var alertsToDisplay = self.allAlerts
+
+        // Filter by dismissed timestamp if set
+        let ts = UserDefaults.standard.object(forKey: UserSettingsKeys.dismissAlertsTimestamp) as? Double
+        
+        // Dismiss cutoff exists? Filter out older alerts that should be hidden
+        if let cutoff = ts {
+            alertsToDisplay = alertsToDisplay.filter { $0.date > cutoff }
+        }
+
+        // Update current alerts used by table view
+        self.alerts = alertsToDisplay
         
         // Do we have any alerts?
         if (self.alerts.count > 0) {

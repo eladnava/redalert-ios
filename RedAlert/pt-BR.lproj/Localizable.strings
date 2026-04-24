@@ -89,5 +89,6 @@
 
 "LIFESHIELD_SHELTERS"="Abrigos Lifeshield:";
 "LIVE_MAP"="Mapa ao Vivo";
-
+"DISMISS_ALERTS_CONFIRM_TITLE"="Limpar alertas recentes?";
+"DISMISS_ALERTS_CONFIRM_MESSAGE"="Deseja limpar todos os alertas recentes?";
 

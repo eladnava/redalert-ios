@@ -36,5 +36,7 @@ struct UserSettingsKeys {
     
     static var cityReselectionRequested = "city_reselection_requested_10241"
     static var cityReselectionRequestedPrevious = "city_reselection_requested_10200"
+    
+    static var dismissAlertsTimestamp = "dismiss_alerts_timestamp"
 
 }
