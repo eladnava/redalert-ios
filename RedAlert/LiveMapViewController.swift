@@ -302,12 +302,21 @@ class LiveMapViewController: UIViewController, MKMapViewDelegate {
         
         // Remove all old annotations
         mapView.removeAnnotations(nonUserAnnotations)
+        
+        // Remove old polygon overlays so map matches current alert set
+        mapView.removeOverlays(mapView.overlays)
 
         // Array to store newly created point annotations for all alerts
         var annotations: [MKPointAnnotation] = []
         
+        // Track cities for which we already added polygon overlays
+        var polygonCityIds = Set<Int>()
+        
         // Get cached city metadata (coordinates and localized names) for all cities
         let cityCache = LocationMetadata.getCities()
+        
+        // Get cached polygon metadata for city boundary overlays
+        let polygonCache = LocationMetadata.getPolygons()
 
         // Convert each alert into a map point annotation
         // Iterate through all alerts and create annotations using city coordinates
@@ -321,6 +330,23 @@ class LiveMapViewController: UIViewController, MKMapViewDelegate {
             
             // Search city cache for matching city name from the alert
             if let city = cityCache.first(where: { $0.name == alert.city }) {
+                // Add city polygon once so overlapping alerts don't duplicate overlays
+                if !polygonCityIds.contains(city.id) {
+                    // Find polygon data for this city ID
+                    if let polygon = polygonCache.first(where: { $0.id == city.id }) {
+                        // Convert raw polygon coordinates to CLLocationCoordinate2D points
+                        let polygonPoints = polygon.coordinates.map {
+                            CLLocationCoordinate2D(latitude: $0[0], longitude: $0[1])
+                        }
+                        
+                        // Add polygon overlay when at least one point was loaded
+                        if !polygonPoints.isEmpty {
+                            mapView.add(MKPolygon(coordinates: polygonPoints, count: polygonPoints.count))
+                            polygonCityIds.insert(city.id)
+                        }
+                    }
+                }
+                
                 // Create a new point annotation for this alert
                 let annotation = MKPointAnnotation()
                 
