@@ -26,6 +26,9 @@ class LiveMapViewController: UIViewController, MKMapViewDelegate {
     // Dismiss/restore alerts action button in the navigation bar
     var dismissAlertsButton = UIButton(type: .system)
     
+    // App icon overlay shown in bottom-right corner of live map
+    var appIconView = UIImageView()
+    
     // Sets up UI elements (map view, activity indicator) and loads initial alerts
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,9 +76,32 @@ class LiveMapViewController: UIViewController, MKMapViewDelegate {
             mapView.topAnchor.constraint(equalTo: view.topAnchor),              // Map top edge to view top
             mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor)         // Map bottom edge to view bottom
         ])
+        
+        // Add app icon overlay in bottom-right corner of the map
+        self.setupMapAppIcon()
 
         // Load the initial set of alerts immediately
         reloadLiveAlerts()
+    }
+    
+    func setupMapAppIcon() {
+        // Prefer AppIcon asset name and fall back to alert icon if unavailable
+        appIconView.image = UIImage(named: "AppIcon") ?? UIImage(named: "AlertIcon")
+        
+        // Configure image display mode
+        appIconView.contentMode = .scaleAspectFit
+        appIconView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Place icon on top of the map view
+        mapView.addSubview(appIconView)
+        
+        // Pin icon to the bottom-right corner
+        NSLayoutConstraint.activate([
+            appIconView.widthAnchor.constraint(equalToConstant: 54),
+            appIconView.heightAnchor.constraint(equalToConstant: 54),
+            appIconView.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -15),
+            appIconView.bottomAnchor.constraint(equalTo: mapView.bottomAnchor, constant: -15)
+        ])
     }
 
     // Called when the view controller's view is about to be added to the view hierarchy
