@@ -11,6 +11,7 @@ import MapKit
 
 class AlertViewController: UIViewController, MKMapViewDelegate {
     var alert: Alert?, alertCities: [City] = []
+    var threatIconView = UIImageView()
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -46,6 +47,9 @@ class AlertViewController: UIViewController, MKMapViewDelegate {
         
         // Load mapview 
         self.loadMap()
+        
+        // Add threat icon overlay in bottom-right corner of map
+        self.setupThreatIcon()
     }
     
     func loadMap() {
@@ -148,6 +152,79 @@ class AlertViewController: UIViewController, MKMapViewDelegate {
     override func didReceiveMemoryWarning() {
         // Just call super        
         super.didReceiveMemoryWarning()
+    }
+    
+    func setupThreatIcon() {
+        // Resolve current threat icon image
+        let image = getThreatImage(alert?.threat ?? "")
+        
+        // Skip setup when image asset is unavailable
+        if image == nil {
+            return
+        }
+        
+        // Configure icon view
+        threatIconView.image = image
+        threatIconView.contentMode = .scaleAspectFit
+        threatIconView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Add on top of map
+        mapView.addSubview(threatIconView)
+        
+        // Position in bottom-right corner
+        NSLayoutConstraint.activate([
+            threatIconView.widthAnchor.constraint(equalToConstant: 54),
+            threatIconView.heightAnchor.constraint(equalToConstant: 54),
+            threatIconView.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -12),
+            threatIconView.bottomAnchor.constraint(equalTo: mapView.bottomAnchor, constant: -12)
+        ])
+    }
+    
+    func getThreatImage(_ threat: String) -> UIImage? {
+        // Fall back to generic alert icon when threat value is missing
+        if threat.isEmpty {
+            return UIImage(named: "AlertIcon")
+        }
+        
+        // Radiological event threat icon
+        if threat.contains("radiologicalEvent") {
+            return UIImage(named: "RadiologicalEventIcon")
+        }
+        // Hostile aircraft intrusion threat icon
+        else if threat.contains("hostileAircraftIntrusion") {
+            return UIImage(named: "HostileAircraftIntrusionIcon")
+        }
+        // Hazardous materials threat icon
+        else if threat.contains("hazardousMaterials") {
+            return UIImage(named: "HazardousMaterialsIcon")
+        }
+        // Tsunami threat icon
+        else if threat.contains("tsunami") {
+            return UIImage(named: "TsunamiIcon")
+        }
+        // Missile alerts use the generic alert icon
+        else if threat.contains("missiles") {
+            return UIImage(named: "AlertIcon")
+        }
+        // Terrorist infiltration threat icon
+        else if threat.contains("terroristInfiltration") {
+            return UIImage(named: "TerroristInfiltrationIcon")
+        }
+        // Earthquake threat icon
+        else if threat.contains("earthQuake") {
+            return UIImage(named: "EarthquakeIcon")
+        }
+        // Leave shelter (incident ended) threat icon
+        else if threat.contains("leaveShelter") {
+            return UIImage(named: "LeaveShelterIcon")
+        }
+        // Early warning threat icon
+        else if threat.contains("earlyWarning") {
+            return UIImage(named: "EarlyWarningIcon")
+        }
+        
+        // Unknown threat types fall back to generic alert icon
+        return UIImage(named: "AlertIcon")
     }
     
     func UIColorFromRGB(_ rgbValue: Int) -> UIColor! {
