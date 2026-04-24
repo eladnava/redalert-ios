@@ -56,6 +56,9 @@ class AlertViewController: UIViewController, MKMapViewDelegate {
         // Prepare annotations array        
         var annotations: [MKPointAnnotation] = []
         
+        // All-clear alerts should show polygons only (no map markers)
+        let isAllClearAlert = alert?.threat.contains("leaveShelter") ?? false
+        
         // Prepare array of all polygon points from all cities
         var allPolygonPoints:[CLLocationCoordinate2D] = []
         
@@ -113,8 +116,11 @@ class AlertViewController: UIViewController, MKMapViewDelegate {
                     annotation.coordinate = MKCoordinateRegion(coordinates: cityPolygonPoints).center
                 }
                 
-                // Add to annotations
-                annotations.append(annotation)
+                // Add marker only when current alert is not all-clear
+                if !isAllClearAlert {
+                    // Append configured city marker to annotations list
+                    annotations.append(annotation)
+                }
             }
         }
         
@@ -240,9 +246,19 @@ class AlertViewController: UIViewController, MKMapViewDelegate {
         // Set polygon colors
         if overlay is MKPolygon {
             let renderer = MKPolygonRenderer(overlay: overlay)
-            renderer.fillColor = UIColorFromRGB(0xb3ffafaf)
-            renderer.strokeColor = UIColorFromRGB(0xffe40000)
+            // Use green for all-clear alerts, red for all other threats
+            let isAllClearAlert = alert?.threat.contains("leaveShelter") ?? false
+            
+            // Set polygon fill color based on all-clear state
+            renderer.fillColor = isAllClearAlert ? UIColorFromRGB(0xb3afffaf) : UIColorFromRGB(0xb3ffafaf)
+            
+            // Set polygon stroke color based on all-clear state
+            renderer.strokeColor = isAllClearAlert ? UIColorFromRGB(0xff00a000) : UIColorFromRGB(0xffe40000)
+            
+            // Keep polygon border width at one point
             renderer.lineWidth = 1
+            
+            // Return configured polygon renderer to MapKit
             return renderer
         }
         
