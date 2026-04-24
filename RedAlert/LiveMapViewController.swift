@@ -100,7 +100,7 @@ class LiveMapViewController: UIViewController, MKMapViewDelegate {
             appIconView.widthAnchor.constraint(equalToConstant: 54),
             appIconView.heightAnchor.constraint(equalToConstant: 54),
             appIconView.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -15),
-            appIconView.bottomAnchor.constraint(equalTo: mapView.bottomAnchor, constant: -15)
+            appIconView.bottomAnchor.constraint(equalTo: mapView.bottomAnchor, constant: -18)
         ])
     }
 

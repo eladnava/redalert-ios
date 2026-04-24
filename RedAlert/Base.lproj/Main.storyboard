@@ -255,8 +255,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zbu-A1-zJ4">
-                                <rect key="frame" x="4" y="0.0" width="592" height="600"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zbu-A1-zJ4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <connections>
                                     <outlet property="delegate" destination="nx8-0S-zAB" id="QSq-gV-aDp"/>
                                 </connections>
@@ -264,10 +264,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="zbu-A1-zJ4" firstAttribute="top" secondItem="h74-SZ-Vco" secondAttribute="topMargin" id="AxE-y5-kIO"/>
-                            <constraint firstItem="VxS-Lr-Z5n" firstAttribute="top" secondItem="zbu-A1-zJ4" secondAttribute="bottom" id="EV6-p7-PH6"/>
-                            <constraint firstItem="zbu-A1-zJ4" firstAttribute="leading" secondItem="h74-SZ-Vco" secondAttribute="leadingMargin" constant="-16" id="PfG-9S-4np"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="zbu-A1-zJ4" secondAttribute="trailing" constant="-16" id="WSz-nF-zCx"/>
+                            <constraint firstItem="zbu-A1-zJ4" firstAttribute="top" secondItem="h74-SZ-Vco" secondAttribute="top" id="AxE-y5-kIO"/>
+                            <constraint firstAttribute="bottom" secondItem="zbu-A1-zJ4" secondAttribute="bottom" id="EV6-p7-PH6"/>
+                            <constraint firstItem="zbu-A1-zJ4" firstAttribute="leading" secondItem="h74-SZ-Vco" secondAttribute="leading" id="PfG-9S-4np"/>
+                            <constraint firstAttribute="trailing" secondItem="zbu-A1-zJ4" secondAttribute="trailing" id="WSz-nF-zCx"/>
                         </constraints>
                     </view>
                     <connections>

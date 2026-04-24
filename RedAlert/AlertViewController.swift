@@ -175,8 +175,8 @@ class AlertViewController: UIViewController, MKMapViewDelegate {
         NSLayoutConstraint.activate([
             threatIconView.widthAnchor.constraint(equalToConstant: 54),
             threatIconView.heightAnchor.constraint(equalToConstant: 54),
-            threatIconView.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -12),
-            threatIconView.bottomAnchor.constraint(equalTo: mapView.bottomAnchor, constant: -12)
+            threatIconView.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -15),
+            threatIconView.bottomAnchor.constraint(equalTo: mapView.bottomAnchor, constant: -18)
         ])
     }
     
