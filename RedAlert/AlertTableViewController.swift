@@ -76,6 +76,19 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             dismissAlertsButton.heightAnchor.constraint(equalToConstant: 25)
         ])
         
+        // Shift map & dismiss buttons closer to the screen edge
+        var shiftPx: CGFloat = 7;
+        
+        // Non-RTL language?
+        if (!Localization.isRTL()) {
+            // Shift the other way
+            shiftPx *= -1
+        }
+        
+        // Shift map button closer to the screen edge
+        button.transform = CGAffineTransform(translationX: shiftPx, y: 0)
+        dismissAlertsButton.transform = CGAffineTransform(translationX: shiftPx, y: 0)
+        
         // Place dismiss/restore next to live map on the left action buttons
         navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: button), UIBarButtonItem(customView: dismissAlertsButton)]
         
