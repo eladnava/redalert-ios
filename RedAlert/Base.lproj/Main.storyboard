@@ -131,10 +131,10 @@
             </objects>
             <point key="canvasLocation" x="1835" y="85"/>
         </scene>
-        <!--Additional-->
+        <!--Additional Settings-->
         <scene sceneID="q4N-sS-iki">
             <objects>
-                <tableViewController storyboardIdentifier="AdditionalSettings" title="Additional" id="fmR-DC-UVs" customClass="AdditonalViewController" customModule="RedAlert" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AdditionalSettings" title="Additional Settings" id="fmR-DC-UVs" customClass="AdditonalViewController" customModule="RedAlert" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="mEU-AN-bf5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -159,10 +159,10 @@
             </objects>
             <point key="canvasLocation" x="2587" y="85"/>
         </scene>
-        <!--Additional-->
+        <!--Secondary Alerts-->
         <scene sceneID="IQ6-sk-zKF">
             <objects>
-                <tableViewController storyboardIdentifier="SecondarySettings" title="Additional" id="nHK-zS-dkJ" customClass="SecondaryViewController" customModule="RedAlert" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SecondarySettings" title="Secondary Alerts" id="nHK-zS-dkJ" customClass="SecondaryViewController" customModule="RedAlert" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="6HJ-xB-hs9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -190,7 +190,7 @@
         <!--Early Warnings-->
         <scene sceneID="EW1-sk-zKF">
             <objects>
-                <tableViewController storyboardIdentifier="EarlyWarningsSettings" title="Additional" id="nHK-zS-dkK" customClass="EarlyWarningsViewController" customModule="RedAlert" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="EarlyWarningsSettings" title="Early Warnings" id="nHK-zS-dkK" customClass="EarlyWarningsViewController" customModule="RedAlert" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="6HJ-xB-hs10">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -243,10 +243,10 @@
             </objects>
             <point key="canvasLocation" x="3337" y="1565"/>
         </scene>
-        <!--מפה-->
+        <!--Live Map-->
         <scene sceneID="efY-Cy-1Zj">
             <objects>
-                <viewController title="מפה" id="nx8-0S-zAB" customClass="AlertViewController" customModule="RedAlert" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Live Map" id="nx8-0S-zAB" customClass="AlertViewController" customModule="RedAlert" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7e3-tL-vOE"/>
                         <viewControllerLayoutGuide type="bottom" id="VxS-Lr-Z5n"/>
