@@ -44,12 +44,13 @@ class EarlyWarningsViewController: IASKAppSettingsViewController, IASKSettingsDe
         let value = UserSettings.getBool(key: UserSettingsKeys.notifications, defaultValue: true)
         let secondaryValue = UserSettings.getBool(key: UserSettingsKeys.secondaryNotifications, defaultValue: true)
         let earlyWarningsValue = UserSettings.getBool(key: UserSettingsKeys.earlyWarningsNotifications, defaultValue: true)
+        let leaveShelterValue = UserSettings.getBool(key: UserSettingsKeys.leaveShelterNotifications, defaultValue: true)
         
-        // Show loading dialog        
+        // Show loading dialog
         MBProgressHUD.showAdded(to: self.navigationController?.view, animated: true)
         
-        // Update notifications        
-        RedAlertAPI.updateNotificationsAsync(primary: value, secondary: secondaryValue, earlyWarnings: earlyWarningsValue) { (err: NSError?) -> () in
+        // Update notification settings on backend
+        RedAlertAPI.updateNotificationsAsync(primary: value, secondary: secondaryValue, earlyWarnings: earlyWarningsValue, leaveShelter: leaveShelterValue) { (err: NSError?) -> () in
             
             // Hide loading dialog            
             MBProgressHUD.hide(for: self.navigationController?.view, animated: true)
