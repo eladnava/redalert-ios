@@ -40,7 +40,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Nir Oz, Alumim" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="52" translatesAutoresizingMaskIntoConstraints="NO" id="sm6-0m-u6c">
                                             <rect key="frame" x="11" y="62.5" width="297" height="15"/>
                                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
-                                            <color key="textColor" red="0.34129908048745361" green="0.34129908048745361" blue="0.34129908048745361" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" red="0.26262813354983472" green="0.26262813354983472" blue="0.26262813354983472" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Confrontation Line" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="52" translatesAutoresizingMaskIntoConstraints="NO" id="jkl-01-234">
