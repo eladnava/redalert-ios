@@ -1,0 +1,88 @@
+/* 
+  Localizable.strings
+  RedAlert
+  German
+*/
+"ERROR_DIALOG"="Fehler";
+"OK_BUTTON"="OK";
+"CANCEL_BUTTON"="Abbrechen";
+"EMAIL_TITLE"="Red Alert";
+"REPORT_BUG"="Kontakt";
+"EMAIL_BODY_ERROR_DESC"="Problembeschreibung:";
+"EMAIL_BODY_SHORT_ERROR_DESC"="Bitte gib eine Nachricht mit mindestens 10 Zeichen ein.";
+"EMAIL_BODY_SENT_VIA"="Gesendet via Red Alert %@ für iPhone";
+"CONTACT_ERROR"="E-Mail kann von diesem Gerät nicht gesendet werden. Bitte richte zuerst die Mail-App ein.";
+"IM_SAFE_MESSAGE"="Ich bin in Sicherheit - gesendet via Red Alert für iOS - https://redalert.me";
+"REGISTRATION_ERROR"="Beim Registrieren für Benachrichtigungen ist ein Fehler aufgetreten. Bitte versuche es später erneut.";
+"PUSH_ERROR"="Beim Registrieren für Push-Benachrichtigungen ist ein Fehler aufgetreten. Bitte versuche es später erneut.";
+"UNREGISTERED_ERROR"="Du bist nicht für Benachrichtigungen registriert. Bitte aktiviere Benachrichtigungen für Red Alert in den Geräteeinstellungen.\n\nGehe zu Einstellungen -> Mitteilungen -> RedAlert -> Mitteilungen erlauben.";
+"RECENT_ALERTS_ERROR"="Beim Verbinden mit dem App-Server ist ein Fehler aufgetreten. Bitte versuche es später erneut.";
+"USER_UPDATE_ERROR"="Beim Aktualisieren deines Benachrichtigungsabonnements ist ein Fehler aufgetreten. Bitte versuche es später erneut.";
+"SOUND_ERROR"="Beim Abspielen des Tons ist ein Fehler aufgetreten.";
+"SOUND_SAVE_ERROR"="Beim Speichern des Tons ist ein Fehler aufgetreten. Bitte versuche es später erneut.";
+"NOTIFICATIONS_SAVE_ERROR"="Beim Speichern der Einstellung ist ein Fehler aufgetreten. Bitte versuche es später erneut.";
+"SELF_TEST_ERROR"="Beim Ausführen des Selbsttests ist ein Fehler aufgetreten. Bitte versuche es später erneut.";
+"APP_NAME"="Red Alert";
+"SAVE_SUBSCRIPTIONS_FAILED"="Beim Speichern der Einstellung ist ein Fehler aufgetreten. Bitte versuche es später erneut.";
+"UPDATE_DIALOG_TITLE"="Neue Version";
+"UPDATE_DIALOG_MESSAGE"="Eine neue Version dieser App ist verfügbar (%@), bitte aktualisieren.";
+"UPDATE_BUTTON"="Aktualisieren";
+"NOT_NOW_BUTTON"="Nicht jetzt";
+"WAIT_FOR_TEST_RESULT"="Bitte warte auf den Testalarm...";
+"CITY_SELECTION"="Städte";
+"ZONE_SELECTION"="Zusätzliche Regionen";
+"SOUND_SELECTION"="Töne";
+"SEARCH_PLACEHOLDER"="Suchbegriffe eingeben...";
+"LANGUAGE_DIALOG_TITLE"="Sprachänderung";
+"LANGUAGE_DIALOG_MESSAGE"="Du musst die App nach dem Ändern der Sprache neu öffnen.";
+"REGISTRATION_SUCCESS_TITLE"="Wähle deine Stadt";
+"REGISTRATION_SUCCESS_MESSAGE"="Du musst deine Stadt oder Ortschaft auswählen, um Benachrichtigungen zu erhalten.";
+"REGISTRATION_SUCCESS_RESELECT_MESSAGE"="Aufgrund aktueller Änderungen musst du deine Stadt oder Ortschaft erneut auswählen, um weiterhin Benachrichtigungen zu erhalten.";
+
+"CITIES"="Städte";
+"ZONES"="Zusätzliche Regionen";
+"SECONDARY_CITIES"="Sekundäre Städte";
+"MORE_INFO"="Zusätzliche Infos";
+
+"SIREN_1"="Sirene 1";
+"SIREN_2"="Sirene 2";
+"SIREN_3"="Sirene 3";
+"SIREN_4"="Sirene 4";
+"SIREN_5"="Sirene 5";
+"FUNNY"= "Lustig";
+"CALM_1"="Beruhigend 1";
+"CALM_2"="Beruhigend 2";
+"CALM_3"="Beruhigend 3";
+"CALM_4"="Beruhigend 4";
+"CALM_5"="Beruhigend 5";
+"SHORT_1"="Kurz 1";
+"SHORT_2"="Kurz 2";
+"SHORT_3"="Kurz 3";
+"SHORT_4"="Kurz 4";
+"SHORT_5"="Kurz 5";
+"SILENT"="Stumm";
+
+"TEST"="Test";
+"MISSILES"="Raketenbeschuss";
+"RADIOLOGICAL_EVENT"="Radiologisches Ereignis";
+"EARTHQUAKE"="Erdbeben";
+"TSUNAMI"="Tsunamiwarnung";
+"HOSTILE_AIRCRAFT_INTRUSION"="Feindliches Eindringen aus der Luft";
+"HAZARDOUS_MATERIALS"="Gefahrstoffereignis";
+"TERRORIST_INFILTRATION"="Terroristische Infiltration";
+"EARLY_WARNING"="Frühwarnung";
+"LEAVE_SHELTER"="Ereignis beendet";
+"MISSILES_DRILL"="Übung: Raketenbeschuss";
+"EARTHQUAKE_DRILL"="Übung: Erdbeben";
+"RADIOLOGICAL_EVENT_DRILL"="Übung: Radiologisches Ereignis";
+"TSUNAMI_DRILL"="Übung: Tsunamiwarnung";
+"HOSTILE_AIRCRAFT_INTRUSION_DRILL"="Übung: Feindliches Eindringen aus der Luft";
+"HAZARDOUS_MATERIALS_DRILL"="Übung: Gefahrstoffereignis";
+"TERRORIST_INFILTRATION_DRILL"="Übung: Terroristische Infiltration";
+"UNKNOWN"="Alarm";
+"SYSTEM"="Systemalarm";
+
+"LIFESHIELD_SHELTERS"="Lifeshield-Schutzräume:";
+"LIVE_MAP"="Live-Karte";
+"DISMISS_ALERTS_CONFIRM_TITLE"="Letzte Alarme löschen?";
+"DISMISS_ALERTS_CONFIRM_MESSAGE"="Möchtest du alle letzten Alarme löschen?";
