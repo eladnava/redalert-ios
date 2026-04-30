@@ -62,7 +62,6 @@ class AlertViewController: UIViewController, MKMapViewDelegate {
         // Prepare array of all polygon points from all cities
         var allPolygonPoints:[CLLocationCoordinate2D] = []
         
-        
         // Load polygons from JSON
         let polygonCache = LocationMetadata.getPolygons()
         
