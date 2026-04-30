@@ -15,8 +15,16 @@ struct Localization {
     }
     
     static func shouldLocalizeToEnglish() -> Bool {
-        // Return true unless device language is set to Hebrew
-        return !self.getDeviceLanguageCode().starts(with: "he")
+        // Get language code
+        let lang = self.getDeviceLanguageCode()
+        
+        // English location names (cities, zones) for every language except Hebrew and Russian and Arabic
+        return !lang.starts(with: "he") && !lang.starts(with: "ru")
+    }
+    
+    static func shouldLocalizeToRussian() -> Bool {
+        // Return true when language is Russian
+        return self.getDeviceLanguageCode().starts(with: "ru")
     }
     
     static func getDeviceLanguageCode() -> String {

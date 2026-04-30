@@ -30,8 +30,10 @@ struct LocationMetadata {
             let id = city["id"] as! Int
             let name = city["name"] as! String
             let name_en = city["name_en"] as! String
+            let name_ru = (city["name_ru"] as? String) ?? ""
             let zone = city["zone"] as! String
             let zone_en = city["zone_en"] as! String
+            let zone_ru = (city["zone_ru"] as? String) ?? ""
             let countdown = city["countdown"] as! Int
             let lat = city["lat"] as! Double
             let lng = city["lng"] as! Double
@@ -44,7 +46,7 @@ struct LocationMetadata {
             }
             
             // Create new city object
-            let item = City(id: id, name: name, name_en: name_en, zone: zone, zone_en: zone_en, countdown: countdown, lat: lat, lng: lng, value: value, shelters: shelters)
+            let item = City(id: id, name: name, name_en: name_en, name_ru: name_ru, zone: zone, zone_en: zone_en, zone_ru: zone_ru, countdown: countdown, lat: lat, lng: lng, value: value, shelters: shelters)
             
             // Add it to cache
             cityCache.append(item)
@@ -83,6 +85,66 @@ struct LocationMetadata {
         return polygonCache
     }
     
+    static func localizedDisplayName(for city: City) -> String {
+        // Return Russian display name when Russian is active
+        if Localization.shouldLocalizeToRussian() {
+            // Prefer Russian city name and fallback to English
+            return city.name_ru.isEmpty ? city.name_en : city.name_ru
+        }
+        
+        // Return English display name when English localization is active
+        if Localization.shouldLocalizeToEnglish() {
+            // Return English city name
+            return city.name_en
+        }
+        
+        // Return Hebrew city name by default
+        return city.name
+    }
+    
+    static func localizedZoneLabel(for city: City) -> String {
+        // Return Russian zone label when Russian is active
+        if Localization.shouldLocalizeToRussian() {
+            // Prefer Russian zone name and fallback to English
+            return city.zone_ru.isEmpty ? city.zone_en : city.zone_ru
+        }
+        
+        // Return English zone label when English localization is active
+        if Localization.shouldLocalizeToEnglish() {
+            // Return English zone label
+            return city.zone_en
+        }
+        
+        // Return Hebrew zone label by default
+        return city.zone
+    }
+    
+    static func russianZoneTitle(forZonesJsonZone zone: NSDictionary) -> String {
+        // Extract zone value key used for selection persistence
+        let value = zone["value"] as! String
+
+        // Handle the "all" pseudo-zone separately
+        if value == "all" {
+            // Load cities for fallback lookup
+            let cities = getCities()
+
+            // Find "all" item in cities metadata
+            if let first = cities.first(where: { $0.value == "all" }), !first.name_ru.isEmpty {
+                // Return Russian "all" title from cities JSON
+                return first.name_ru
+            }
+        }
+        
+        // Find a city that belongs to this Hebrew zone key
+        if let c = getCities().first(where: { $0.zone == value }), !c.zone_ru.isEmpty {
+            // Return Russian zone title from cities JSON
+            return c.zone_ru
+        }
+        
+        // Fallback to English zone title from zones JSON
+        return zone["zone_en"] as! String
+    }
+    
     // Get zones from JSON
     static func getZones() -> NSArray? {
         // Return zone cache, if exists
@@ -98,76 +160,118 @@ struct LocationMetadata {
     }
     
     static func getLocalizedZone(zone: String) -> String {
-        // Create names array
-        if (!Localization.shouldLocalizeToEnglish()) {
-            // All selected?
+        // Handle Russian zone localization first
+        if Localization.shouldLocalizeToRussian() {
+            // Localize "all" pseudo-zone using strings table
             if zone == "all" {
-                return "הכל"
+                // Return localized "All" value
+                return NSLocalizedString("All", comment: "")
             }
             
-            // Return Hebrew zone name
+            // Loop over cities to map Hebrew zone key to Russian label
+            for city in getCities() {
+                // Match by source Hebrew zone key
+                if city.zone == zone {
+                    // Return Russian zone and fallback to English
+                    return city.zone_ru.isEmpty ? city.zone_en : city.zone_ru
+                }
+            }
+            
+            // Fallback to original zone key
             return zone
         }
         
-        // Get cities as array
-        let cities = getCities()
+        // Keep existing Hebrew behavior for non-English and non-Russian
+        if (!Localization.shouldLocalizeToEnglish()) {
+            // Translate "all" pseudo-zone to Hebrew label
+            if zone == "all" {
+                // Return Hebrew "all" label
+                return "הכל"
+            }
+            
+            // Return Hebrew zone key directly
+            return zone
+        }
         
-        // Loop over them
+        // Load cities for English zone lookup
+        let cities = getCities()
+
+        // Loop over cities to map Hebrew zone key to English label
         for city in cities {
-            // Found a city with this zone?
+            // Match by source Hebrew zone key
             if (city.zone == zone) {
-                // Return english zone name
+                // Return English zone label
                 return city.zone_en
             }
         }
         
-        // No match, return original zone
+        // Fallback to original zone key
         return zone
     }
     
     static func getLocalizedCityName(cityName: String) -> String {
-        // Not English?
-        if (!Localization.shouldLocalizeToEnglish()) {
-            // All selected?
+        // Handle Russian city localization first
+        if Localization.shouldLocalizeToRussian() {
+            // Localize "all" pseudo-city using strings table
             if cityName == "all" {
-                return "הכל"
+                // Return localized "All" value
+                return NSLocalizedString("All", comment: "")
             }
             
-            // Return Hebrew city name
+            // Loop over cities to map Hebrew city key to Russian label
+            for city in getCities() {
+                // Match by source Hebrew city key
+                if (city.name == cityName) {
+                    // Return Russian city name and fallback to English
+                    return city.name_ru.isEmpty ? city.name_en : city.name_ru
+                }
+            }
+            
+            // Fallback to original city key
             return cityName
         }
         
-        // Get cities as array
-        let cities = getCities()
+        // Keep existing Hebrew behavior for non-English and non-Russian
+        if (!Localization.shouldLocalizeToEnglish()) {
+            // Translate "all" pseudo-city to Hebrew label
+            if cityName == "all" {
+                // Return Hebrew "all" label
+                return "הכל"
+            }
+            // Return Hebrew city key directly
+            return cityName
+        }
         
-        // Loop over them
+        // Load cities for English city lookup
+        let cities = getCities()
+
+        // Loop over cities to map Hebrew city key to English label
         for city in cities {
-            // Find by name
+            // Match by source Hebrew city key
             if (city.name == cityName) {
-                // Return english name
+                // Return English city label
                 return city.name_en
-                
             }
         }
         
-        // No match, return city name in Hebrew
+        // Fallback to original city key
         return cityName
     }
     
     static func getLocalizedZoneByCity(cityName: String) -> String {
-        // Get cities as array
+        // Load cities for zone lookup
         let cities = getCities()
-        
-        // Loop over them
+
+        // Loop over cities to find matching city
         for city in cities {
-            // Find by name
+            // Match by source Hebrew city key
             if (city.name == cityName) {
-                // Return english zone
-                return (Localization.shouldLocalizeToEnglish()) ? city.zone_en : city.zone
+                // Return localized zone label for the matched city
+                return localizedZoneLabel(for: city)
             }
         }
         
-        // No match, return empty string
+        // Fallback to empty value when city is not found
         return ""
     }
     
@@ -258,8 +362,23 @@ struct LocationMetadata {
         for city in cities {
             // Find by name
             if (city.name == cityName) {
-                // Return english zone
-                return (Localization.shouldLocalizeToEnglish()) ? city.zone_en  + " (" + countdownTranslations[city.countdown]!.time_en + ")" : city.zone + " (" + countdownTranslations[city.countdown]!.time + ")"
+                // Handle Russian localized countdown label
+                if Localization.shouldLocalizeToRussian() {
+                    // Resolve Russian zone name with English fallback
+                    let z = city.zone_ru.isEmpty ? city.zone_en : city.zone_ru
+
+                    // Return Russian zone with Russian countdown text
+                    return z + " (" + countdownTranslations[city.countdown]!.time_ru + ")"
+                }
+                
+                // Handle English localized countdown label
+                if Localization.shouldLocalizeToEnglish() {
+                    // Return English zone with English countdown text
+                    return city.zone_en + " (" + countdownTranslations[city.countdown]!.time_en + ")"
+                }
+                
+                // Return Hebrew zone with Hebrew countdown text
+                return city.zone + " (" + countdownTranslations[city.countdown]!.time + ")"
             }
         }
         

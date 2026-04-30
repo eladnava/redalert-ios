@@ -380,7 +380,7 @@ class LiveMapViewController: UIViewController, MKMapViewDelegate {
                 annotation.coordinate = CLLocationCoordinate2D(latitude: city.lat, longitude: city.lng)
                 
                 // Set the title to localized city name (English or Hebrew based on settings)
-                annotation.title = Localization.shouldLocalizeToEnglish() ? city.name_en : city.name
+                annotation.title = LocationMetadata.localizedDisplayName(for: city)
                 
                 // Set the subtitle to threat level and formatted date/time string
                 annotation.subtitle = alert.localizedThreat + " " + DateFormatterStruct.ConvertUnixTimestampToDateTime(unixTimestamp: alert.date)

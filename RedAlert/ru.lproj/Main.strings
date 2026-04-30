@@ -1,0 +1,20 @@
+/* Class = "IBUIBarButtonItem"; title = "Settings"; ObjectID = "7jC-HH-oAq"; */
+"7jC-HH-oAq.title" = "Настройки";
+
+/* Class = "IBUITableViewController"; title = "Settings"; ObjectID = "JaO-zN-Z1I"; */
+"JaO-zN-Z1I.title" = "Настройки";
+
+/* Class = "IBUITableViewController"; title = "Settings"; ObjectID = "JaO-zN-Z1I"; */
+"fmR-DC-UVs.title" = "Дополнительные настройки";
+
+/* Class = "IBUITableViewController"; title = "Settings"; ObjectID = "JaO-zN-Z1I"; */
+"nHK-zS-dkJ.title" = "Дополнительные оповещения";
+
+/* Class = "IBUINavigationItem"; title = "Recent Alerts"; ObjectID = "Ss2-3G-LoG"; */
+"Ss2-3G-LoG.title" = "Последние oповещения";
+
+/* Class = "IBUINavigationItem"; title = "Recent Alerts"; ObjectID = "Ss2-3G-LoG"; */
+"nHK-zS-dkK.title" = "Ранние предупреждения";
+
+/* Class = "IBUITableViewController"; title = "Settings"; ObjectID = "nHK-zS-dkL"; */
+"nHK-zS-dkL.title" = "Оповещения об окончании инцидента";

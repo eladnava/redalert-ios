@@ -64,6 +64,7 @@
 				<string>עברית</string>
 				<string>English</string>
 				<string>Português</string>
+				<string>Русский</string>
 			</array>
 			<key>Values</key>
 			<array>
@@ -71,6 +72,7 @@
 				<string>he</string>
 				<string>en</string>
 				<string>pt-BR</string>
+				<string>ru</string>
 			</array>
 		</dict>
 		<dict>

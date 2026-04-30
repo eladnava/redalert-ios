@@ -21,13 +21,22 @@ struct MultiValueItemGenerator {
             return items
         }
         
-        // Check locale first        
-        let isEnglish = Localization.shouldLocalizeToEnglish()
-        
         // Loop over them        
         for zone in zones as! [NSDictionary] {
-            // Get localized name            
-            let name = (isEnglish) ? zone["name_en"] as! String : zone["name"] as! String
+            // Prepare localized zone title
+            let name: String
+
+            // Use Russian names when Russian is active
+            if Localization.shouldLocalizeToRussian() {
+                // Build Russian zone title from city metadata
+                name = LocationMetadata.russianZoneTitle(forZonesJsonZone: zone)
+            } else {
+                // Check whether the current language should use English labels
+                let isEnglish = Localization.shouldLocalizeToEnglish()
+
+                // Choose English or Hebrew zone title
+                name = (isEnglish) ? zone["name_en"] as! String : zone["name"] as! String
+            }
             
             // Add city name to list            
             items.append(KNSelectorItem(displayValue: name, displayDetail: "", selectValue: (zone["value"] as! String)))
@@ -49,16 +58,31 @@ struct MultiValueItemGenerator {
             return items
         }
         
-        // Check locale first        
-        let isEnglish = Localization.shouldLocalizeToEnglish()
-        
         // Loop over them        
         for city in cities {
-            // Get localized name            
-            let name = (isEnglish) ? city.name_en : city.name
-            
-            // Get localized zone
-            let zone = (isEnglish) ? city.zone_en : city.zone
+            // Prepare localized city title
+            let name: String
+
+            // Prepare localized zone subtitle
+            let zone: String
+
+            // Use Russian names when Russian is active
+            if Localization.shouldLocalizeToRussian() {
+                // Prefer Russian city name and fallback to English
+                name = city.name_ru.isEmpty ? city.name_en : city.name_ru
+
+                // Prefer Russian zone name and fallback to English
+                zone = city.zone_ru.isEmpty ? city.zone_en : city.zone_ru
+            } else {
+                // Check whether the current language should use English labels
+                let isEnglish = Localization.shouldLocalizeToEnglish()
+
+                // Choose English or Hebrew city name
+                name = (isEnglish) ? city.name_en : city.name
+
+                // Choose English or Hebrew zone name
+                zone = (isEnglish) ? city.zone_en : city.zone
+            }
             
             // Add city to list            
             items.append(KNSelectorItem(displayValue: name, displayDetail: zone, selectValue: city.value))

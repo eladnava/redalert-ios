@@ -62,8 +62,6 @@ class AlertViewController: UIViewController, MKMapViewDelegate {
         // Prepare array of all polygon points from all cities
         var allPolygonPoints:[CLLocationCoordinate2D] = []
         
-        // Check locale first        
-        let isEnglish = Localization.shouldLocalizeToEnglish()
         
         // Load polygons from JSON
         let polygonCache = LocationMetadata.getPolygons()
@@ -100,7 +98,7 @@ class AlertViewController: UIViewController, MKMapViewDelegate {
                 annotation.coordinate = CLLocationCoordinate2DMake(city.lat, city.lng)
                 
                 // Set title and snippet
-                annotation.title = (isEnglish) ? city.name_en : city.name
+                annotation.title = LocationMetadata.localizedDisplayName(for: city)
                 
                 // Got any shelters for this city?
                 if (city.shelters > 0) {

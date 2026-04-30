@@ -1,0 +1,93 @@
+/* 
+  Localizable.strings
+  RedAlert
+
+  Russian
+*/
+"ERROR_DIALOG"="Ошибка";
+"OK_BUTTON"="OK";
+"CANCEL_BUTTON"="Отмена";
+"EMAIL_TITLE"="Red Alert";
+"REPORT_BUG"="Связаться с нами";
+"All"="Все";
+"Selected (0)"="Выбрано (0)";
+"Selected (%d)"="Выбрано (%d)";
+"EMAIL_BODY_ERROR_DESC"="Описание проблемы:";
+"EMAIL_BODY_SHORT_ERROR_DESC"="Введите сообщение не короче 10 символов.";
+"EMAIL_BODY_SENT_VIA"="Отправлено через Red Alert %@ для iPhone";
+"CONTACT_ERROR"="С этого устройства нельзя отправить письмо — сначала настройте приложение «Почта».";
+"IM_SAFE_MESSAGE"="Я в безопасности — отправлено через Red Alert для iOS — https://redalert.me";
+"REGISTRATION_ERROR"="Не удалось зарегистрироваться для оповещений. Повторите попытку позже.";
+"PUSH_ERROR"="Не удалось включить push-уведомления. Повторите попытку позже.";
+"UNREGISTERED_ERROR"="Вы не подписаны на оповещения. Включите уведомления для Red Alert в настройках устройства.\n\nОткройте Настройки → Уведомления → RedAlert → Разрешить уведомления.";
+"RECENT_ALERTS_ERROR"="Не удалось подключиться к серверу приложения. Повторите попытку позже.";
+"USER_UPDATE_ERROR"="Не удалось обновить подписку на оповещения. Повторите попытку позже.";
+"SOUND_ERROR"="Не удалось воспроизвести звук.";
+"SOUND_SAVE_ERROR"="Не удалось сохранить звук. Повторите попытку позже.";
+"NOTIFICATIONS_SAVE_ERROR"="Не удалось сохранить настройку. Повторите попытку позже.";
+"SELF_TEST_ERROR"="Не удалось выполнить самопроверку. Повторите попытку позже.";
+"APP_NAME"="Red Alert";
+"SAVE_SUBSCRIPTIONS_FAILED"="Не удалось сохранить настройку. Повторите попытку позже.";
+"UPDATE_DIALOG_TITLE"="Новая версия";
+"UPDATE_DIALOG_MESSAGE"="Доступна новая версия приложения (%@), пожалуйста, обновитесь.";
+"UPDATE_BUTTON"="Обновить";
+"NOT_NOW_BUTTON"="Не сейчас";
+"WAIT_FOR_TEST_RESULT"="Дождитесь тестового оповещения...";
+"CITY_SELECTION"="Города";
+"ZONE_SELECTION"="Дополнительные регионы";
+"SOUND_SELECTION"="Звуки";
+"SEARCH_PLACEHOLDER"="Введите запрос для поиска...";
+"LANGUAGE_DIALOG_TITLE"="Смена языка";
+"LANGUAGE_DIALOG_MESSAGE"="После смены языка нужно перезапустить приложение.";
+"REGISTRATION_SUCCESS_TITLE"="Выберите город";
+"REGISTRATION_SUCCESS_MESSAGE"="Чтобы получать оповещения, выберите свой город или населённый пункт.";
+"REGISTRATION_SUCCESS_RESELECT_MESSAGE"="Из-за недавних изменений командования тыла дома нужно заново выбрать город или населённый пункт, чтобы продолжить получать оповещения.";
+
+"CITIES"="Города";
+"ZONES"="Дополнительные регионы";
+"SECONDARY_CITIES"="Дополнительные города";
+"MORE_INFO"="Дополнительная информация";
+
+"SIREN_1"="Сирена 1";
+"SIREN_2"="Сирена 2";
+"SIREN_3"="Сирена 3";
+"SIREN_4"="Сирена 4";
+"SIREN_5"="Сирена 5";
+"FUNNY"="Юмор";
+"CALM_1"="Спокойный 1";
+"CALM_2"="Спокойный 2";
+"CALM_3"="Спокойный 3";
+"CALM_4"="Спокойный 4";
+"CALM_5"="Спокойный 5";
+"SHORT_1"="Короткий 1";
+"SHORT_2"="Короткий 2";
+"SHORT_3"="Короткий 3";
+"SHORT_4"="Короткий 4";
+"SHORT_5"="Короткий 5";
+"SILENT"="Без звука";
+
+"TEST"="Тест";
+"MISSILES"="Ракетный обстрел";
+"RADIOLOGICAL_EVENT"="Радиологическое событие";
+"EARTHQUAKE"="Землетрясение";
+"TSUNAMI"="Предупреждение о цунами";
+"HOSTILE_AIRCRAFT_INTRUSION"="Нарушение воздушного пространства";
+"HAZARDOUS_MATERIALS"="Опасные материалы";
+"TERRORIST_INFILTRATION"="Террористическое проникновение";
+"EARLY_WARNING"="Раннее предупреждение";
+"LEAVE_SHELTER"="Событие завершено";
+"MISSILES_DRILL"="Учебная тревога: Ракетный обстрел";
+"EARTHQUAKE_DRILL"="Учебная тревога: Землетрясение";
+"RADIOLOGICAL_EVENT_DRILL"="Учебная тревога: Радиологическое событие";
+"TSUNAMI_DRILL"="Учебная тревога: Предупреждение о цунами";
+"HOSTILE_AIRCRAFT_INTRUSION_DRILL"="Учебная тревога: Нарушение воздушного пространства";
+"HAZARDOUS_MATERIALS_DRILL"="Учебная тревога: Опасные материалы";
+"TERRORIST_INFILTRATION_DRILL"="Учебная тревога: Террористическое проникновение";
+"UNKNOWN"="Оповещение";
+"SYSTEM"="Системное оповещение";
+
+"LIFESHIELD_SHELTERS"="Убежища Lifeshield:";
+"LIVE_MAP"="Карта";
+"DISMISS_ALERTS_CONFIRM_TITLE"="Очистить недавние оповещения?";
+"DISMISS_ALERTS_CONFIRM_MESSAGE"="Удалить все недавние оповещения?";
+
