@@ -471,13 +471,14 @@ class LiveMapViewController: UIViewController, MKMapViewDelegate {
             // Create a polygon renderer for this overlay
             let renderer = MKPolygonRenderer(overlay: overlay)
             
-            // Set the fill color to red with 40% opacity (semi-transparent)
-            // Red components: 0.7 (70% red), 0.0 (0% green), 0.0 (0% blue), 0.4 (40% alpha)
-            renderer.fillColor = UIColor(red: 0.7, green: 0.0, blue: 0.0, alpha: 0.4)
+            // Set polygon fill color based on all-clear state
+            renderer.fillColor = UIColorFromRGB(0xb3ffafaf)
             
-            // Set the stroke (border) color to bright red with 60% opacity
-            // Red components: 1.0 (100% red), 0.0 (0% green), 0.0 (0% blue), 0.6 (60% alpha)
-            renderer.strokeColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.6)
+            // Make polygon background translucent at 40% opacity
+            renderer.fillColor = renderer.fillColor?.withAlphaComponent(0.4)
+            
+            // Set polygon stroke color based on all-clear state
+            renderer.strokeColor = UIColorFromRGB(0xffe40000)
             
             // Set the line width for the polygon border (1.0 point width)
             renderer.lineWidth = 1.0
@@ -489,4 +490,13 @@ class LiveMapViewController: UIViewController, MKMapViewDelegate {
         // For non-polygon overlays, return a generic overlay renderer
         return MKOverlayRenderer(overlay: overlay)
     }
+}
+
+func UIColorFromRGB(_ rgbValue: Int) -> UIColor! {
+    // Convert RGB hex code to UICOlor
+    return UIColor(
+        red: CGFloat((Float((rgbValue & 0xff0000) >> 16)) / 255.0),
+        green: CGFloat((Float((rgbValue & 0x00ff00) >> 8)) / 255.0),
+        blue: CGFloat((Float((rgbValue & 0x0000ff) >> 0)) / 255.0),
+        alpha: 1.0)
 }
