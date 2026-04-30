@@ -1,0 +1,91 @@
+/* 
+  Localizable.strings
+  RedAlert
+  Arabic
+*/
+"ERROR_DIALOG"="خطأ";
+"OK_BUTTON"="موافق";
+"CANCEL_BUTTON"="إلغاء";
+"EMAIL_TITLE"="Red Alert";
+"REPORT_BUG"="اتصل بنا";
+"All"="الكل";
+"Selected (0)"="المحدد (٠)";
+"Selected (%d)"="المحدد (%d)";
+"EMAIL_BODY_ERROR_DESC"="وصف المشكلة:";
+"EMAIL_BODY_SHORT_ERROR_DESC"="يرجى إدخال رسالة لا تقل عن ١٠ أحرف.";
+"EMAIL_BODY_SENT_VIA"="تم الإرسال عبر Red Alert %@ على iPhone";
+"CONTACT_ERROR"="لا يمكن إرسال البريد من هذا الجهاز. يجب إعداد تطبيق البريد أولاً.";
+"IM_SAFE_MESSAGE"="أنا بخير - تم الإرسال عبر Red Alert لنظام iOS - https://redalert.me";
+"REGISTRATION_ERROR"="حدث خطأ أثناء التسجيل للتنبيهات. يرجى المحاولة لاحقاً.";
+"PUSH_ERROR"="حدث خطأ أثناء التسجيل لإشعارات الدفع. يرجى المحاولة لاحقاً.";
+"UNREGISTERED_ERROR"="أنت غير مسجل للتنبيهات. يرجى تفعيل الإشعارات لـ RedAlert في إعدادات الجهاز.\n\nاذهب إلى الإعدادات -> الإشعارات -> RedAlert -> السماح بالإشعارات.";
+"RECENT_ALERTS_ERROR"="حدث خطأ أثناء الاتصال بخادم التطبيق. يرجى المحاولة لاحقاً.";
+"USER_UPDATE_ERROR"="حدث خطأ أثناء تحديث اشتراك التنبيهات. يرجى المحاولة لاحقاً.";
+"SOUND_ERROR"="حدث خطأ أثناء تشغيل الصوت.";
+"SOUND_SAVE_ERROR"="حدث خطأ أثناء حفظ الصوت. يرجى المحاولة لاحقاً.";
+"NOTIFICATIONS_SAVE_ERROR"="حدث خطأ أثناء حفظ الإعداد. يرجى المحاولة لاحقاً.";
+"SELF_TEST_ERROR"="حدث خطأ أثناء تنفيذ الاختبار الذاتي. يرجى المحاولة لاحقاً.";
+"APP_NAME"="Red Alert";
+"SAVE_SUBSCRIPTIONS_FAILED"="حدث خطأ أثناء حفظ الإعداد. يرجى المحاولة لاحقاً.";
+"UPDATE_DIALOG_TITLE"="إصدار جديد";
+"UPDATE_DIALOG_MESSAGE"="يتوفر إصدار جديد من التطبيق (%@)، يرجى التحديث.";
+"UPDATE_BUTTON"="تحديث";
+"NOT_NOW_BUTTON"="ليس الآن";
+"WAIT_FOR_TEST_RESULT"="يرجى انتظار تنبيه الاختبار...";
+"CITY_SELECTION"="المدن";
+"ZONE_SELECTION"="مناطق إضافية";
+"SOUND_SELECTION"="الأصوات";
+"SEARCH_PLACEHOLDER"="أدخل كلمات البحث...";
+"LANGUAGE_DIALOG_TITLE"="تغيير اللغة";
+"LANGUAGE_DIALOG_MESSAGE"="يجب إعادة فتح التطبيق بعد تغيير اللغة.";
+"REGISTRATION_SUCCESS_TITLE"="اختر مدينتك";
+"REGISTRATION_SUCCESS_MESSAGE"="يجب اختيار مدينتك أو بلدتك لبدء تلقي التنبيهات.";
+"REGISTRATION_SUCCESS_RESELECT_MESSAGE"="بسبب تغييرات حديثة، يجب إعادة اختيار مدينتك أو بلدتك لمتابعة تلقي التنبيهات.";
+
+"CITIES"="المدن";
+"ZONES"="مناطق إضافية";
+"SECONDARY_CITIES"="مدن ثانوية";
+"MORE_INFO"="معلومات إضافية";
+
+"SIREN_1"="صافرة ١";
+"SIREN_2"="صافرة ٢";
+"SIREN_3"="صافرة ٣";
+"SIREN_4"="صافرة ٤";
+"SIREN_5"="صافرة ٥";
+"FUNNY"="ممتع";
+"CALM_1"="هادئ ١";
+"CALM_2"="هادئ ٢";
+"CALM_3"="هادئ ٣";
+"CALM_4"="هادئ ٤";
+"CALM_5"="هادئ ٥";
+"SHORT_1"="قصير ١";
+"SHORT_2"="قصير ٢";
+"SHORT_3"="قصير ٣";
+"SHORT_4"="قصير ٤";
+"SHORT_5"="قصير ٥";
+"SILENT"="صامت";
+
+"TEST"="اختبار";
+"MISSILES"="قصف صاروخي";
+"RADIOLOGICAL_EVENT"="حدث إشعاعي";
+"EARTHQUAKE"="زلزال";
+"TSUNAMI"="تحذير تسونامي";
+"HOSTILE_AIRCRAFT_INTRUSION"="اختراق جوي معادٍ";
+"HAZARDOUS_MATERIALS"="مواد خطرة";
+"TERRORIST_INFILTRATION"="تسلل إرهابي";
+"EARLY_WARNING"="إنذار مبكر";
+"LEAVE_SHELTER"="انتهى الحدث";
+"MISSILES_DRILL"="تدريب: قصف صاروخي";
+"EARTHQUAKE_DRILL"="تدريب: زلزال";
+"RADIOLOGICAL_EVENT_DRILL"="تدريب: حدث إشعاعي";
+"TSUNAMI_DRILL"="تدريب: تحذير تسونامي";
+"HOSTILE_AIRCRAFT_INTRUSION_DRILL"="تدريب: اختراق جوي معادٍ";
+"HAZARDOUS_MATERIALS_DRILL"="تدريب: مواد خطرة";
+"TERRORIST_INFILTRATION_DRILL"="تدريب: تسلل إرهابي";
+"UNKNOWN"="تنبيه";
+"SYSTEM"="تنبيه النظام";
+
+"LIFESHIELD_SHELTERS"="ملاجئ Lifeshield:";
+"LIVE_MAP"="الخريطة الحية";
+"DISMISS_ALERTS_CONFIRM_TITLE"="مسح التنبيهات الأخيرة؟";
+"DISMISS_ALERTS_CONFIRM_MESSAGE"="هل تريد مسح جميع التنبيهات الأخيرة؟";

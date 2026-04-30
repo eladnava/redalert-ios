@@ -705,8 +705,11 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         
         // If at least 15 cities, display alert city count with threat name
         if (alert.groupedCities.count >= 15) {
+            // Format city count for current app language
+            let cityCountText = self.localizedCityCountText(count: alert.groupedCities.count)
+            
             // Prefix with {threat} • {count} Cities
-            title = alert.localizedThreat + " • " + String(alert.groupedCities.count) + " " + NSLocalizedString("CITIES", comment: "Cities")
+            title = alert.localizedThreat + " • " + cityCountText + " " + NSLocalizedString("CITIES", comment: "Cities")
         }
         else {
             // Prefix with {threat} • {count} Cities
@@ -896,6 +899,37 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             // Unknown type
             return UIImage(named: "AlertIcon")
         }
+    }
+    
+    func localizedCityCountText(count: Int) -> String {
+        // Arabic active? use Arabic-Indic digits
+        if Localization.shouldLocalizeToArabic() {
+            // Convert count to plain text first
+            let rawText = String(count)
+            
+            // Map ASCII digits to Arabic-Indic digits deterministically
+            let mapped = rawText.map { char -> Character in
+                switch char {
+                case "0": return "٠"
+                case "1": return "١"
+                case "2": return "٢"
+                case "3": return "٣"
+                case "4": return "٤"
+                case "5": return "٥"
+                case "6": return "٦"
+                case "7": return "٧"
+                case "8": return "٨"
+                case "9": return "٩"
+                default: return char
+                }
+            }
+            
+            // Return localized city count text
+            return String(mapped)
+        }
+        
+        // Non-Arabic languages keep standard formatting
+        return String(count)
     }
 }
 

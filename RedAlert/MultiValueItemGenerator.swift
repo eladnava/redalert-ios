@@ -30,6 +30,9 @@ struct MultiValueItemGenerator {
             if Localization.shouldLocalizeToRussian() {
                 // Build Russian zone title from city metadata
                 name = LocationMetadata.russianZoneTitle(forZonesJsonZone: zone)
+            } else if Localization.shouldLocalizeToArabic() {
+                // Build Arabic zone title from city metadata
+                name = LocationMetadata.arabicZoneTitle(forZonesJsonZone: zone)
             } else {
                 // Check whether the current language should use English labels
                 let isEnglish = Localization.shouldLocalizeToEnglish()
@@ -73,6 +76,12 @@ struct MultiValueItemGenerator {
 
                 // Prefer Russian zone name and fallback to English
                 zone = city.zone_ru.isEmpty ? city.zone_en : city.zone_ru
+            } else if Localization.shouldLocalizeToArabic() {
+                // Prefer Arabic city name and fallback to English
+                name = city.name_ar.isEmpty ? city.name_en : city.name_ar
+                
+                // Prefer Arabic zone name and fallback to English
+                zone = city.zone_ar.isEmpty ? city.zone_en : city.zone_ar
             } else {
                 // Check whether the current language should use English labels
                 let isEnglish = Localization.shouldLocalizeToEnglish()

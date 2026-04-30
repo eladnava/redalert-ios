@@ -31,9 +31,11 @@ struct LocationMetadata {
             let name = city["name"] as! String
             let name_en = city["name_en"] as! String
             let name_ru = (city["name_ru"] as? String) ?? ""
+            let name_ar = (city["name_ar"] as? String) ?? ""
             let zone = city["zone"] as! String
             let zone_en = city["zone_en"] as! String
             let zone_ru = (city["zone_ru"] as? String) ?? ""
+            let zone_ar = (city["zone_ar"] as? String) ?? ""
             let countdown = city["countdown"] as! Int
             let lat = city["lat"] as! Double
             let lng = city["lng"] as! Double
@@ -46,7 +48,7 @@ struct LocationMetadata {
             }
             
             // Create new city object
-            let item = City(id: id, name: name, name_en: name_en, name_ru: name_ru, zone: zone, zone_en: zone_en, zone_ru: zone_ru, countdown: countdown, lat: lat, lng: lng, value: value, shelters: shelters)
+            let item = City(id: id, name: name, name_en: name_en, name_ru: name_ru, name_ar: name_ar, zone: zone, zone_en: zone_en, zone_ru: zone_ru, zone_ar: zone_ar, countdown: countdown, lat: lat, lng: lng, value: value, shelters: shelters)
             
             // Add it to cache
             cityCache.append(item)
@@ -92,6 +94,12 @@ struct LocationMetadata {
             return city.name_ru.isEmpty ? city.name_en : city.name_ru
         }
         
+        // Return Arabic display name when Arabic is active
+        if Localization.shouldLocalizeToArabic() {
+            // Prefer Arabic city name and fallback to English
+            return city.name_ar.isEmpty ? city.name_en : city.name_ar
+        }
+        
         // Return English display name when English localization is active
         if Localization.shouldLocalizeToEnglish() {
             // Return English city name
@@ -107,6 +115,12 @@ struct LocationMetadata {
         if Localization.shouldLocalizeToRussian() {
             // Prefer Russian zone name and fallback to English
             return city.zone_ru.isEmpty ? city.zone_en : city.zone_ru
+        }
+        
+        // Return Arabic zone label when Arabic is active
+        if Localization.shouldLocalizeToArabic() {
+            // Prefer Arabic zone name and fallback to English
+            return city.zone_ar.isEmpty ? city.zone_en : city.zone_ar
         }
         
         // Return English zone label when English localization is active
@@ -145,6 +159,32 @@ struct LocationMetadata {
         return zone["zone_en"] as! String
     }
     
+    static func arabicZoneTitle(forZonesJsonZone zone: NSDictionary) -> String {
+        // Extract zone value key used for selection persistence
+        let value = zone["value"] as! String
+        
+        // Handle the "all" pseudo-zone separately
+        if value == "all" {
+            // Load cities for fallback lookup
+            let cities = getCities()
+            
+            // Find "all" item in cities metadata
+            if let first = cities.first(where: { $0.value == "all" }), !first.name_ar.isEmpty {
+                // Return Arabic "all" title from cities JSON
+                return first.name_ar
+            }
+        }
+        
+        // Find a city that belongs to this Hebrew zone key
+        if let c = getCities().first(where: { $0.zone == value }), !c.zone_ar.isEmpty {
+            // Return Arabic zone title from cities JSON
+            return c.zone_ar
+        }
+        
+        // Fallback to English zone title from zones JSON
+        return zone["zone_en"] as! String
+    }
+    
     // Get zones from JSON
     static func getZones() -> NSArray? {
         // Return zone cache, if exists
@@ -174,6 +214,27 @@ struct LocationMetadata {
                 if city.zone == zone {
                     // Return Russian zone and fallback to English
                     return city.zone_ru.isEmpty ? city.zone_en : city.zone_ru
+                }
+            }
+            
+            // Fallback to original zone key
+            return zone
+        }
+        
+        // Handle Arabic zone localization second
+        if Localization.shouldLocalizeToArabic() {
+            // Localize "all" pseudo-zone using strings table
+            if zone == "all" {
+                // Return localized "All" value
+                return NSLocalizedString("All", comment: "")
+            }
+            
+            // Loop over cities to map Hebrew zone key to Arabic label
+            for city in getCities() {
+                // Match by source Hebrew zone key
+                if city.zone == zone {
+                    // Return Arabic zone and fallback to English
+                    return city.zone_ar.isEmpty ? city.zone_en : city.zone_ar
                 }
             }
             
@@ -224,6 +285,27 @@ struct LocationMetadata {
                 if (city.name == cityName) {
                     // Return Russian city name and fallback to English
                     return city.name_ru.isEmpty ? city.name_en : city.name_ru
+                }
+            }
+            
+            // Fallback to original city key
+            return cityName
+        }
+        
+        // Handle Arabic city localization second
+        if Localization.shouldLocalizeToArabic() {
+            // Localize "all" pseudo-city using strings table
+            if cityName == "all" {
+                // Return localized "All" value
+                return NSLocalizedString("All", comment: "")
+            }
+            
+            // Loop over cities to map Hebrew city key to Arabic label
+            for city in getCities() {
+                // Match by source Hebrew city key
+                if (city.name == cityName) {
+                    // Return Arabic city name and fallback to English
+                    return city.name_ar.isEmpty ? city.name_en : city.name_ar
                 }
             }
             
@@ -347,12 +429,12 @@ struct LocationMetadata {
         // Define translations
         let countdownTranslations: [Int: Countdown] = [
             0: Countdown(countdown: 0, time: "מיידי", time_en: "Immediately", time_ru: "Немедленно", time_ar: "في الحال"),
-            15: Countdown(countdown: 15, time: "15 שניות", time_en: "15 seconds", time_ru: "15 секунд", time_ar: "۱٥ ثانية"),
-            30: Countdown(countdown: 30, time: "30 שניות", time_en: "30 seconds", time_ru: "30 секунд", time_ar: "۳۰ ثانية"),
+            15: Countdown(countdown: 15, time: "15 שניות", time_en: "15 seconds", time_ru: "15 секунд", time_ar: "١٥ ثانية"),
+            30: Countdown(countdown: 30, time: "30 שניות", time_en: "30 seconds", time_ru: "30 секунд", time_ar: "٣٠ ثانية"),
             45: Countdown(countdown: 45, time: "45 שניות", time_en: "45 seconds", time_ru: "45 секунд", time_ar: "٤٥ ثانية"),
             60: Countdown(countdown: 60, time: "דקה", time_en: "A minute", time_ru: "Минута", time_ar: "دقيقة"),
             90: Countdown(countdown: 90, time: "דקה וחצי", time_en: "A minute and a half", time_ru: "Полторы минуты", time_ar: "دقيقة ونصف"),
-            180: Countdown(countdown: 180, time: "3 דקות", time_en: "3 minutes", time_ru: "3 минуты", time_ar: "۳ دقائق")
+            180: Countdown(countdown: 180, time: "3 דקות", time_en: "3 minutes", time_ru: "3 минуты", time_ar: "٣ دقائق")
         ]
         
         // Get cities as array
@@ -369,6 +451,15 @@ struct LocationMetadata {
 
                     // Return Russian zone with Russian countdown text
                     return z + " (" + countdownTranslations[city.countdown]!.time_ru + ")"
+                }
+                
+                // Handle Arabic localized countdown label
+                if Localization.shouldLocalizeToArabic() {
+                    // Resolve Arabic zone name with English fallback
+                    let z = city.zone_ar.isEmpty ? city.zone_en : city.zone_ar
+                    
+                    // Return Arabic zone with Arabic countdown text
+                    return z + " (" + countdownTranslations[city.countdown]!.time_ar + ")"
                 }
                 
                 // Handle English localized countdown label

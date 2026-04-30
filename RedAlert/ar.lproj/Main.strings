@@ -1,0 +1,20 @@
+/* Class = "IBUIBarButtonItem"; title = "Settings"; ObjectID = "7jC-HH-oAq"; */
+"7jC-HH-oAq.title" = "الإعدادات";
+
+/* Class = "IBUITableViewController"; title = "Settings"; ObjectID = "JaO-zN-Z1I"; */
+"JaO-zN-Z1I.title" = "الإعدادات";
+
+/* Class = "IBUITableViewController"; title = "Settings"; ObjectID = "JaO-zN-Z1I"; */
+"fmR-DC-UVs.title" = "إعدادات إضافية";
+
+/* Class = "IBUITableViewController"; title = "Settings"; ObjectID = "JaO-zN-Z1I"; */
+"nHK-zS-dkJ.title" = "تنبيهات ثانوية";
+
+/* Class = "IBUINavigationItem"; title = "Recent Alerts"; ObjectID = "Ss2-3G-LoG"; */
+"Ss2-3G-LoG.title" = "التنبيهات الأخيرة";
+
+/* Class = "IBUINavigationItem"; title = "Recent Alerts"; ObjectID = "Ss2-3G-LoG"; */
+"nHK-zS-dkK.title" = "الإنذارات المبكرة";
+
+/* Class = "IBUITableViewController"; title = "Settings"; ObjectID = "nHK-zS-dkL"; */
+"nHK-zS-dkL.title" = "تنبيهات انتهاء الحدث";
