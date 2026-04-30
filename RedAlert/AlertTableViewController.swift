@@ -60,6 +60,21 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         // Set image & click handler
         button.setImage(UIImage(named: "MapIcon"), for: .normal)
         button.addTarget(self, action:#selector(AlertTableViewController.openLiveMap), for: .touchUpInside)
+        
+        // Fix image stretching on iOS 26 and up
+        if #available(iOS 26.0, *) {
+            // Keep icon aspect ratio to avoid stretching wide
+            button.imageView?.contentMode = .scaleAspectFit
+            
+            // Center icon inside button bounds
+            button.contentHorizontalAlignment = .center
+            
+            // Center icon vertically inside button bounds
+            button.contentVerticalAlignment = .center
+            
+            // Add inner padding so non-square assets are not edge-stretched
+            button.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        }
 
         // Set width & height of button
         NSLayoutConstraint.activate([
@@ -69,6 +84,21 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         
         // Add dismiss/restore icon button on the right side
         dismissAlertsButton.addTarget(self, action: #selector(AlertTableViewController.dismissAlertsTapped), for: .touchUpInside)
+        
+        // Fix image stretching on iOS 26 and up
+        if #available(iOS 26.0, *) {
+            // Keep icon aspect ratio to avoid stretching wide
+            dismissAlertsButton.imageView?.contentMode = .scaleAspectFit
+            
+            // Center icon inside button bounds
+            dismissAlertsButton.contentHorizontalAlignment = .center
+            
+            // Center icon vertically inside button bounds
+            dismissAlertsButton.contentVerticalAlignment = .center
+            
+            // Add inner padding so non-square assets are not edge-stretched
+            dismissAlertsButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        }
 
         // Set width & height of button
         NSLayoutConstraint.activate([
@@ -83,6 +113,11 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         if (!Localization.isRTL()) {
             // Shift the other way
             shiftPx *= -1
+        }
+        
+        // No shifting on iOS 26 and up
+        if #available(iOS 26.0, *) {
+            shiftPx = 0;
         }
         
         // Shift map button closer to the screen edge

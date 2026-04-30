@@ -50,20 +50,29 @@ class LiveMapViewController: UIViewController, MKMapViewDelegate {
         // Configure dismiss/restore button
         dismissAlertsButton.addTarget(self, action: #selector(dismissAlertsTapped), for: .touchUpInside)
         
+        // Fix image stretching on iOS 26 and up
+        if #available(iOS 26.0, *) {
+            // Keep icon aspect ratio to avoid stretching wide
+            dismissAlertsButton.imageView?.contentMode = .scaleAspectFit
+            
+            // Center icon inside button bounds
+            dismissAlertsButton.contentHorizontalAlignment = .center
+            
+            // Center icon vertically inside button bounds
+            dismissAlertsButton.contentVerticalAlignment = .center
+            
+            // Add inner padding so non-square assets are not edge-stretched
+            dismissAlertsButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        }
+        
         // Set width & height of button
         NSLayoutConstraint.activate([
             dismissAlertsButton.widthAnchor.constraint(equalToConstant: 25),
             dismissAlertsButton.heightAnchor.constraint(equalToConstant: 25)
         ])
         
-        // Place action buttons in the navigation bar
-        let dismissAlertsBarButton = UIBarButtonItem(customView: dismissAlertsButton)
-        
-        // Wrap activity indicator view in a bar button item
-        let activityBarButton = UIBarButtonItem(customView: activityIndicator)
-        
-        // Show dismiss/restore first, then loading indicator on the right side
-        self.navigationItem.rightBarButtonItems = [dismissAlertsBarButton, activityBarButton]
+        // Render right-side nav buttons without loading indicator at startup
+        self.updateRightBarButtons(showLoading: false)
         
         // Set the initial icon based on current dismiss/restore state
         self.updateDismissAlertsButtonIcon()
@@ -163,7 +172,11 @@ class LiveMapViewController: UIViewController, MKMapViewDelegate {
         // Start the loading spinner if it's not already animating
         // Shows activity indicator in the navigation bar
         if !activityIndicator.isAnimating {
+            // Start animating loading indicator
             activityIndicator.startAnimating()
+            
+            // Add spinner item to navigation bar while loading
+            self.updateRightBarButtons(showLoading: true)
         }
 
         // Use API helper to fetch recent alerts from the server
@@ -172,6 +185,9 @@ class LiveMapViewController: UIViewController, MKMapViewDelegate {
             DispatchQueue.main.async {
                 // Stop spinner regardless of success or failure and hide from navigation bar
                 self.activityIndicator.stopAnimating()
+                
+                // Remove spinner slot from navigation bar when loading ends
+                self.updateRightBarButtons(showLoading: false)
 
                 // Check if an error occurred during the network request
                 if let theErr = err {
@@ -311,6 +327,23 @@ class LiveMapViewController: UIViewController, MKMapViewDelegate {
         
         // Apply selected icon to dismiss/restore button
         dismissAlertsButton.setImage(UIImage(named: imageName), for: .normal)
+    }
+    
+    func updateRightBarButtons(showLoading: Bool) {
+        // Wrap dismiss/restore button in a bar button item
+        let dismissAlertsBarButton = UIBarButtonItem(customView: dismissAlertsButton)
+        
+        // Loading visible? include spinner button, otherwise hide its space completely
+        if showLoading {
+            // Wrap spinner view in a bar button item
+            let activityBarButton = UIBarButtonItem(customView: activityIndicator)
+            
+            // Show dismiss/restore first, then loading indicator
+            self.navigationItem.rightBarButtonItems = [dismissAlertsBarButton, activityBarButton]
+        } else {
+            // Show only dismiss/restore button with no extra right-side gap
+            self.navigationItem.rightBarButtonItems = [dismissAlertsBarButton]
+        }
     }
 
     // Map Updates
