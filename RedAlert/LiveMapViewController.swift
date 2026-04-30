@@ -471,9 +471,9 @@ class LiveMapViewController: UIViewController, MKMapViewDelegate {
             // Create a polygon renderer for this overlay
             let renderer = MKPolygonRenderer(overlay: overlay)
             
-            // Set the fill color to red with 15% opacity (semi-transparent)
-            // Red components: 0.7 (70% red), 0.0 (0% green), 0.0 (0% blue), 0.15 (15% alpha)
-            renderer.fillColor = UIColor(red: 0.7, green: 0.0, blue: 0.0, alpha: 0.15)
+            // Set the fill color to red with 40% opacity (semi-transparent)
+            // Red components: 0.7 (70% red), 0.0 (0% green), 0.0 (0% blue), 0.4 (40% alpha)
+            renderer.fillColor = UIColor(red: 0.7, green: 0.0, blue: 0.0, alpha: 0.4)
             
             // Set the stroke (border) color to bright red with 60% opacity
             // Red components: 1.0 (100% red), 0.0 (0% green), 0.0 (0% blue), 0.6 (60% alpha)

@@ -250,6 +250,9 @@ class AlertViewController: UIViewController, MKMapViewDelegate {
             // Set polygon fill color based on all-clear state
             renderer.fillColor = isAllClearAlert ? UIColorFromRGB(0xb3afffaf) : UIColorFromRGB(0xb3ffafaf)
             
+            // Make polygon background translucent at 40% opacity
+            renderer.fillColor = renderer.fillColor?.withAlphaComponent(0.4)
+            
             // Set polygon stroke color based on all-clear state
             renderer.strokeColor = isAllClearAlert ? UIColorFromRGB(0xff00a000) : UIColorFromRGB(0xffe40000)
             
