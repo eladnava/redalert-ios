@@ -63,20 +63,26 @@
 				<string>AUTOMATIC</string>
 				<string>עברית</string>
 				<string>English</string>
-				<string>Português</string>
-				<string>Русский</string>
 				<string>العربية</string>
-				<string>Deutsch</string>
+				<string>Español</string>
+				<string>Русский</string>
+				<string>Italiano</string>
+				<string>Français</string>
+				<string>Deutch</string>
+				<string>Português</string>
 			</array>
 			<key>Values</key>
 			<array>
 				<string></string>
 				<string>he</string>
 				<string>en</string>
-				<string>pt-BR</string>
-				<string>ru</string>
 				<string>ar</string>
+				<string>es</string>
+				<string>ru</string>
+				<string>it</string>
+				<string>fr</string>
 				<string>de</string>
+				<string>pt-BR</string>
 			</array>
 		</dict>
 		<dict>

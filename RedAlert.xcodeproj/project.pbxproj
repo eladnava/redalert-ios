@@ -130,6 +130,21 @@
 		E4B0A1C22F90000100008D23 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SafeButtonView.strings; sourceTree = "<group>"; };
 		E4B0A1C32F90000100008D24 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		E4B0A1C42F90000100008D25 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E4B0A1D02F90000100008D31 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E4B0A1D12F90000100008D32 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/NoAlertsView.strings; sourceTree = "<group>"; };
+		E4B0A1D22F90000100008D33 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SafeButtonView.strings; sourceTree = "<group>"; };
+		E4B0A1D32F90000100008D34 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		E4B0A1D42F90000100008D35 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E4B0A1E02F90000100008D41 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E4B0A1E12F90000100008D42 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/NoAlertsView.strings; sourceTree = "<group>"; };
+		E4B0A1E22F90000100008D43 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SafeButtonView.strings; sourceTree = "<group>"; };
+		E4B0A1E32F90000100008D44 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
+		E4B0A1E42F90000100008D45 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E4B0A1F02F90000100008D51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E4B0A1F12F90000100008D52 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/NoAlertsView.strings; sourceTree = "<group>"; };
+		E4B0A1F22F90000100008D53 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SafeButtonView.strings; sourceTree = "<group>"; };
+		E4B0A1F32F90000100008D54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		E4B0A1F42F90000100008D55 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E412A5C319F18E1D0065B337 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E412A5C519F18EDA0065B337 /* Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
 		E412A5C819F18F2E0065B337 /* IASKAppSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IASKAppSettingsViewController.h; sourceTree = "<group>"; };
@@ -764,6 +779,9 @@
 				ru,
 				ar,
 				de,
+				es,
+				it,
+				fr,
 			);
 			mainGroup = E4F41E4919ED5CF100037587;
 			productRefGroup = E4F41E5319ED5CF100037587 /* Products */;
@@ -914,6 +932,9 @@
 				E4B0A1A02F90000100008D01 /* ru */,
 				E4B0A1B02F90000100008D11 /* ar */,
 				E4B0A1C02F90000100008D21 /* de */,
+				E4B0A1D02F90000100008D31 /* es */,
+				E4B0A1E02F90000100008D41 /* it */,
+				E4B0A1F02F90000100008D51 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -928,6 +949,9 @@
 				E4B0A1A12F90000100008D02 /* ru */,
 				E4B0A1B12F90000100008D12 /* ar */,
 				E4B0A1C12F90000100008D22 /* de */,
+				E4B0A1D12F90000100008D32 /* es */,
+				E4B0A1E12F90000100008D42 /* it */,
+				E4B0A1F12F90000100008D52 /* fr */,
 			);
 			name = NoAlertsView.xib;
 			sourceTree = "<group>";
@@ -942,6 +966,9 @@
 				E4B0A1A22F90000100008D03 /* ru */,
 				E4B0A1B22F90000100008D13 /* ar */,
 				E4B0A1C22F90000100008D23 /* de */,
+				E4B0A1D22F90000100008D33 /* es */,
+				E4B0A1E22F90000100008D43 /* it */,
+				E4B0A1F22F90000100008D53 /* fr */,
 			);
 			name = SafeButtonView.xib;
 			sourceTree = "<group>";
@@ -956,6 +983,9 @@
 				E4B0A1A32F90000100008D04 /* ru */,
 				E4B0A1B32F90000100008D14 /* ar */,
 				E4B0A1C32F90000100008D24 /* de */,
+				E4B0A1D32F90000100008D34 /* es */,
+				E4B0A1E32F90000100008D44 /* it */,
+				E4B0A1F32F90000100008D54 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -969,6 +999,9 @@
 				E4B0A1A42F90000100008D05 /* ru */,
 				E4B0A1B42F90000100008D15 /* ar */,
 				E4B0A1C42F90000100008D25 /* de */,
+				E4B0A1D42F90000100008D35 /* es */,
+				E4B0A1E42F90000100008D45 /* it */,
+				E4B0A1F42F90000100008D55 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
