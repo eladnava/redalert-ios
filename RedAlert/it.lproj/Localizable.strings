@@ -78,3 +78,4 @@
 "LIVE_MAP"="Mappa live";
 "DISMISS_ALERTS_CONFIRM_TITLE"="Cancellare gli avvisi recenti?";
 "DISMISS_ALERTS_CONFIRM_MESSAGE"="Vuoi cancellare tutti gli avvisi recenti?";
+"MULTI_SELECTION_LIMIT_ERROR"="Seleziona fino a %d città.";

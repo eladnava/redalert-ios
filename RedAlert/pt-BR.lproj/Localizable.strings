@@ -91,4 +91,5 @@
 "LIVE_MAP"="Mapa ao Vivo";
 "DISMISS_ALERTS_CONFIRM_TITLE"="Limpar alertas recentes?";
 "DISMISS_ALERTS_CONFIRM_MESSAGE"="Deseja limpar todos os alertas recentes?";
+"MULTI_SELECTION_LIMIT_ERROR"="Selecione até %d cidades.";
 

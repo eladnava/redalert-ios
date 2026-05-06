@@ -88,4 +88,5 @@
 "LIVE_MAP"="Live Map";
 "DISMISS_ALERTS_CONFIRM_TITLE"="Clear recent alerts?";
 "DISMISS_ALERTS_CONFIRM_MESSAGE"="Would you like to clear all recent alerts?";
+"MULTI_SELECTION_LIMIT_ERROR"="Please select up to %d cities.";
 

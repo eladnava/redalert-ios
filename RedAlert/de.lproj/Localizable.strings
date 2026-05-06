@@ -86,3 +86,4 @@
 "LIVE_MAP"="Live-Karte";
 "DISMISS_ALERTS_CONFIRM_TITLE"="Letzte Alarme löschen?";
 "DISMISS_ALERTS_CONFIRM_MESSAGE"="Möchtest du alle letzten Alarme löschen?";
+"MULTI_SELECTION_LIMIT_ERROR"="Bitte wähle bis zu %d Städte aus.";

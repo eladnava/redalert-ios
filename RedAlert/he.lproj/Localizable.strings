@@ -92,3 +92,4 @@
 "LIVE_MAP"="מפה חיה";
 "DISMISS_ALERTS_CONFIRM_TITLE"="למחוק את ההתרעות האחרונות?";
 "DISMISS_ALERTS_CONFIRM_MESSAGE"="האם למחוק את כל ההתרעות האחרונות?";
+"MULTI_SELECTION_LIMIT_ERROR"="יש לבחור עד %d ערים.";

@@ -90,4 +90,5 @@
 "LIVE_MAP"="Карта";
 "DISMISS_ALERTS_CONFIRM_TITLE"="Очистить недавние оповещения?";
 "DISMISS_ALERTS_CONFIRM_MESSAGE"="Удалить все недавние оповещения?";
+"MULTI_SELECTION_LIMIT_ERROR"="Выберите не более %d городов.";
 

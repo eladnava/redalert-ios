@@ -89,3 +89,4 @@
 "LIVE_MAP"="الخريطة الحية";
 "DISMISS_ALERTS_CONFIRM_TITLE"="مسح التنبيهات الأخيرة؟";
 "DISMISS_ALERTS_CONFIRM_MESSAGE"="هل تريد مسح جميع التنبيهات الأخيرة؟";
+"MULTI_SELECTION_LIMIT_ERROR"="يرجى اختيار ما يصل إلى %d مدينة.";

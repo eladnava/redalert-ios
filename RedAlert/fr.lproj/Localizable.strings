@@ -78,3 +78,4 @@
 "LIVE_MAP"="Carte en direct";
 "DISMISS_ALERTS_CONFIRM_TITLE"="Effacer les alertes récentes ?";
 "DISMISS_ALERTS_CONFIRM_MESSAGE"="Voulez-vous effacer toutes les alertes récentes ?";
+"MULTI_SELECTION_LIMIT_ERROR"="Veuillez sélectionner jusqu'à %d villes.";

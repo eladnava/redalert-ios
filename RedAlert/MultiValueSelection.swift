@@ -86,6 +86,24 @@ class MultiValueSelection : NSObject, KNMultiItemSelectorDelegate {
             // Support for secondary cities            
             secondaryCities = (selector.key == UserSettingsKeys.secondaryCitySelection) ? UserSettings.getStringArrayByValue(value: value) : secondaryCities
             
+            // Define max number of selectable items per multi-select list
+            let maxSelectionCount = 100
+            
+            // Resolve active selection count for the currently edited list
+            let activeSelectionCount = (selector.key == UserSettingsKeys.citySelection) ? cities.count : ((selector.key == UserSettingsKeys.zoneSelection) ? zones.count : secondaryCities.count)
+            
+            // Selection too large? show localized error and stop
+            if activeSelectionCount > maxSelectionCount {
+                // Hide loading dialog before showing validation error
+                MBProgressHUD.hide(for: self.navigationController.view, animated: true)
+                
+                // Build localized message with configured limit
+                let message = String.localizedStringWithFormat(NSLocalizedString("MULTI_SELECTION_LIMIT_ERROR", comment: "Multi-select item count limit error"), maxSelectionCount)
+                
+                // Show validation error and stay on selector screen
+                return Dialogs.error(message: message)
+            }
+            
             // Re-subscribe            
             RedAlertAPI.updateSubscriptionsAsync(cities: cities, zones: zones, secondaryCities: secondaryCities) { (err: NSError?) -> () in
                 
