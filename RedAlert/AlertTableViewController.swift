@@ -824,6 +824,11 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         
         // Get row number
         let row = label.tag
+        
+        // Check for index out of range
+        guard alerts.indices.contains(row) else { return }
+        
+        // Get alert by row number
         let alert = alerts[row]
                 
         // Alert doesn't need expansion?
