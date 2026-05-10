@@ -13,6 +13,12 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
     var reloading = false, imSafe = UIView(), noAlerts = UIView(), pullToRefresh = UIRefreshControl(), alerts: [Alert] = [], allAlerts: [Alert] = [], reloadTimer: Timer?
     var dismissAlertsButton = UIButton(type: .system)
     
+    // True after the first recent-alerts network attempt finishes (success or failure)
+    private var hasCompletedInitialRecentAlertsLoad = false
+    
+    // Overlay hosting the native first-load activity indicator
+    private var initialRecentAlertsLoadingOverlay: UIView?
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -38,6 +44,9 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         // Stop the timer
         reloadTimer?.invalidate()
         reloadTimer = nil
+        
+        // Remove centered first-load overlay if user leaves before the request completes
+        self.removeInitialRecentAlertsLoadingOverlay()
     }
     
     // View loaded initially (called once)
@@ -396,6 +405,119 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         reloadTimer = Timer.scheduledTimer(timeInterval: Config.recentAlertsRefreshIntervalSeconds, target: self, selector: #selector(AlertTableViewController.reloadRecentAlerts), userInfo: nil, repeats: true)
     }
     
+    /// Full-screen view used to attach the first-load loading overlay
+    private func recentAlertsLoadingOverlayHostView() -> UIView {
+        // Prefer the navigation container so the overlay covers the whole screen
+        if let navView = navigationController?.view {
+            return navView
+        }
+        
+        // Fall back to this controller's root view when no navigation controller exists
+        return view
+    }
+    
+    /// Removes the native first-load overlay from its superview
+    private func removeInitialRecentAlertsLoadingOverlay() {
+        // Stop retaining the overlay hierarchy
+        initialRecentAlertsLoadingOverlay?.removeFromSuperview()
+        
+        // Clear the stored reference so the next first-load pass can build a new overlay
+        initialRecentAlertsLoadingOverlay = nil
+    }
+    
+    /// Shows a large centered UIActivityIndicatorView only for the first automatic recent-alerts fetch
+    private func showInitialRecentAlertsLoadingOverlayIfNeeded() {
+        // Skip after the first load cycle has finished (timer refreshes stay lightweight)
+        if hasCompletedInitialRecentAlertsLoad {
+            return
+        }
+        
+        // Skip while pull-to-refresh is active (that UI already indicates loading)
+        if pullToRefresh.isRefreshing {
+            return
+        }
+        
+        // Resolve overlay host view
+        let hostView = recentAlertsLoadingOverlayHostView()
+        
+        // Avoid stacking duplicate overlays if reload is re-triggered unexpectedly
+        removeInitialRecentAlertsLoadingOverlay()
+        
+        // Build transparent full-screen container only for centering the spinner (no dimming)
+        let overlay = UIView()
+        
+        // Use Auto Layout for rotation and safe sizing
+        overlay.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Keep background fully transparent so the list is not darkened
+        overlay.backgroundColor = UIColor.clear
+        
+        // Let touches pass through to the table while the spinner shows
+        overlay.isUserInteractionEnabled = false
+        
+        // Build native indeterminate spinner for this OS version
+        let spinner: UIActivityIndicatorView
+        
+        // Large style requires iOS 13 or newer
+        if #available(iOS 13.0, *) {
+            // Use the system large activity indicator
+            spinner = UIActivityIndicatorView(activityIndicatorStyle: .large)
+        }
+        else {
+            // Fall back to legacy white large style on older releases
+            spinner = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        }
+        
+        // Use a label-aware tint so the spinner stays visible on a light table without a dim layer
+        if #available(iOS 13.0, *) {
+            // Follow light/dynamic text color for contrast on the normal table background
+            spinner.color = UIColor.label
+        }
+        else {
+            // Older systems use a fixed dark gray on the default grouped/table surface
+            spinner.color = UIColor.darkGray
+        }
+        
+        // Use Auto Layout inside the overlay
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Begin animation immediately
+        spinner.startAnimating()
+        
+        // Layer spinner inside the transparent overlay
+        overlay.addSubview(spinner)
+        
+        // Cover the host above the table content
+        hostView.addSubview(overlay)
+        
+        // Pin overlay to all edges of the host
+        NSLayoutConstraint.activate([
+            overlay.leadingAnchor.constraint(equalTo: hostView.leadingAnchor),
+            overlay.trailingAnchor.constraint(equalTo: hostView.trailingAnchor),
+            overlay.topAnchor.constraint(equalTo: hostView.topAnchor),
+            overlay.bottomAnchor.constraint(equalTo: hostView.bottomAnchor),
+            spinner.centerXAnchor.constraint(equalTo: overlay.centerXAnchor),
+            spinner.centerYAnchor.constraint(equalTo: overlay.centerYAnchor),
+        ])
+        
+        // Retain overlay so we can tear it down when loading completes
+        initialRecentAlertsLoadingOverlay = overlay
+    }
+    
+    /// Marks initial load complete and removes the first-load overlay when applicable
+    private func completeInitialRecentAlertsLoadPresentation() {
+        // Avoid duplicate teardown when multiple completions occur in one session
+        if hasCompletedInitialRecentAlertsLoad {
+            return
+        }
+        
+        // Remember that the initial fetch cycle completed
+        hasCompletedInitialRecentAlertsLoad = true
+        
+        // Remove centered first-load overlay
+        removeInitialRecentAlertsLoadingOverlay()
+    }
+    
     @objc func reloadRecentAlerts() {
         // Prevent concurrent reload        
         if (self.reloading) {
@@ -404,6 +526,9 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
         
         // Set reloading flag        
         self.reloading = true
+        
+        // Show large centered native spinner only on first load before the list has populated
+        showInitialRecentAlertsLoadingOverlayIfNeeded()
         
         // Show spinner        
         self.toggleNetworkActivity(visible: true)
@@ -416,23 +541,32 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             
             // Did we get an error?            
             if let theErr = err {
-                // Hide loading indicator                
-                self.toggleNetworkActivity(visible: false)
-                
-                // Default message
-                var message = NSLocalizedString("RECENT_ALERTS_ERROR", comment: "Recent alerts error")
-                
-                // Error provided?
-                if let errMsg = theErr.userInfo["error"] as? String {
-                    message += "\n\n" + errMsg
+                // Finish UI work on the main queue for overlay teardown and alerts
+                DispatchQueue.main.async {
+                    // End first-load overlay presentation before showing the error dialog
+                    self.completeInitialRecentAlertsLoadPresentation()
+                    
+                    // Hide loading indicator                
+                    self.toggleNetworkActivity(visible: false)
+                    
+                    // Default message
+                    var message = NSLocalizedString("RECENT_ALERTS_ERROR", comment: "Recent alerts error")
+                    
+                    // Error provided?
+                    if let errMsg = theErr.userInfo["error"] as? String {
+                        message += "\n\n" + errMsg
+                    }
+                    
+                    // Show the error
+                    Dialogs.error(message: message)
                 }
                 
-                // Show the error
-                return Dialogs.error(message: message)
+                // Stop execution
+                return
             }
             
             // Store grouped alerts in member (unfiltered)
-            var alerts = self.groupAlerts(alerts!)
+            let alerts = self.groupAlerts(alerts!)
 
             // Preserve expanded state where possible based on previous full alerts list
             if alerts.count == self.allAlerts.count {
@@ -458,6 +592,9 @@ class AlertTableViewController: UITableViewController, UIAlertViewDelegate {
             DispatchQueue.main.async {
                 // Refresh table with data (will apply dismiss/restore filter)
                 self.refreshAlertsTable()
+                
+                // Tear down first-load centered overlay after list state updates
+                self.completeInitialRecentAlertsLoadPresentation()
                 
                 // Hide loading indicator
                 self.toggleNetworkActivity(visible: false)
