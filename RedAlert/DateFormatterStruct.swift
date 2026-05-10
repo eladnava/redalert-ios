@@ -9,6 +9,45 @@
 import Foundation
 
 struct DateFormatterStruct {
+    /// Relative time only (e.g. "8 hours ago"), localized; Arabic uses Arabic-Indic digits when applicable
+    static func relativeTimeDescription(unixTimestamp: Double) -> String {
+        // Build date from Unix seconds
+        let date = Date(timeIntervalSince1970: TimeInterval(unixTimestamp))
+        
+        // iOS 13+ uses RelativeDateTimeFormatter for natural "time ago" phrasing
+        if #available(iOS 13.0, *) {
+            // Format relative to now
+            let relativeFormatter = RelativeDateTimeFormatter()
+            
+            // Produce localized relative string
+            let relativeDate = relativeFormatter.localizedString(for: date, relativeTo: Date())
+            
+            // Apply Arabic-Indic digit mapping when Arabic UI is active
+            return localizeDigitsForCurrentLanguage(value: relativeDate)
+        }
+        
+        // Older iOS: best-effort relative-style stamp via DateFormatter
+        let dateFormatter = DateFormatter()
+        
+        // Ask the formatter for locale-aware relative wording when supported
+        dateFormatter.doesRelativeDateFormatting = true
+        
+        // Short date and time keep the string compact in the navigation bar
+        dateFormatter.dateStyle = .short
+        
+        // Include time so the title is still informative without iOS 13 APIs
+        dateFormatter.timeStyle = .short
+        
+        // Respect the user's locale
+        dateFormatter.locale = Locale.current
+        
+        // Build fallback string
+        let fallback = dateFormatter.string(from: date)
+        
+        // Apply Arabic-Indic digit mapping when Arabic UI is active
+        return localizeDigitsForCurrentLanguage(value: fallback)
+    }
+    
     static func ConvertUnixTimestampToDateTime(unixTimestamp: Double!) -> String {
         // Convert Unix timestamp to Date() object
         let date = Date(timeIntervalSince1970: TimeInterval(unixTimestamp))

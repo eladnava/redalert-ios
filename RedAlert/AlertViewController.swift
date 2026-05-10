@@ -35,14 +35,36 @@ class AlertViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    /// Builds the map screen navigation title: localized threat label plus relative "time ago"
+    private func mapNavigationTitle(for alert: Alert) -> String {
+        // Use the same reference instant as grouped range rows (earliest time when a span exists)
+        let referenceTimestamp: Double
+        
+        // Grouped multi-city row uses a date range; match its relative-time anchor
+        if alert.groupedCities.count > 1 && alert.minDate != alert.maxDate {
+            // Align with DateFormatterStruct range helper (relative string from min timestamp)
+            referenceTimestamp = alert.minDate
+        }
+        else {
+            // Single instant for non-range alerts
+            referenceTimestamp = alert.date
+        }
+        
+        // Localized "8 hours ago" style fragment
+        let relativeTime = DateFormatterStruct.relativeTimeDescription(unixTimestamp: referenceTimestamp)
+        
+        // Title shown as "{threat}: {relative time}" (threat string is already localized)
+        return alert.localizedThreat + ": " + relativeTime
+    }
+    
     override func viewDidLoad() {
         // Call super first        
         super.viewDidLoad()
         
         // Unwrap alert        
         if let alert = alert {
-            // Set window title to localized city name
-            self.title = alert.localizedCity
+            // Set navigation title to "{threat}: {relative time ago}" (localized format string)
+            self.title = mapNavigationTitle(for: alert)
         }
         
         // Load mapview 
