@@ -14,10 +14,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AlertIcon" translatesAutoresizingMaskIntoConstraints="NO" id="sPh-F2-Fmd">
-                    <rect key="frame" x="134.66666666666666" y="325" width="123.99999999999997" height="118"/>
+                    <rect key="frame" x="134.66666666666666" y="325" width="123.99999999999997" height="124"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="124" id="qTt-7K-TmY"/>
-                        <constraint firstAttribute="height" constant="118" id="taf-Y6-9jG"/>
+                        <constraint firstAttribute="height" constant="124" id="taf-Y6-9jG"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="אין התרעות מהיום האחרון" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="106" translatesAutoresizingMaskIntoConstraints="NO" id="31a-zG-ovf">
